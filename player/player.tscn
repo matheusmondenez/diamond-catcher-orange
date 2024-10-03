@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cr44oxaxyl2fh"]
+[gd_scene load_steps=53 format=3 uid="uid://cr44oxaxyl2fh"]
 
 [ext_resource type="Texture2D" uid="uid://uex5pj1a8i0i" path="res://assets/player/blinking.png" id="1_h4p83"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j0cc2"]
@@ -120,6 +120,30 @@ region = Rect2(32, 0, 32, 32)
 atlas = ExtResource("9_d7cly")
 region = Rect2(64, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_njotf"]
+atlas = ExtResource("10_4ears")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0me5d"]
+atlas = ExtResource("10_4ears")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8et01"]
+atlas = ExtResource("10_4ears")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eq6sr"]
+atlas = ExtResource("10_4ears")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inx1n"]
+atlas = ExtResource("10_4ears")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x5dv"]
+atlas = ExtResource("10_4ears")
+region = Rect2(160, 0, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f7u33"]
 atlas = ExtResource("10_4ears")
 region = Rect2(0, 0, 32, 32)
@@ -240,9 +264,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_dqrqh")
 }],
-"loop": true,
+"loop": false,
 "name": &"rolling",
-"speed": 12.0
+"speed": 18.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -254,9 +278,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8l0lr")
 }],
-"loop": true,
+"loop": false,
 "name": &"rolling_start",
-"speed": 6.0
+"speed": 3.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -268,9 +292,32 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_aiwod")
 }],
-"loop": true,
+"loop": false,
 "name": &"rolling_stop",
 "speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njotf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0me5d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8et01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eq6sr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inx1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x5dv")
+}],
+"loop": true,
+"name": &"running",
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -306,10 +353,13 @@ script = ExtResource("1_j0cc2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kurqy")
-animation = &"rolling"
+animation = &"rolling_start"
 autoplay = "idle"
-frame_progress = 0.683333
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)
 shape = SubResource("CircleShape2D_iammf")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

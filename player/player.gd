@@ -1,11 +1,19 @@
 extends CharacterBody2D
 
-const SPEED = 100.0
+const WALK_SPEED = 100.0
+const RUN_SPEED = 200.0
+const ROLL_SPEED = 400.0
 const JUMP_VELOCITY = -400.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
-var direction
+var direction: int = 0
+var can_kick: bool = false
+var is_kicking: bool = false
+var can_roll: bool = true
+var is_rolling: bool = false
+var can_double_jump: bool = false
+var is_double_jumping: bool = false
 
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
@@ -18,13 +26,14 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		if Input.is_action_pressed("run"):
-			velocity.x = direction * (SPEED * 2)
-		elif Input.is_action_pressed("roll"):
-			velocity.x = direction * (SPEED * 4)
+			velocity.x = direction * (RUN_SPEED)
 		else:
-			velocity.x = direction * SPEED
+			velocity.x = direction * WALK_SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+		
+		if check_action("roll"):
+			roll()
 
 	set_state()
 	move_and_slide()
@@ -41,16 +50,44 @@ func set_state():
 	var state
 	
 	if is_on_floor():
-		if Input.is_action_pressed("roll"):
-			state = "rolling"
+		if is_rolling:
+			print("true")
+			sprite.play("rolling_start")
 		elif velocity.x == 0:
-			state = "idle"
+			sprite.play("idle")
 		else:
-			state = "walking"
+			if velocity.x < WALK_SPEED * -1 or velocity.x > WALK_SPEED:
+				sprite.play("running")
+			else:
+				sprite.play("walking")
 	elif !is_on_floor():
 		if velocity.y < 0:
-			state = "jumping"
+			sprite.play("jumping")
 		else:
-			state = "falling"
+			sprite.play("falling")
 
-	sprite.play(state)
+func check_action(action):
+	if Input.is_action_just_pressed(action):
+		return true
+	else:
+		return false
+
+func roll():
+	if is_on_floor() and not is_rolling:
+		is_rolling = true
+		velocity = Vector2(1, 0).normalized() * 1000
+		await get_tree().create_timer(1).timeout
+		is_rolling = false
+
+func kick():
+	pass
+
+func jump():
+	pass
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if sprite.animation == "rolling_start":
+		print("Finished: rolling_start")
+		sprite.play("rolling")
+	elif sprite.animation == "rolling":
+		sprite.play("rolling_stop")
