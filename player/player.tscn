@@ -266,7 +266,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"rolling",
-"speed": 18.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -280,7 +280,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"rolling_start",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -353,10 +353,8 @@ script = ExtResource("1_j0cc2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kurqy")
-animation = &"rolling_start"
+animation = &"rolling_stop"
 autoplay = "idle"
-frame = 2
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8)

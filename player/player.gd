@@ -11,7 +11,9 @@ var direction: int = 0
 var can_kick: bool = false
 var is_kicking: bool = false
 var can_roll: bool = true
+var is_preparing_to_roll: bool = false
 var is_rolling: bool = false
+var is_stoping_to_roll: bool = false
 var can_double_jump: bool = false
 var is_double_jumping: bool = false
 
@@ -38,21 +40,24 @@ func _physics_process(delta: float) -> void:
 	set_state()
 	move_and_slide()
 
-func set_face_direction():
+func set_face_direction() -> void:
 	if direction < 0:
 		sprite.flip_h = true
 	elif direction > 0:
 		sprite.flip_h = false
 
-func set_state():
+func set_state() -> void:
 	set_face_direction()
 	
 	var state
 	
 	if is_on_floor():
-		if is_rolling:
-			print("true")
-			sprite.play("rolling_start")
+		if is_preparing_to_roll:
+			sprite.animation = "rolling_start"
+		elif is_rolling:
+			sprite.play("rolling")
+		elif is_stoping_to_roll:
+			sprite.play("rolling_stop")
 		elif velocity.x == 0:
 			sprite.play("idle")
 		else:
@@ -66,28 +71,31 @@ func set_state():
 		else:
 			sprite.play("falling")
 
-func check_action(action):
+func check_action(action) -> bool:
 	if Input.is_action_just_pressed(action):
 		return true
 	else:
 		return false
 
-func roll():
+func roll() -> void:
 	if is_on_floor() and not is_rolling:
-		is_rolling = true
+		is_preparing_to_roll = true
+		await get_tree().create_timer(.4).timeout
 		velocity = Vector2(1, 0).normalized() * 1000
-		await get_tree().create_timer(1).timeout
-		is_rolling = false
 
-func kick():
+func kick() -> void:
 	pass
 
-func jump():
+func jump() -> void:
 	pass
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "rolling_start":
-		print("Finished: rolling_start")
-		sprite.play("rolling")
+		print("finished rolling_start")
+		is_preparing_to_roll = false
+		is_rolling = true
 	elif sprite.animation == "rolling":
-		sprite.play("rolling_stop")
+		is_rolling = false
+		is_stoping_to_roll = true
+		await get_tree().create_timer(1).timeout
+		is_stoping_to_roll = false
