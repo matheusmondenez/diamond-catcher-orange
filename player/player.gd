@@ -22,8 +22,11 @@ func _physics_process(delta: float) -> void:
 	
 	fall(delta)
 
-	if Input.is_action_just_pressed("jump"):
+	if check_action("jump"):
 		jump()
+		
+	if check_action("kick"):
+		kick()
 	
 	if direction:
 		if Input.is_action_pressed("run"):
@@ -64,7 +67,7 @@ func fall(delta) -> void:
 		velocity += get_gravity() * delta
 
 func kick() -> void:
-	pass
+	is_kicking = true
 
 func roll() -> void:
 	if is_on_floor() and not is_rolling:
@@ -88,6 +91,8 @@ func set_state() -> void:
 			sprite.play("rolling")
 		elif is_stoping_to_roll:
 			sprite.play("rolling_stop")
+		elif is_kicking:
+			sprite.play("kicking")
 		elif velocity.x == 0:
 			sprite.play("idle")
 		else:
@@ -110,3 +115,5 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_stoping_to_roll = true
 		await get_tree().create_timer(1).timeout
 		is_stoping_to_roll = false
+	elif sprite.animation == "kicking":
+		is_kicking = false
