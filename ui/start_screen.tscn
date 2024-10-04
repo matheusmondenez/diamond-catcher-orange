@@ -1,0 +1,54 @@
+[gd_scene load_steps=6 format=3 uid="uid://3x8j7dg3cg5b"]
+
+[ext_resource type="Script" path="res://ui/start_screen.gd" id="1_j7wxc"]
+[ext_resource type="Texture2D" uid="uid://1tnq5tnn7emj" path="res://assets/ui/background.png" id="1_kcwyt"]
+[ext_resource type="Texture2D" uid="uid://bj2hh8rl6vv8v" path="res://assets/ui/logo.png" id="2_qav7n"]
+[ext_resource type="Texture2D" uid="uid://dnb46ebgkk0dg" path="res://assets/ui/button_start_default.png" id="3_ujbfx"]
+[ext_resource type="Texture2D" uid="uid://b1gcyo4o4ynci" path="res://assets/ui/button_start_hover.png" id="4_xank5"]
+
+[node name="StartScreen" type="Node"]
+script = ExtResource("1_j7wxc")
+
+[node name="Background" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kcwyt")
+stretch_mode = 1
+
+[node name="Logo" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -292.5
+offset_top = -172.5
+offset_right = 292.5
+offset_bottom = 2.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_qav7n")
+
+[node name="StartButton" type="TextureButton" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = 36.0
+offset_right = 100.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+action_mode = 0
+texture_normal = ExtResource("3_ujbfx")
+texture_pressed = ExtResource("4_xank5")
+texture_hover = ExtResource("4_xank5")
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
