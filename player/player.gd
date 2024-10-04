@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 100.0
-const RUN_SPEED = 200.0
-const ROLL_SPEED = 400.0
+const WALK_SPEED = 100.0/2
+const RUN_SPEED = 200.0/2
+const ROLL_SPEED = 400.0/2
 const JUMP_VELOCITY = -400.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -18,27 +18,59 @@ var can_double_jump: bool = false
 var is_double_jumping: bool = false
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
 	direction = Input.get_axis("left", "right")
+	
+	fall(delta)
+
+	if Input.is_action_just_pressed("jump"):
+		jump()
 	
 	if direction:
 		if Input.is_action_pressed("run"):
-			velocity.x = direction * (RUN_SPEED)
+			run()
 		else:
-			velocity.x = direction * WALK_SPEED
+			walk()
 	else:
-		velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+		idle()
 		
 		if check_action("roll"):
 			roll()
 
+	set_face_direction()
 	set_state()
 	move_and_slide()
+
+func check_action(action) -> bool:
+	if Input.is_action_just_pressed(action):
+		return true
+	else:
+		return false
+
+func idle() -> void:
+	velocity.x = move_toward(velocity.x, 0, WALK_SPEED)
+
+func walk() -> void:
+	velocity.x = direction * WALK_SPEED
+
+func run() -> void:
+	velocity.x = direction * RUN_SPEED
+
+func jump() -> void:
+	if is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+func fall(delta) -> void:
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+func kick() -> void:
+	pass
+
+func roll() -> void:
+	if is_on_floor() and not is_rolling:
+		is_preparing_to_roll = true
+		await get_tree().create_timer(.45).timeout
+		velocity = Vector2(1, 0).normalized() * 1000
 
 func set_face_direction() -> void:
 	if direction < 0:
@@ -47,8 +79,6 @@ func set_face_direction() -> void:
 		sprite.flip_h = false
 
 func set_state() -> void:
-	set_face_direction()
-	
 	var state
 	
 	if is_on_floor():
@@ -71,27 +101,8 @@ func set_state() -> void:
 		else:
 			sprite.play("falling")
 
-func check_action(action) -> bool:
-	if Input.is_action_just_pressed(action):
-		return true
-	else:
-		return false
-
-func roll() -> void:
-	if is_on_floor() and not is_rolling:
-		is_preparing_to_roll = true
-		await get_tree().create_timer(.4).timeout
-		velocity = Vector2(1, 0).normalized() * 1000
-
-func kick() -> void:
-	pass
-
-func jump() -> void:
-	pass
-
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if sprite.animation == "rolling_start":
-		print("finished rolling_start")
 		is_preparing_to_roll = false
 		is_rolling = true
 	elif sprite.animation == "rolling":
