@@ -1,15 +1,22 @@
-[gd_scene load_steps=6 format=3 uid="uid://3x8j7dg3cg5b"]
+[gd_scene load_steps=8 format=3 uid="uid://3x8j7dg3cg5b"]
 
 [ext_resource type="Script" path="res://ui/start_screen.gd" id="1_j7wxc"]
 [ext_resource type="Texture2D" uid="uid://1tnq5tnn7emj" path="res://assets/ui/background.png" id="1_kcwyt"]
+[ext_resource type="Shader" path="res://ui/background_scroll.gdshader" id="2_hgv58"]
 [ext_resource type="Texture2D" uid="uid://bj2hh8rl6vv8v" path="res://assets/ui/logo.png" id="2_qav7n"]
 [ext_resource type="Texture2D" uid="uid://dnb46ebgkk0dg" path="res://assets/ui/button_start_default.png" id="3_ujbfx"]
 [ext_resource type="Texture2D" uid="uid://b1gcyo4o4ynci" path="res://assets/ui/button_start_hover.png" id="4_xank5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a8fw0"]
+shader = ExtResource("2_hgv58")
+shader_parameter/speed = 0.5
 
 [node name="StartScreen" type="Node"]
 script = ExtResource("1_j7wxc")
 
 [node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_a8fw0")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
