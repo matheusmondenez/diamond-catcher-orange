@@ -1,0 +1,84 @@
+[gd_scene load_steps=13 format=3 uid="uid://hxwr1px1pf31"]
+
+[ext_resource type="Script" path="res://collectables/diamond.gd" id="1_48ddd"]
+[ext_resource type="Texture2D" uid="uid://rmh6q4apjria" path="res://assets/collectables/diamond.png" id="1_fcj5v"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_85jc7"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oxh6x"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22ana"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j0jly"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxehi"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt77i"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r15bp"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_43oql"]
+atlas = ExtResource("1_fcj5v")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rbl6c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_85jc7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oxh6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22ana")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j0jly")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxehi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt77i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r15bp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_43oql")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ibuj0"]
+
+[node name="Diamond" type="Area2D"]
+script = ExtResource("1_48ddd")
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_rbl6c")
+autoplay = "default"
+frame_progress = 0.732406
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_ibuj0")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

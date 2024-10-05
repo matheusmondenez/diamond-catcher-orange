@@ -6,7 +6,7 @@ const ROLL_SPEED = 400.0/2
 const JUMP_VELOCITY = -400.0
 const JUMP_MAX = 2
 
-@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation: AnimatedSprite2D = $Animation
 
 var direction: int = 0
 var can_kick: bool = false
@@ -15,7 +15,7 @@ var can_roll: bool = true
 var is_preparing_to_roll: bool = false
 var is_rolling: bool = false
 var is_stoping_to_roll: bool = false
-var can_double_jump: bool = false
+var can_double_jump: bool = true
 var is_double_jumping: bool = false
 var jump_count: int = 0
 
@@ -65,7 +65,7 @@ func jump() -> void:
 		jump_count = 0
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
-	elif jump_count < JUMP_MAX:
+	elif can_double_jump and jump_count < JUMP_MAX:
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 
@@ -84,43 +84,43 @@ func roll() -> void:
 
 func set_face_direction() -> void:
 	if direction < 0:
-		sprite.flip_h = true
+		animation.flip_h = true
 	elif direction > 0:
-		sprite.flip_h = false
+		animation.flip_h = false
 
 func set_state() -> void:
 	var state
 	
 	if is_on_floor():
 		if is_preparing_to_roll:
-			sprite.animation = "rolling_start"
+			animation.animation = "rolling_start"
 		elif is_rolling:
-			sprite.play("rolling")
+			animation.play("rolling")
 		elif is_stoping_to_roll:
-			sprite.play("rolling_stop")
+			animation.play("rolling_stop")
 		elif is_kicking:
-			sprite.play("kicking")
+			animation.play("kicking")
 		elif velocity.x == 0:
-			sprite.play("idle")
+			animation.play("idle")
 		else:
 			if velocity.x < WALK_SPEED * -1 or velocity.x > WALK_SPEED:
-				sprite.play("running")
+				animation.play("running")
 			else:
-				sprite.play("walking")
+				animation.play("walking")
 	elif !is_on_floor():
 		if velocity.y < 0:
-			sprite.play("jumping")
+			animation.play("jumping")
 		else:
-			sprite.play("falling")
+			animation.play("falling")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if sprite.animation == "rolling_start":
+	if animation.animation == "rolling_start":
 		is_preparing_to_roll = false
 		is_rolling = true
-	elif sprite.animation == "rolling":
+	elif animation.animation == "rolling":
 		is_rolling = false
 		is_stoping_to_roll = true
 		await get_tree().create_timer(1).timeout
 		is_stoping_to_roll = false
-	elif sprite.animation == "kicking":
+	elif animation.animation == "kicking":
 		is_kicking = false
