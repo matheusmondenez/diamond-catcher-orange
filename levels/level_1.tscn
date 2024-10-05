@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=12 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="2_c0vli"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="4_gkpw3"]
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="5_8p3yj"]
 [ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="6_ve0vj"]
+[ext_resource type="PackedScene" uid="uid://cee56tgiw4lnp" path="res://collectables/heart.tscn" id="7_p27bw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y16qr"]
 texture = ExtResource("1_ju36a")
@@ -218,10 +219,6 @@ scale = Vector2(2, 2)
 position = Vector2(648, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin19" parent="Coins" instance=ExtResource("5_8p3yj")]
-position = Vector2(608, 144)
-scale = Vector2(2, 2)
-
 [node name="Coin20" parent="Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(532, 192)
 scale = Vector2(2, 2)
@@ -235,3 +232,7 @@ position = Vector2(648, 168)
 scale = Vector2(2, 2)
 
 [node name="Pause" parent="." instance=ExtResource("6_ve0vj")]
+
+[node name="Heart" parent="." instance=ExtResource("7_p27bw")]
+position = Vector2(610, 135)
+scale = Vector2(4, 4)
