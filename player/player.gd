@@ -6,7 +6,7 @@ const ROLL_SPEED = 400.0/2
 const JUMP_VELOCITY = -400.0
 const JUMP_MAX = 2
 
-@onready var animation: AnimatedSprite2D = $Animation
+@onready var animatied_sprite: AnimatedSprite2D = $Animation
 
 var direction: int = 0
 var can_kick: bool = false
@@ -84,43 +84,43 @@ func roll() -> void:
 
 func set_face_direction() -> void:
 	if direction < 0:
-		animation.flip_h = true
+		animatied_sprite.flip_h = true
 	elif direction > 0:
-		animation.flip_h = false
+		animatied_sprite.flip_h = false
 
 func set_state() -> void:
 	var state
 	
 	if is_on_floor():
 		if is_preparing_to_roll:
-			animation.animation = "rolling_start"
+			animatied_sprite.animation = "rolling_start"
 		elif is_rolling:
-			animation.play("rolling")
+			animatied_sprite.play("rolling")
 		elif is_stoping_to_roll:
-			animation.play("rolling_stop")
+			animatied_sprite.play("rolling_stop")
 		elif is_kicking:
-			animation.play("kicking")
+			animatied_sprite.play("kicking")
 		elif velocity.x == 0:
-			animation.play("idle")
+			animatied_sprite.play("idle")
 		else:
 			if velocity.x < WALK_SPEED * -1 or velocity.x > WALK_SPEED:
-				animation.play("running")
+				animatied_sprite.play("running")
 			else:
-				animation.play("walking")
+				animatied_sprite.play("walking")
 	elif !is_on_floor():
 		if velocity.y < 0:
-			animation.play("jumping")
+			animatied_sprite.play("jumping")
 		else:
-			animation.play("falling")
+			animatied_sprite.play("falling")
 
 func _on_animated_sprite_2d_animation_finished() -> void:
-	if animation.animation == "rolling_start":
+	if animatied_sprite.animation == "rolling_start":
 		is_preparing_to_roll = false
 		is_rolling = true
-	elif animation.animation == "rolling":
+	elif animatied_sprite.animation == "rolling":
 		is_rolling = false
 		is_stoping_to_roll = true
 		await get_tree().create_timer(1).timeout
 		is_stoping_to_roll = false
-	elif animation.animation == "kicking":
+	elif animatied_sprite.animation == "kicking":
 		is_kicking = false
