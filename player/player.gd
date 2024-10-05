@@ -4,6 +4,7 @@ const WALK_SPEED = 100.0/2
 const RUN_SPEED = 200.0/2
 const ROLL_SPEED = 400.0/2
 const JUMP_VELOCITY = -400.0
+const JUMP_MAX = 2
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -16,6 +17,7 @@ var is_rolling: bool = false
 var is_stoping_to_roll: bool = false
 var can_double_jump: bool = false
 var is_double_jumping: bool = false
+var jump_count: int = 0
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
@@ -60,7 +62,12 @@ func run() -> void:
 
 func jump() -> void:
 	if is_on_floor():
+		jump_count = 0
 		velocity.y = JUMP_VELOCITY
+		jump_count += 1
+	elif jump_count < JUMP_MAX:
+		velocity.y = JUMP_VELOCITY
+		jump_count += 1
 
 func fall(delta) -> void:
 	if not is_on_floor():

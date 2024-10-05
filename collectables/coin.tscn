@@ -91,8 +91,6 @@ script = ExtResource("1_e20u8")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_yrgc7")
 autoplay = "default"
-frame = 3
-frame_progress = 0.239764
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_alw5y")

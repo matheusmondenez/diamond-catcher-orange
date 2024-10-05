@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=13 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="2_c0vli"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="5_8p3yj"]
 [ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="6_ve0vj"]
 [ext_resource type="PackedScene" uid="uid://cee56tgiw4lnp" path="res://collectables/heart.tscn" id="7_p27bw"]
+[ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="8_484ls"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y16qr"]
 texture = ExtResource("1_ju36a")
@@ -145,94 +146,102 @@ layer_1/tile_data = PackedInt32Array(2293760, 131072, 3, 2293761, 131072, 3, 229
 [node name="CharacterBody2D" parent="." instance=ExtResource("4_gkpw3")]
 position = Vector2(96, 400)
 
-[node name="Coins" type="Node" parent="."]
+[node name="Pause" parent="." instance=ExtResource("6_ve0vj")]
 
-[node name="Coin1" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Collectables" type="Node" parent="."]
+
+[node name="Coins" type="Node" parent="Collectables"]
+
+[node name="Coin1" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(684, 192)
 scale = Vector2(2, 2)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin2" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(532, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin3" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin3" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(720, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin4" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin4" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(648, 368)
 scale = Vector2(2, 2)
 
-[node name="Coin5" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin5" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(688, 368)
 scale = Vector2(2, 2)
 
-[node name="Coin6" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin6" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(528, 368)
 scale = Vector2(2, 2)
 
-[node name="Coin7" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin7" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(568, 368)
 scale = Vector2(2, 2)
 
-[node name="Coin8" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin8" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(647, 304)
 scale = Vector2(2, 2)
 
-[node name="Coin9" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin9" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(568, 304)
 scale = Vector2(2, 2)
 
-[node name="Coin10" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin10" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(608, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin11" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin11" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(608, 368)
 scale = Vector2(2, 2)
 
-[node name="Coin12" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin12" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(608, 304)
 scale = Vector2(2, 2)
 
-[node name="Coin13" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin13" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(608, 240)
 scale = Vector2(2, 2)
 
-[node name="Coin14" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin14" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(608, 192)
 scale = Vector2(2, 2)
 
-[node name="Coin15" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin15" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(568, 168)
 scale = Vector2(2, 2)
 
-[node name="Coin16" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin16" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(684, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin17" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin17" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(496, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin18" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin18" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(648, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin20" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin20" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(532, 192)
 scale = Vector2(2, 2)
 
-[node name="Coin21" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin21" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(568, 432)
 scale = Vector2(2, 2)
 
-[node name="Coin22" parent="Coins" instance=ExtResource("5_8p3yj")]
+[node name="Coin22" parent="Collectables/Coins" instance=ExtResource("5_8p3yj")]
 position = Vector2(648, 168)
 scale = Vector2(2, 2)
 
-[node name="Pause" parent="." instance=ExtResource("6_ve0vj")]
+[node name="Hearts" type="Node" parent="Collectables"]
 
-[node name="Heart" parent="." instance=ExtResource("7_p27bw")]
+[node name="Heart" parent="Collectables/Hearts" instance=ExtResource("7_p27bw")]
 position = Vector2(610, 135)
 scale = Vector2(4, 4)
+
+[node name="Diamond" parent="Collectables" instance=ExtResource("8_484ls")]
+position = Vector2(609, 102)
+scale = Vector2(2, 2)

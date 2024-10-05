@@ -199,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7ge30")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurting",
 "speed": 6.0
 }, {
@@ -354,7 +354,7 @@ script = ExtResource("1_j0cc2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kurqy")
-animation = &"idle"
+animation = &"blinking"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
