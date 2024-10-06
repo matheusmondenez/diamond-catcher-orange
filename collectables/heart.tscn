@@ -43,7 +43,7 @@ animations = [{
 radius = 4.12311
 
 [node name="Heart" type="Area2D"]
-collision_layer = 4
+collision_layer = 8
 script = ExtResource("1_rye60")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]

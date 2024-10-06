@@ -137,6 +137,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibuj0"]
 
 [node name="Diamond" type="Area2D"]
+collision_layer = 8
 script = ExtResource("1_48ddd")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
