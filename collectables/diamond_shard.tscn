@@ -1,0 +1,54 @@
+[gd_scene load_steps=8 format=3 uid="uid://dkvaj432xtxvq"]
+
+[ext_resource type="Texture2D" uid="uid://cwg0pv71gh2ft" path="res://assets/collectables/blue_shard.png" id="1_flh38"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0payw"]
+atlas = ExtResource("1_flh38")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_me4av"]
+atlas = ExtResource("1_flh38")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46pl1"]
+atlas = ExtResource("1_flh38")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ikowy"]
+atlas = ExtResource("1_flh38")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pqqiw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0payw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_me4av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_46pl1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ikowy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hoyeg"]
+radius = 5.0
+height = 16.0
+
+[node name="DiamondShard" type="Area2D"]
+
+[node name="Animation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_pqqiw")
+autoplay = "default"
+frame_progress = 0.871882
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_hoyeg")
