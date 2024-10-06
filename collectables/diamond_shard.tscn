@@ -1,6 +1,28 @@
-[gd_scene load_steps=8 format=3 uid="uid://dkvaj432xtxvq"]
+[gd_scene load_steps=15 format=3 uid="uid://dkvaj432xtxvq"]
 
+[ext_resource type="Script" path="res://collectables/diamond_shard.gd" id="1_eftuc"]
 [ext_resource type="Texture2D" uid="uid://cwg0pv71gh2ft" path="res://assets/collectables/blue_shard.png" id="1_flh38"]
+[ext_resource type="Texture2D" uid="uid://pbbwo1dfrn2l" path="res://assets/collectables/sparkle_bright.png" id="1_m0jg7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lxcrn"]
+atlas = ExtResource("1_m0jg7")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fsfdd"]
+atlas = ExtResource("1_m0jg7")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd7ls"]
+atlas = ExtResource("1_m0jg7")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vtof"]
+atlas = ExtResource("1_m0jg7")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f0kyj"]
+atlas = ExtResource("1_m0jg7")
+region = Rect2(64, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0payw"]
 atlas = ExtResource("1_flh38")
@@ -20,6 +42,26 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pqqiw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lxcrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fsfdd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xd7ls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vtof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f0kyj")
+}],
+"loop": false,
+"name": &"collected",
+"speed": 12.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0payw")
@@ -43,12 +85,15 @@ radius = 5.0
 height = 16.0
 
 [node name="DiamondShard" type="Area2D"]
+script = ExtResource("1_eftuc")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pqqiw")
 autoplay = "default"
-frame_progress = 0.871882
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hoyeg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
