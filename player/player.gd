@@ -9,6 +9,8 @@ const JUMP_MAX = 2
 @onready var animatied_sprite: AnimatedSprite2D = $Animation
 @onready var remote: RemoteTransform2D = $Remote
 
+var life: int = 5
+var knockback: Vector2 = Vector2.ZERO
 var direction: int = 0
 var can_kick: bool = false
 var is_kicking: bool = false
@@ -42,6 +44,9 @@ func _physics_process(delta: float) -> void:
 		
 		if check_action("roll"):
 			roll()
+
+	if knockback != Vector2.ZERO:
+		velocity = knockback
 
 	set_face_direction()
 	set_state()
@@ -111,7 +116,7 @@ func set_state() -> void:
 				animatied_sprite.play("running")
 			else:
 				animatied_sprite.play("walking")
-	elif !is_on_floor():
+	elif !is_on_floor() and !is_hurting:
 		if velocity.y < 0:
 			animatied_sprite.play("jumping")
 		else:
@@ -130,7 +135,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_kicking = false
 	elif animatied_sprite.animation == "hurting":
 		is_hurting = false
-		queue_free()
 
 func camera_follow(camera) -> void:
 	var camera_path = camera.get_path()
@@ -140,3 +144,23 @@ func camera_follow(camera) -> void:
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		is_hurting = true
+		
+		if $Hurtbox/RayCastLeft.is_colliding():
+			take_damage(Vector2(200, -200))
+		elif $Hurtbox/RayCastRight.is_colliding():
+			take_damage(Vector2(-200, -200))
+
+		if life == 0:
+			queue_free()
+
+func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25):
+	life -= 1
+  
+	if knockback_force != Vector2.ZERO:
+		knockback = knockback_force   
+		
+		var tween = create_tween()
+		
+		tween.parallel().tween_property(self, "knockback", Vector2.ZERO, duration)
+		animatied_sprite.modulate = Color(1, 0, 0, 1)
+		tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
