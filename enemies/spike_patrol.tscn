@@ -1,11 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://br3jr6u32a8xv"]
+[gd_scene load_steps=10 format=3 uid="uid://br3jr6u32a8xv"]
 
 [ext_resource type="Texture2D" uid="uid://bvj0rykouuovs" path="res://assets/enemies/spike_patrol_walking.png" id="1_3xj52"]
 [ext_resource type="Texture2D" uid="uid://dbh8ky8ovi3dp" path="res://assets/enemies/spike_patrol_hurting.png" id="1_frthf"]
 [ext_resource type="Script" path="res://enemies/spike_patrol.gd" id="1_wdeeo"]
+[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="4_rabi5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v4qh"]
-radius = 6.0
+radius = 5.0
 height = 14.0
 
 [sub_resource type="Animation" id="Animation_jrmbe"]
@@ -52,7 +53,6 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_f1a25"]
 resource_name = "hurting"
 length = 0.1
-loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -96,7 +96,10 @@ _data = {
 "walking": SubResource("Animation_jrmbe")
 }
 
-[node name="SpikePatrol" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6bf31"]
+size = Vector2(10, 2)
+
+[node name="SpikePatrol" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_wdeeo")
@@ -104,11 +107,10 @@ script = ExtResource("1_wdeeo")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -1)
-texture = ExtResource("1_3xj52")
-hframes = 2
+texture = ExtResource("1_frthf")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 2)
 rotation = -1.5708
 shape = SubResource("CapsuleShape2D_7v4qh")
 
@@ -122,3 +124,12 @@ speed_scale = 0.5
 [node name="RayCast" type="RayCast2D" parent="."]
 target_position = Vector2(-8, 0)
 collision_mask = 6
+
+[node name="Hitbox" parent="." instance=ExtResource("4_rabi5")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -4)
+shape = SubResource("RectangleShape2D_6bf31")
+debug_color = Color(0.917341, 0.20424, 0.507995, 0.42)
+
+[connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

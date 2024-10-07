@@ -130,3 +130,7 @@ func camera_follow(camera) -> void:
 	var camera_path = camera.get_path()
 	
 	remote.remote_path = camera_path
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	if body.is_in_group("enemies"):
+		queue_free()

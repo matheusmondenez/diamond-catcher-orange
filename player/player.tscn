@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://cr44oxaxyl2fh"]
+[gd_scene load_steps=54 format=3 uid="uid://cr44oxaxyl2fh"]
 
 [ext_resource type="Texture2D" uid="uid://uex5pj1a8i0i" path="res://assets/player/blinking.png" id="1_h4p83"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j0cc2"]
@@ -344,11 +344,14 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iammf"]
-radius = 8.06226
+radius = 7.51665
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_404gu"]
+size = Vector2(16, 13)
 
 [node name="Orange" type="CharacterBody2D"]
 scale = Vector2(2, 2)
-collision_mask = 14
+collision_mask = 30
 script = ExtResource("1_j0cc2")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
@@ -358,9 +361,19 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
+position = Vector2(0, 8.5)
 shape = SubResource("CircleShape2D_iammf")
 
 [node name="Remote" type="RemoteTransform2D" parent="."]
 
+[node name="Hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_404gu")
+debug_color = Color(0.836209, 0.365233, 0.350063, 0.42)
+
 [connection signal="animation_finished" from="Animation" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
