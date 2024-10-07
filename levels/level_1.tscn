@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=16 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -8,26 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="6_ve0vj"]
 [ext_resource type="PackedScene" uid="uid://dkvaj432xtxvq" path="res://collectables/diamond_shard.tscn" id="7_fwsen"]
 [ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="8_484ls"]
+[ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="9_i8qek"]
 [ext_resource type="PackedScene" uid="uid://br3jr6u32a8xv" path="res://enemies/spike_patrol.tscn" id="9_nwe6u"]
-[ext_resource type="Texture2D" uid="uid://d0mm7qhykdrfh" path="res://assets/ui/coin_sprite_0.png" id="10_515m2"]
-[ext_resource type="Script" path="res://management/hud.gd" id="10_ehbvg"]
-[ext_resource type="Texture2D" uid="uid://dchyyr6ct1eq8" path="res://assets/ui/coin_sprite_1.png" id="11_hmog4"]
-[ext_resource type="Texture2D" uid="uid://dlupxdvdmiims" path="res://assets/ui/coin_sprite_2.png" id="12_tpiir"]
-[ext_resource type="Texture2D" uid="uid://djbyeunr5cga2" path="res://assets/ui/coin_sprite_3.png" id="13_u7t0x"]
-[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="14_b2n7n"]
-[ext_resource type="Texture2D" uid="uid://dtnrhte3p13sb" path="res://assets/ui/life_icon.png" id="15_yaqib"]
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="17_t0w6g"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_jbnys"]
-frames = 4
-speed_scale = 6.0
-frame_0/texture = ExtResource("10_515m2")
-frame_1/texture = ExtResource("11_hmog4")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("12_tpiir")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("13_u7t0x")
-frame_3/duration = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y16qr"]
 texture = ExtResource("1_ju36a")
@@ -158,130 +141,10 @@ sources/2 = SubResource("TileSetAtlasSource_amrha")
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_n8fao")
 
-[node name="HUD" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="HUD"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("10_ehbvg")
-
-[node name="Timer" type="Timer" parent="HUD/Control"]
-autostart = true
-
-[node name="MarginContainer" type="MarginContainer" parent="HUD/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="CoinsCounter" type="HBoxContainer" parent="HUD/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="Sprite" type="TextureRect" parent="HUD/Control/MarginContainer/CoinsCounter"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = SubResource("AnimatedTexture_jbnys")
-
-[node name="Counter" type="Label" parent="HUD/Control/MarginContainer/CoinsCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "00"
-vertical_alignment = 1
-
-[node name="TimerCounter" type="HBoxContainer" parent="HUD/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="HUD/Control/MarginContainer/TimerCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "TIME"
-vertical_alignment = 1
-
-[node name="Counter" type="Label" parent="HUD/Control/MarginContainer/TimerCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "00:00"
-vertical_alignment = 1
-
-[node name="ScoreCounter" type="HBoxContainer" parent="HUD/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 0
-
-[node name="Label" type="Label" parent="HUD/Control/MarginContainer/ScoreCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "SCORE"
-vertical_alignment = 1
-
-[node name="Counter" type="Label" parent="HUD/Control/MarginContainer/ScoreCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "000000"
-vertical_alignment = 1
-
-[node name="LivesCounter" type="HBoxContainer" parent="HUD/Control/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Sprite" type="TextureRect" parent="HUD/Control/MarginContainer/LivesCounter"]
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("15_yaqib")
-
-[node name="X" type="Label" parent="HUD/Control/MarginContainer/LivesCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "X"
-vertical_alignment = 1
-
-[node name="Counter" type="Label" parent="HUD/Control/MarginContainer/LivesCounter"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("14_b2n7n")
-theme_override_font_sizes/font_size = 8
-text = "03"
-vertical_alignment = 1
+[node name="HUD" parent="." instance=ExtResource("9_i8qek")]
 
 [node name="PauseScreen" parent="." instance=ExtResource("6_ve0vj")]
+visible = false
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -349,5 +212,3 @@ position_smoothing_enabled = true
 drag_vertical_offset = -1.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
-
-[connection signal="timeout" from="HUD/Control/Timer" to="HUD/Control" method="_on_timer_timeout"]

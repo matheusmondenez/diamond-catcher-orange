@@ -1,0 +1,136 @@
+[gd_scene load_steps=9 format=3 uid="uid://bwqba2pf424sj"]
+
+[ext_resource type="Texture2D" uid="uid://d0mm7qhykdrfh" path="res://assets/ui/coin_sprite_0.png" id="1_kx1hg"]
+[ext_resource type="Script" path="res://ui/hud.gd" id="1_x8gyq"]
+[ext_resource type="Texture2D" uid="uid://dchyyr6ct1eq8" path="res://assets/ui/coin_sprite_1.png" id="2_bqgwr"]
+[ext_resource type="Texture2D" uid="uid://dlupxdvdmiims" path="res://assets/ui/coin_sprite_2.png" id="3_tjqp6"]
+[ext_resource type="Texture2D" uid="uid://djbyeunr5cga2" path="res://assets/ui/coin_sprite_3.png" id="4_ie7bk"]
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="5_km0r1"]
+[ext_resource type="Texture2D" uid="uid://dtnrhte3p13sb" path="res://assets/ui/life_icon.png" id="6_edymx"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_xwq5t"]
+frames = 4
+speed_scale = 6.0
+frame_0/texture = ExtResource("1_kx1hg")
+frame_1/texture = ExtResource("2_bqgwr")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("3_tjqp6")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("4_ie7bk")
+frame_3/duration = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_x8gyq")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Timer" type="Timer" parent="Control"]
+autostart = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="CoinsContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Sprite" type="TextureRect" parent="Control/MarginContainer/CoinsContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AnimatedTexture_xwq5t")
+
+[node name="Counter" type="Label" parent="Control/MarginContainer/CoinsContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "00"
+
+[node name="TimerContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/TimerContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "TIME"
+
+[node name="Counter" type="Label" parent="Control/MarginContainer/TimerContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "00:00"
+
+[node name="ScoreContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="Control/MarginContainer/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "SCORE"
+
+[node name="Counter" type="Label" parent="Control/MarginContainer/ScoreContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "0000"
+
+[node name="LivesContainer" type="HBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="Sprite" type="TextureRect" parent="Control/MarginContainer/LivesContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_edymx")
+
+[node name="Separator" type="Label" parent="Control/MarginContainer/LivesContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "X
+"
+
+[node name="Counter" type="Label" parent="Control/MarginContainer/LivesContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "03"
+
+[connection signal="timeout" from="Control/Timer" to="." method="_on_timer_timeout"]
