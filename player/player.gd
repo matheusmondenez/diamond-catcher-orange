@@ -19,6 +19,7 @@ var is_stoping_to_roll: bool = false
 var can_double_jump: bool = true
 var is_double_jumping: bool = false
 var jump_count: int = 0
+var is_hurting: bool = false
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
@@ -101,6 +102,8 @@ func set_state() -> void:
 			animatied_sprite.play("rolling_stop")
 		elif is_kicking:
 			animatied_sprite.play("kicking")
+		elif is_hurting:
+			animatied_sprite.play("hurting")
 		elif velocity.x == 0:
 			animatied_sprite.play("idle")
 		else:
@@ -125,6 +128,9 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_stoping_to_roll = false
 	elif animatied_sprite.animation == "kicking":
 		is_kicking = false
+	elif animatied_sprite.animation == "hurting":
+		is_hurting = false
+		queue_free()
 
 func camera_follow(camera) -> void:
 	var camera_path = camera.get_path()
@@ -133,4 +139,4 @@ func camera_follow(camera) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		queue_free()
+		is_hurting = true
