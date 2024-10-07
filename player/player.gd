@@ -7,6 +7,7 @@ const JUMP_VELOCITY = -400.0
 const JUMP_MAX = 2
 
 @onready var animatied_sprite: AnimatedSprite2D = $Animation
+@onready var remote: RemoteTransform2D = $Remote
 
 var direction: int = 0
 var can_kick: bool = false
@@ -124,3 +125,8 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_stoping_to_roll = false
 	elif animatied_sprite.animation == "kicking":
 		is_kicking = false
+
+func camera_follow(camera) -> void:
+	var camera_path = camera.get_path()
+	
+	remote.remote_path = camera_path
