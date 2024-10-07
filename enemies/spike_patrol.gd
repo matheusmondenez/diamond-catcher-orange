@@ -27,4 +27,5 @@ func _physics_process(delta: float) -> void:
 
 func _on_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "hurting":
+		Globals.score += 100
 		queue_free()

@@ -14,6 +14,10 @@ config/name="Platform Evolution"
 run/main_scene="res://ui/start_screen.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
 
+[autoload]
+
+Globals="*res://management/globals.gd"
+
 [global_group]
 
 enemies=""

@@ -9,7 +9,6 @@ const JUMP_MAX = 2
 @onready var animatied_sprite: AnimatedSprite2D = $Animation
 @onready var remote: RemoteTransform2D = $Remote
 
-var life: int = 5
 var knockback: Vector2 = Vector2.ZERO
 var direction: int = 0
 var can_kick: bool = false
@@ -22,6 +21,8 @@ var can_double_jump: bool = true
 var is_double_jumping: bool = false
 var jump_count: int = 0
 var is_hurting: bool = false
+
+signal has_died()
 
 func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
@@ -150,11 +151,12 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		elif $Hurtbox/RayCastRight.is_colliding():
 			take_damage(Vector2(-200, -200))
 
-		if life == 0:
+		if Globals.lives == 0:
 			queue_free()
+			emit_signal("has_died")
 
 func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25):
-	life -= 1
+	Globals.lives -= 1
   
 	if knockback_force != Vector2.ZERO:
 		knockback = knockback_force   
