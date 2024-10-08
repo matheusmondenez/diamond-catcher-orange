@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://csv767gqn33hy"]
+
+[ext_resource type="Script" path="res://ui/dialog.gd" id="1_enitw"]
+[ext_resource type="Texture2D" uid="uid://7vbwcm6d2owt" path="res://assets/ui/dialoog.png" id="1_j2nuh"]
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="2_i0mfp"]
+
+[node name="DialogContainer" type="MarginContainer"]
+offset_right = 23.0
+offset_bottom = 8.0
+script = ExtResource("1_enitw")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("1_j2nuh")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="TextContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="TextLabel" type="Label" parent="TextContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_i0mfp")
+theme_override_font_sizes/font_size = 8
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
