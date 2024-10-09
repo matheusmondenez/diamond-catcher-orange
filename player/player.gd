@@ -52,6 +52,12 @@ func _physics_process(delta: float) -> void:
 	set_face_direction()
 	set_state()
 	move_and_slide()
+	
+	for platforms in get_slide_collision_count():
+		var collision = get_slide_collision(platforms)
+		
+		if collision.get_collider().has_method("has_collided_with"):
+			collision.get_collider().has_collided_with(collision, self)
 
 func check_action(action) -> bool:
 	if Input.is_action_just_pressed(action):
