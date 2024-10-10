@@ -157,12 +157,12 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		elif $Hurtbox/RayCastRight.is_colliding():
 			take_damage(Vector2(-200, -200))
 
-		if Globals.lives == 0:
-			queue_free()
-			emit_signal("has_died")
-
 func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25):
 	Globals.lives -= 1
+	
+	if Globals.lives == 0:
+		queue_free()
+		emit_signal("has_died")
   
 	if knockback_force != Vector2.ZERO:
 		knockback = knockback_force   
