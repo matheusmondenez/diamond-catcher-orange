@@ -94,7 +94,7 @@ func roll() -> void:
 	if is_on_floor() and not is_rolling:
 		is_preparing_to_roll = true
 		await get_tree().create_timer(.45).timeout
-		velocity = Vector2(1, 0).normalized() * 1000
+		velocity = Vector2(-1 if animatied_sprite.flip_h else 1, 0).normalized() * 1000
 
 func set_face_direction() -> void:
 	if direction < 0:
