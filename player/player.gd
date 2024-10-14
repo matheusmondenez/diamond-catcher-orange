@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
-const WALK_SPEED = 100.0/2
-const RUN_SPEED = 200.0/2
-const ROLL_SPEED = 400.0/2
+const WALK_SPEED = 150.0
+const RUN_SPEED = WALK_SPEED * 2
+const ROLL_SPEED = RUN_SPEED / 2
 const JUMP_VELOCITY = -400.0
 const JUMP_MAX = 2
 

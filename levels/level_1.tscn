@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=32 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="17_t0w6g"]
 [ext_resource type="Texture2D" uid="uid://bxm5u4xs0cimf" path="res://assets/tileset/grassland/background/2 - Hills.png" id="17_u6vwn"]
 [ext_resource type="Texture2D" uid="uid://c28ni7ps1qe20" path="res://assets/tileset/grassland/background/1 - Foreground_scenery.png" id="18_2nxe3"]
+[ext_resource type="PackedScene" uid="uid://dg2jx3eerv6qy" path="res://enemies/cherry.tscn" id="18_ms8xk"]
 [ext_resource type="PackedScene" uid="uid://b6ja0ebk4bun2" path="res://enemies/rocket_cherry.tscn" id="21_qwkdy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
@@ -245,7 +246,7 @@ position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
 [node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
-position = Vector2(1920, 496)
+position = Vector2(1864, 368)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -255,6 +256,14 @@ scale = Vector2(2, 2)
 
 [node name="SpikePatrol2" parent="Enemies" instance=ExtResource("9_nwe6u")]
 position = Vector2(976, 464)
+scale = Vector2(2, 2)
+
+[node name="RocketCherryBase" parent="Enemies" instance=ExtResource("21_qwkdy")]
+position = Vector2(2192, 560)
+scale = Vector2(2, 2)
+
+[node name="Cherry" parent="Enemies" instance=ExtResource("18_ms8xk")]
+position = Vector2(1984, 384)
 scale = Vector2(2, 2)
 
 [node name="Collectables" type="Node" parent="."]
@@ -301,10 +310,6 @@ scale = Vector2(2, 2)
 
 [node name="FallingPlatform2" parent="Platforms" instance=ExtResource("13_rtir7")]
 position = Vector2(2104, 560)
-scale = Vector2(2, 2)
-
-[node name="RocketCherryBase" parent="Platforms" instance=ExtResource("21_qwkdy")]
-position = Vector2(2192, 560)
 scale = Vector2(2, 2)
 
 [node name="Camera" type="Camera2D" parent="."]
