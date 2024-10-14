@@ -8,7 +8,10 @@ const JUMP_MAX = 2
 
 @onready var animatied_sprite: AnimatedSprite2D = $Animation
 @onready var remote: RemoteTransform2D = $Remote
+@onready var dust_spawner: Marker2D = $DustSpawner
 
+var dust_trail_scene = preload("res://player/dust_trail.tscn")
+var can_spawn_dust: bool = true
 var knockback: Vector2 = Vector2.ZERO
 var direction: int = 0
 var can_kick: bool = false
@@ -40,11 +43,14 @@ func _physics_process(delta: float) -> void:
 			run()
 		else:
 			walk()
+			can_spawn_dust = true
 	else:
 		idle()
+		can_spawn_dust = true
 		
 		if check_action("roll"):
 			roll()
+			can_spawn_dust = true
 
 	if knockback != Vector2.ZERO:
 		velocity = knockback
@@ -73,6 +79,7 @@ func walk() -> void:
 
 func run() -> void:
 	velocity.x = direction * RUN_SPEED
+	spawn_dust_trail()
 
 func jump() -> void:
 	if is_on_floor():
@@ -95,6 +102,7 @@ func roll() -> void:
 		is_preparing_to_roll = true
 		await get_tree().create_timer(.45).timeout
 		velocity = Vector2(-1 if animatied_sprite.flip_h else 1, 0).normalized() * 1000
+		spawn_dust_trail()
 
 func set_face_direction() -> void:
 	if direction < 0:
@@ -172,3 +180,15 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25)
 		tween.parallel().tween_property(self, "knockback", Vector2.ZERO, duration)
 		animatied_sprite.modulate = Color(1, 0, 0, 1)
 		tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
+
+func spawn_dust_trail() -> void:
+	if can_spawn_dust:
+		can_spawn_dust = false
+		var dust_trail = dust_trail_scene.instantiate()
+		var dust_trail_sprite = dust_trail.get_children()[0]
+		get_tree().root.add_child(dust_trail)
+		dust_trail_sprite.scale.x *= -1 if animatied_sprite.flip_h else 1
+		dust_trail.global_position = Vector2(dust_spawner.global_position.x, dust_spawner.global_position.y - 14)
+		dust_trail.scale = Vector2(2, 2)
+		await dust_trail_sprite.animation_finished
+		dust_trail.queue_free()
