@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var player_scene = preload("res://player/player.tscn")
 
+@onready var start_position: Marker2D = $StartPosition
 @onready var player: CharacterBody2D = $Orange
 @onready var coins: Node = $Collectables/Coins
 @onready var shards: Node = $Collectables/Shards
@@ -10,10 +11,11 @@ extends Node2D
 @onready var hud: CanvasLayer = $HUD
 
 func _ready() -> void:
+	Globals.player_start_position = start_position
 	Globals.player = player
 	Globals.player.camera_follow(camera)
 	Globals.player.has_died.connect(reload_level)
-	hud.time_is_up.connect(reload_level)
+	hud.time_is_up.connect(game_over)
 
 func _process(delta: float) -> void:
 	var shards_count = shards.get_child_count()
@@ -31,4 +33,6 @@ func reload_level():
 	Globals.coins = 0
 	Globals.lives = 3
 	Globals.respawn_player()
-	#get_tree().reload_current_scene()
+
+func game_over():
+	get_tree().reload_current_scene()
