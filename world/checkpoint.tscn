@@ -291,6 +291,7 @@ animation = &"empty"
 autoplay = "empty"
 
 [node name="Area" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="Collision" type="CollisionShape2D" parent="Area"]
 position = Vector2(-8, 9)

@@ -19,6 +19,10 @@ config/features=PackedStringArray("4.3", "Mobile")
 Globals="*res://management/globals.gd"
 Dialog="*res://management/dialog.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [global_group]
 
 enemies=""
