@@ -1,8 +1,10 @@
 extends Node
 
+var shards := 0
 var coins := 0
 var score := 0
 var lives := 3
+var hearts := 3
 
 var player = null
 var player_start_position = null
