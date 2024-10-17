@@ -1,12 +1,13 @@
 extends CharacterBody2D
 class_name BaseEnemy
 
-const SPEED = 700.0
+const SPEED = 2800.0
 
 @onready var animation = $SpriteAnimation
 
 var sprite
 var ray_cast
+var floor_detector: RayCast2D
 var direction: int = -1
 var can_spawn = false
 var spawn_instance: PackedScene = null
@@ -24,7 +25,16 @@ func flip_sprite() -> void:
 	if ray_cast.is_colliding():
 		direction *= -1
 		ray_cast.scale.x *= -1
+		
+		if floor_detector:
+			floor_detector.scale.x *= -1
 	
+	if floor_detector:
+		if not floor_detector.is_colliding():
+			direction *= -1
+			ray_cast.scale.x *= -1
+			floor_detector.scale.x *= -1
+			
 	if direction == 1:
 		sprite.flip_h = true
 	else:
@@ -41,7 +51,10 @@ func kill_and_score():
 	
 	if can_spawn:
 		spawn_new_enemy()
-		get_parent().queue_free()
+		if get_class() == "CharacterBody2D":
+			queue_free()
+		else:
+			get_parent().queue_free()
 	else:
 		queue_free()
 

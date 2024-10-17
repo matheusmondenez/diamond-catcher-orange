@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=3 uid="uid://cxvy7o38hllrv"]
+
+[ext_resource type="Texture2D" uid="uid://bwfcn5fd8ury8" path="res://assets/enemies/totem/hurt.png" id="1_bn4gu"]
+[ext_resource type="Script" path="res://enemies/armored_totem.gd" id="1_youf5"]
+[ext_resource type="Texture2D" uid="uid://dd8b7xb6fk8sd" path="res://assets/enemies/totem/armored_standing.png" id="2_77cxb"]
+[ext_resource type="Texture2D" uid="uid://cerjkmiyq7xbf" path="res://assets/enemies/totem/armored_walking.png" id="3_baiq5"]
+[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="5_csuom"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41mxp"]
+atlas = ExtResource("3_baiq5")
+region = Rect2(0, 0, 16, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppes8"]
+atlas = ExtResource("3_baiq5")
+region = Rect2(16, 0, 16, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_h41bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_bn4gu")
+}],
+"loop": false,
+"name": &"hurting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_77cxb")
+}],
+"loop": true,
+"name": &"standing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41mxp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppes8")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kt13j"]
+size = Vector2(10, 21)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlmm"]
+size = Vector2(12, 19)
+
+[node name="ArmoredTotem" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_youf5")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_h41bf")
+animation = &"standing"
+autoplay = "standing"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_kt13j")
+
+[node name="SpawnerMarker" type="Marker2D" parent="."]
+position = Vector2(0, -11)
+
+[node name="PlayerDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(-128, 0)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(-8, 0)
+collision_mask = 2
+
+[node name="FloorDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(-9, 9)
+collision_mask = 2
+collide_with_areas = true
+
+[node name="Hitbox" parent="." instance=ExtResource("5_csuom")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_2dlmm")
+debug_color = Color(0.782741, 0.405212, 0.430004, 0.42)
