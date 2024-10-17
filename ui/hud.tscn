@@ -1,9 +1,10 @@
-[gd_scene load_steps=31 format=3 uid="uid://bwqba2pf424sj"]
+[gd_scene load_steps=32 format=3 uid="uid://bwqba2pf424sj"]
 
 [ext_resource type="Texture2D" uid="uid://d0mm7qhykdrfh" path="res://assets/ui/coin_sprite_0.png" id="1_kx1hg"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_x8gyq"]
 [ext_resource type="Texture2D" uid="uid://b0kq448x5jbfp" path="res://assets/collectables/lives_00.png" id="2_3ge86"]
 [ext_resource type="Texture2D" uid="uid://dchyyr6ct1eq8" path="res://assets/ui/coin_sprite_1.png" id="2_bqgwr"]
+[ext_resource type="Texture2D" uid="uid://cks3dy4ydy6ku" path="res://assets/collectables/life.png" id="2_mfrv2"]
 [ext_resource type="Texture2D" uid="uid://df0vuisy0j2bs" path="res://assets/collectables/lives_01.png" id="3_kx66l"]
 [ext_resource type="Texture2D" uid="uid://dlupxdvdmiims" path="res://assets/ui/coin_sprite_2.png" id="3_tjqp6"]
 [ext_resource type="Texture2D" uid="uid://djbyeunr5cga2" path="res://assets/ui/coin_sprite_3.png" id="4_ie7bk"]
@@ -87,9 +88,9 @@ frame_2/duration = 1.0
 frame_3/texture = ExtResource("27_3h5or")
 frame_3/duration = 1.0
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_counter")]
 script = ExtResource("1_x8gyq")
-hearts_counter = [null, null, null]
+hearts_counter = [NodePath("Control/MarginContainer/VBoxContainer/HeartsContainer/Heart1"), NodePath("Control/MarginContainer/VBoxContainer/HeartsContainer/Heart2"), NodePath("Control/MarginContainer/VBoxContainer/HeartsContainer/Heart3")]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -118,6 +119,24 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+
+[node name="HeartsContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = -8
+
+[node name="Heart1" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("2_mfrv2")
+
+[node name="Heart2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("2_mfrv2")
+
+[node name="Heart3" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
+layout_mode = 2
+texture = ExtResource("2_mfrv2")
 
 [node name="LivesContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 layout_mode = 2

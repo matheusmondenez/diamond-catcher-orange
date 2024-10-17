@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@export var hearts_counter: Array = [Node]
+@export var hearts_counter: Array[Node]
 
 @onready var lives_counter: Label = $Control/MarginContainer/VBoxContainer/LivesContainer/Counter
 @onready var coins_counter: Label = $Control/MarginContainer/VBoxContainer/CoinsContainer/Counter
@@ -31,6 +31,12 @@ func _process(delta: float) -> void:
 	score_counter.text = str("%06d" % Globals.score)
 	lives_counter.text = str("%01d" % Globals.lives)
 	
+	for h in 3:
+		if (h < Globals.hearts):
+			hearts_counter[h].show()
+		else:
+			hearts_counter[h].hide()
+
 	if minutes == 0 and seconds == 0:
 		emit_signal("time_is_up")
 
