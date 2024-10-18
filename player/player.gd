@@ -158,11 +158,14 @@ func camera_follow(camera) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
+		print("Entrou: ", body)
 		is_hurting = true
 		
 		if $Hurtbox/RayCastLeft.is_colliding():
+			print("Colidiu pela esquerda")
 			take_damage(Vector2(200, -200))
 		elif $Hurtbox/RayCastRight.is_colliding():
+			print("Colidiu pela direita")
 			take_damage(Vector2(-200, -200))
 
 func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25):

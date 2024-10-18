@@ -88,7 +88,7 @@ _data = {
 
 [node name="RocketCherryBase" type="Node2D"]
 
-[node name="RocketCherry" type="CharacterBody2D" parent="."]
+[node name="RocketCherry" type="CharacterBody2D" parent="." groups=["enemies"]]
 rotation = -1.5708
 collision_layer = 4
 collision_mask = 3

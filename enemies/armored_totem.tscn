@@ -45,14 +45,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kt13j"]
-size = Vector2(10, 21)
+size = Vector2(12, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlmm"]
-size = Vector2(14, 20)
+size = Vector2(14, 9)
 
-[node name="ArmoredTotem" type="CharacterBody2D"]
+[node name="ArmoredTotem" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
-collision_mask = 7
+collision_mask = 2
 script = ExtResource("1_youf5")
 
 [node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
@@ -86,8 +86,8 @@ collide_with_areas = true
 
 [node name="Hitbox" parent="." instance=ExtResource("5_csuom")]
 
-[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -13)
+[node name="Collision" type="CollisionShape2D" parent="Hitbox" groups=["enemies"]]
+position = Vector2(0, -18.5)
 shape = SubResource("RectangleShape2D_2dlmm")
 debug_color = Color(0.782741, 0.405212, 0.430004, 0.42)
 
