@@ -1,0 +1,65 @@
+[gd_scene load_steps=10 format=3 uid="uid://c8ojr8k12quyb"]
+
+[ext_resource type="Texture2D" uid="uid://ctkj72s2jhhnd" path="res://assets/enemies/slime/hurting.png" id="1_o4g72"]
+[ext_resource type="Script" path="res://enemies/slime.gd" id="1_rel2v"]
+[ext_resource type="Texture2D" uid="uid://bk5dpwb52us72" path="res://assets/enemies/slime/idle.png" id="2_rmdk1"]
+[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="3_sctt7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbwra"]
+atlas = ExtResource("2_rmdk1")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h0odq"]
+atlas = ExtResource("2_rmdk1")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f5b85"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_o4g72")
+}],
+"loop": false,
+"name": &"hurting",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbwra")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h0odq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k1o53"]
+size = Vector2(14, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hwd51"]
+size = Vector2(10, 4)
+
+[node name="Slime" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 39
+script = ExtResource("1_rel2v")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_f5b85")
+animation = &"hurting"
+autoplay = "idle"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_k1o53")
+
+[node name="Hitbox" parent="." instance=ExtResource("3_sctt7")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -10)
+shape = SubResource("RectangleShape2D_hwd51")
+debug_color = Color(0.789492, 0.405338, 0.388606, 0.42)

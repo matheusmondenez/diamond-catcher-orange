@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=35 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -26,6 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://b6ja0ebk4bun2" path="res://enemies/rocket_cherry.tscn" id="21_qwkdy"]
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="25_thytu"]
 [ext_resource type="PackedScene" uid="uid://cxvy7o38hllrv" path="res://enemies/armored_totem.tscn" id="26_xyn5u"]
+[ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="27_7bcu8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
 shader = ExtResource("16_w3qam")
@@ -259,7 +260,7 @@ position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
 [node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
-position = Vector2(1168, 352)
+position = Vector2(272, 448)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -354,4 +355,8 @@ shape = SubResource("RectangleShape2D_ipgum")
 
 [node name="ArmoredTotem" parent="." instance=ExtResource("26_xyn5u")]
 position = Vector2(1360, 512)
+scale = Vector2(2, 2)
+
+[node name="Slime" parent="." instance=ExtResource("27_7bcu8")]
+position = Vector2(392, 512)
 scale = Vector2(2, 2)
