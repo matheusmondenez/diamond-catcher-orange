@@ -50,7 +50,7 @@ script = ExtResource("1_p7ws8")
 texture_filter = 1
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_ge1vr")
-animation = &"hurting"
+animation = &"walking"
 autoplay = "walking"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -64,7 +64,7 @@ collision_mask = 2
 
 [node name="FloorDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -6)
-target_position = Vector2(-8, 6)
+target_position = Vector2(-8, 7)
 collision_mask = 2
 
 [node name="Hitbox" parent="." instance=ExtResource("4_pd4j6")]

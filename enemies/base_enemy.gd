@@ -8,6 +8,7 @@ const SPEED = 2800.0
 var sprite
 var ray_cast
 var floor_detector: RayCast2D
+var player_detector: RayCast2D
 var direction: int = -1
 var can_spawn = false
 var spawn_instance: PackedScene = null
@@ -21,19 +22,22 @@ func move(delta) -> void:
 	velocity.x = direction * SPEED * delta
 	move_and_slide()
 
-func flip_sprite() -> void:
-	if ray_cast.is_colliding():
+func flip_sprite(force: bool = false) -> void:
+	if ray_cast.is_colliding() or force:
 		direction *= -1
 		ray_cast.scale.x *= -1
-		
 		if floor_detector:
 			floor_detector.scale.x *= -1
+		if player_detector:
+			player_detector.scale.x *= -1
 	
 	if floor_detector:
 		if not floor_detector.is_colliding():
 			direction *= -1
 			ray_cast.scale.x *= -1
 			floor_detector.scale.x *= -1
+			if player_detector:
+				player_detector.scale.x *= -1
 			
 	if direction == 1:
 		sprite.flip_h = true

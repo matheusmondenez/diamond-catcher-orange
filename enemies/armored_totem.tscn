@@ -48,7 +48,7 @@ animations = [{
 size = Vector2(10, 21)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2dlmm"]
-size = Vector2(12, 19)
+size = Vector2(14, 20)
 
 [node name="ArmoredTotem" type="CharacterBody2D"]
 collision_layer = 4
@@ -87,6 +87,10 @@ collide_with_areas = true
 [node name="Hitbox" parent="." instance=ExtResource("5_csuom")]
 
 [node name="Collision" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -12.5)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_2dlmm")
 debug_color = Color(0.782741, 0.405212, 0.430004, 0.42)
+
+[node name="SearchTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

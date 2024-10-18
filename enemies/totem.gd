@@ -2,6 +2,7 @@ extends BaseEnemy
 
 func _ready() -> void:
 	ray_cast = $WallDetector
+	floor_detector = $FloorDetector
 	sprite = $AnimatedSprite
 	animation = $AnimatedSprite
 	animation.animation_finished.connect(kill_flying)
