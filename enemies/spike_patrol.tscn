@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://br3jr6u32a8xv"]
+[gd_scene load_steps=12 format=3 uid="uid://br3jr6u32a8xv"]
 
 [ext_resource type="Texture2D" uid="uid://bvj0rykouuovs" path="res://assets/enemies/spike_patrol_walking.png" id="1_3xj52"]
 [ext_resource type="Texture2D" uid="uid://dbh8ky8ovi3dp" path="res://assets/enemies/spike_patrol_hurting.png" id="1_frthf"]
 [ext_resource type="Script" path="res://enemies/spike_patrol.gd" id="1_wdeeo"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="4_rabi5"]
+[ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_dckej"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v4qh"]
 radius = 5.0
@@ -99,6 +100,10 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6bf31"]
 size = Vector2(10, 2)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03b7e"]
+radius = 6.0
+height = 16.0
+
 [node name="SpikePatrol" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 2
@@ -132,3 +137,11 @@ collision_mask = 6
 position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_6bf31")
 debug_color = Color(0.917341, 0.20424, 0.507995, 0.42)
+
+[node name="KickHitbox" parent="." instance=ExtResource("5_dckej")]
+
+[node name="Collision" type="CollisionShape2D" parent="KickHitbox"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_03b7e")
+debug_color = Color(0.798197, 0.410754, 0.271105, 0.42)

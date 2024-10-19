@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://dg2jx3eerv6qy"]
+[gd_scene load_steps=12 format=3 uid="uid://dg2jx3eerv6qy"]
 
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="1_4s8ex"]
 [ext_resource type="Texture2D" uid="uid://bmbntfv4oby2d" path="res://assets/enemies/cherry_walking.png" id="1_60y3k"]
 [ext_resource type="Script" path="res://enemies/cherry.gd" id="1_lwd0l"]
 [ext_resource type="Texture2D" uid="uid://bog8qg5s0g5pi" path="res://assets/enemies/cherry_hurting.png" id="2_137b8"]
+[ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_ip0w3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqufr"]
 atlas = ExtResource("1_60y3k")
@@ -42,6 +43,9 @@ radius = 5.38516
 radius = 4.0
 height = 12.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dqx7"]
+size = Vector2(14, 10)
+
 [node name="Cherry" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 7
@@ -64,3 +68,10 @@ position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_k0f8b")
 debug_color = Color(0.86864, 0.312366, 0.430795, 0.42)
+
+[node name="KickHitbox" parent="." instance=ExtResource("5_ip0w3")]
+
+[node name="Collision" type="CollisionShape2D" parent="KickHitbox"]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_3dqx7")
+debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
