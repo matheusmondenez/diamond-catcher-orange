@@ -9,6 +9,8 @@ const JUMP_MAX = 2
 @onready var animatied_sprite: AnimatedSprite2D = $Animation
 @onready var remote: RemoteTransform2D = $Remote
 @onready var dust_spawner: Marker2D = $DustSpawner
+@onready var kick_area: CollisionShape2D = $KickArea/Collision
+
 
 var dust_trail_scene = preload("res://player/dust_trail.tscn")
 var can_spawn_dust: bool = true
@@ -31,6 +33,11 @@ func _physics_process(delta: float) -> void:
 	direction = Input.get_axis("left", "right")
 	
 	fall(delta)
+
+	if is_kicking:
+		kick_area.disabled = false
+	else:
+		kick_area.disabled = true
 
 	if check_action("jump"):
 		jump()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c8ojr8k12quyb"]
+[gd_scene load_steps=12 format=3 uid="uid://c8ojr8k12quyb"]
 
 [ext_resource type="Texture2D" uid="uid://ctkj72s2jhhnd" path="res://assets/enemies/slime/hurting.png" id="1_o4g72"]
 [ext_resource type="Script" path="res://enemies/slime.gd" id="1_rel2v"]
 [ext_resource type="Texture2D" uid="uid://bk5dpwb52us72" path="res://assets/enemies/slime/idle.png" id="2_rmdk1"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="3_sctt7"]
+[ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_rviya"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kbwra"]
 atlas = ExtResource("2_rmdk1")
@@ -39,7 +40,10 @@ animations = [{
 size = Vector2(14, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hwd51"]
-size = Vector2(10, 4)
+size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gktv5"]
+size = Vector2(14, 14)
 
 [node name="Slime" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
@@ -57,9 +61,16 @@ autoplay = "idle"
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_k1o53")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_sctt7")]
+[node name="JumpHitbox" parent="." instance=ExtResource("3_sctt7")]
 
-[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -10)
+[node name="Collision" type="CollisionShape2D" parent="JumpHitbox"]
+position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_hwd51")
 debug_color = Color(0.789492, 0.405338, 0.388606, 0.42)
+
+[node name="KickHitbox" parent="." instance=ExtResource("5_rviya")]
+
+[node name="Collision" type="CollisionShape2D" parent="KickHitbox"]
+position = Vector2(0, -7)
+shape = SubResource("RectangleShape2D_gktv5")
+debug_color = Color(0.779645, 0.428502, 0.24483, 0.42)
