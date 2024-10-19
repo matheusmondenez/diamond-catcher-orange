@@ -11,7 +11,6 @@ const JUMP_MAX = 2
 @onready var dust_spawner: Marker2D = $DustSpawner
 @onready var kick_area: CollisionShape2D = $KickArea/Collision
 
-
 var dust_trail_scene = preload("res://player/dust_trail.tscn")
 var can_spawn_dust: bool = true
 var knockback: Vector2 = Vector2.ZERO

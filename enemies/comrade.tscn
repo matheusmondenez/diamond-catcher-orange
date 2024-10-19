@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://c05fhtnaaafoy"]
+
+[ext_resource type="Script" path="res://enemies/comrade.gd" id="1_31spu"]
+[ext_resource type="Texture2D" uid="uid://ye7pwdg03snt" path="res://assets/enemies/comrade/running.png" id="1_hqqsm"]
+[ext_resource type="Texture2D" uid="uid://ba82ypmbqdnap" path="res://assets/enemies/comrade/hurting.png" id="1_nj4sc"]
+[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="2_lb5o3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6x6iq"]
+atlas = ExtResource("1_hqqsm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u4ioh"]
+atlas = ExtResource("1_hqqsm")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_elwak"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_nj4sc")
+}],
+"loop": false,
+"name": &"hurting",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6x6iq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u4ioh")
+}],
+"loop": true,
+"name": &"running",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afvr4"]
+size = Vector2(11, 13)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mlxya"]
+size = Vector2(13, 7)
+
+[node name="Comrade" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 39
+script = ExtResource("1_31spu")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -8)
+sprite_frames = SubResource("SpriteFrames_elwak")
+animation = &"hurting"
+autoplay = "running"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -6.5)
+shape = SubResource("RectangleShape2D_afvr4")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_lb5o3")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-0.5, -10.5)
+shape = SubResource("RectangleShape2D_mlxya")
+debug_color = Color(0.815377, 0.37327, 0.437564, 0.42)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -6)
+target_position = Vector2(8, 0)
+collision_mask = 2
+
+[node name="BombSpawner" type="Marker2D" parent="."]

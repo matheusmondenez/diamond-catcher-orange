@@ -1,0 +1,87 @@
+[gd_scene load_steps=10 format=3 uid="uid://drd618dw7ce16"]
+
+[ext_resource type="Texture2D" uid="uid://d3okv1qpa7xjk" path="res://assets/enemies/comrade/moving.png" id="1_4cuwh"]
+[ext_resource type="Script" path="res://enemies/tank_comrade.gd" id="1_uiv18"]
+[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="2_d78no"]
+[ext_resource type="Texture2D" uid="uid://ba82ypmbqdnap" path="res://assets/enemies/comrade/hurting.png" id="2_u2cxw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jx0u3"]
+atlas = ExtResource("1_4cuwh")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7jml"]
+atlas = ExtResource("1_4cuwh")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6p87b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_u2cxw")
+}],
+"loop": false,
+"name": &"hurting",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jx0u3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e7jml")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1hhv"]
+size = Vector2(28, 25)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e30s2"]
+radius = 14.0
+
+[node name="TankComrade" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 4
+collision_mask = 39
+script = ExtResource("1_uiv18")
+
+[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_6p87b")
+animation = &"hurting"
+autoplay = "moving"
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12.5)
+shape = SubResource("RectangleShape2D_d1hhv")
+
+[node name="Hitbox" parent="." instance=ExtResource("2_d78no")]
+
+[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_e30s2")
+debug_color = Color(0.863498, 0.33067, 0.369438, 0.42)
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(0, -12)
+target_position = Vector2(-16, 0)
+collision_mask = 2
+
+[node name="MissileSpawner1" type="Marker2D" parent="."]
+position = Vector2(-7, -12)
+
+[node name="MissileSpawner2" type="Marker2D" parent="."]
+position = Vector2(-7, -8)
+
+[node name="MissileSpawner3" type="Marker2D" parent="."]
+position = Vector2(-10, -12)
+
+[node name="MissileSpawner4" type="Marker2D" parent="."]
+position = Vector2(-10, -8)
+
+[node name="ComradeSpawner" type="Marker2D" parent="."]
+position = Vector2(0, -17)
+
+[node name="MissileTimer" type="Timer" parent="."]
