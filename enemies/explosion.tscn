@@ -1,0 +1,76 @@
+[gd_scene load_steps=12 format=3 uid="uid://iuk7lpwl6fki"]
+
+[ext_resource type="Texture2D" uid="uid://bl80vsde7crco" path="res://assets/enemies/comrade/explosion.png" id="1_xt83v"]
+[ext_resource type="Script" path="res://enemies/explosion.gd" id="2_tpfa5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23d8t"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e4nyo"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnip1"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0k1o"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wscvx"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vydk5"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcakn"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7x22a"]
+atlas = ExtResource("1_xt83v")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_obgwp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23d8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e4nyo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnip1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0k1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wscvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vydk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcakn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7x22a")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_obgwp")
+autoplay = "default"
+script = ExtResource("2_tpfa5")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

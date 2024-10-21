@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=38 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -28,6 +28,8 @@
 [ext_resource type="PackedScene" uid="uid://cxvy7o38hllrv" path="res://enemies/armored_totem.tscn" id="26_xyn5u"]
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="27_7bcu8"]
 [ext_resource type="PackedScene" uid="uid://drd618dw7ce16" path="res://enemies/tank_comrade.tscn" id="28_obeu5"]
+[ext_resource type="PackedScene" uid="uid://dyv4vo6v1sch2" path="res://enemies/bomb.tscn" id="29_wod8h"]
+[ext_resource type="PackedScene" uid="uid://cxesjlqvqwv0s" path="res://enemies/missile.tscn" id="30_rwayj"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
 shader = ExtResource("16_w3qam")
@@ -261,7 +263,7 @@ position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
 [node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
-position = Vector2(2656, 656)
+position = Vector2(2560, 704)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -366,4 +368,12 @@ shape = SubResource("RectangleShape2D_ipgum")
 
 [node name="TankComrade" parent="." instance=ExtResource("28_obeu5")]
 position = Vector2(3256, 736)
+scale = Vector2(2, 2)
+
+[node name="Bomb" parent="." instance=ExtResource("29_wod8h")]
+position = Vector2(2624, 640)
+scale = Vector2(2, 2)
+
+[node name="Missile" parent="." instance=ExtResource("30_rwayj")]
+position = Vector2(2696, 688)
 scale = Vector2(2, 2)
