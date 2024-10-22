@@ -1,87 +1,84 @@
-[gd_scene load_steps=10 format=3 uid="uid://drd618dw7ce16"]
+[gd_scene load_steps=7 format=3 uid="uid://drd618dw7ce16"]
 
-[ext_resource type="Texture2D" uid="uid://d3okv1qpa7xjk" path="res://assets/enemies/comrade/moving.png" id="1_4cuwh"]
 [ext_resource type="Script" path="res://enemies/tank_comrade.gd" id="1_uiv18"]
-[ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="2_d78no"]
-[ext_resource type="Texture2D" uid="uid://ba82ypmbqdnap" path="res://assets/enemies/comrade/hurting.png" id="2_u2cxw"]
+[ext_resource type="Texture2D" uid="uid://bjyu50m0o3cif" path="res://assets/enemies/comrade/moving.png" id="2_ibewt"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jx0u3"]
-atlas = ExtResource("1_4cuwh")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dxgnj"]
+size = Vector2(26, 17)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e7jml"]
-atlas = ExtResource("1_4cuwh")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="Animation" id="Animation_8iq8k"]
+resource_name = "moving"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_6p87b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_u2cxw")
-}],
-"loop": false,
-"name": &"hurting",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jx0u3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_e7jml")
-}],
-"loop": true,
-"name": &"moving",
-"speed": 8.0
-}]
+[sub_resource type="Animation" id="Animation_6puir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1hhv"]
-size = Vector2(28, 25)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_e30s2"]
-radius = 14.0
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_efgtm"]
+_data = {
+"RESET": SubResource("Animation_6puir"),
+"moving": SubResource("Animation_8iq8k")
+}
 
 [node name="TankComrade" type="CharacterBody2D" groups=["enemies"]]
 collision_layer = 4
 collision_mask = 39
 script = ExtResource("1_uiv18")
 
-[node name="AnimatedSprite" type="AnimatedSprite2D" parent="."]
+[node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -16)
-sprite_frames = SubResource("SpriteFrames_6p87b")
-animation = &"hurting"
-autoplay = "moving"
+texture = ExtResource("2_ibewt")
+hframes = 11
+
+[node name="MissileSpawner" type="Marker2D" parent="Sprite"]
+position = Vector2(-8, 6)
+
+[node name="BombSpawner" type="Marker2D" parent="Sprite"]
+position = Vector2(-2, -1)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12.5)
-shape = SubResource("RectangleShape2D_d1hhv")
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_dxgnj")
 
-[node name="Hitbox" parent="." instance=ExtResource("2_d78no")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_efgtm")
+}
+autoplay = "moving"
 
-[node name="Collision" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(0, -14)
-shape = SubResource("CircleShape2D_e30s2")
-debug_color = Color(0.863498, 0.33067, 0.369438, 0.42)
+[node name="AnimationTree" type="AnimationTree" parent="."]
+
+[node name="TimerMissile" type="Timer" parent="."]
+
+[node name="TimerBomb" type="Timer" parent="."]
 
 [node name="WallDetector" type="RayCast2D" parent="."]
-position = Vector2(0, -12)
+position = Vector2(0, -8)
 target_position = Vector2(-16, 0)
 collision_mask = 2
-
-[node name="MissileSpawner1" type="Marker2D" parent="."]
-position = Vector2(-7, -12)
-
-[node name="MissileSpawner2" type="Marker2D" parent="."]
-position = Vector2(-7, -8)
-
-[node name="MissileSpawner3" type="Marker2D" parent="."]
-position = Vector2(-10, -12)
-
-[node name="MissileSpawner4" type="Marker2D" parent="."]
-position = Vector2(-10, -8)
-
-[node name="ComradeSpawner" type="Marker2D" parent="."]
-position = Vector2(0, -17)
-
-[node name="MissileTimer" type="Timer" parent="."]

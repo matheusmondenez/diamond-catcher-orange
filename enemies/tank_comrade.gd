@@ -1,13 +1,8 @@
 extends BaseEnemy
 
-@onready var missile_spawner_1: Marker2D = $MissileSpawner1
-@onready var missile_spawner_2: Marker2D = $MissileSpawner2
-@onready var missile_spawner_3: Marker2D = $MissileSpawner3
-@onready var missile_spawner_4: Marker2D = $MissileSpawner4
-
 func _ready() -> void:
-	sprite = $AnimatedSprite
-	animation = $AnimatedSprite
+	sprite = $Sprite
+	animation = $AnimationPlayer
 	ray_cast = $WallDetector
 	can_spawn = true
 	spawn_instance = preload("res://enemies/comrade.tscn")
