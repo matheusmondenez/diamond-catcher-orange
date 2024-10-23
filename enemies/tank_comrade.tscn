@@ -6,6 +6,21 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxgnj"]
 size = Vector2(26, 17)
 
+[sub_resource type="Animation" id="Animation_6puir"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_8iq8k"]
 resource_name = "moving"
 length = 0.2
@@ -22,21 +37,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_6puir"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efgtm"]
@@ -57,9 +57,11 @@ texture = ExtResource("2_ibewt")
 hframes = 11
 
 [node name="MissileSpawner" type="Marker2D" parent="Sprite"]
+unique_name_in_owner = true
 position = Vector2(-8, 6)
 
 [node name="BombSpawner" type="Marker2D" parent="Sprite"]
+unique_name_in_owner = true
 position = Vector2(-2, -1)
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -75,10 +77,17 @@ autoplay = "moving"
 [node name="AnimationTree" type="AnimationTree" parent="."]
 
 [node name="TimerMissile" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
 
 [node name="TimerBomb" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(-16, 0)
 collision_mask = 2
+
+[connection signal="timeout" from="TimerMissile" to="." method="_on_timer_missile_timeout"]
+[connection signal="timeout" from="TimerBomb" to="." method="_on_timer_bomb_timeout"]

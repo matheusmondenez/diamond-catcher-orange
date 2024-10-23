@@ -1,7 +1,5 @@
 extends BaseEnemy
 
-@onready var bomb_spawner: Marker2D = $BombSpawner
-
 func _ready() -> void:
 	sprite = $AnimatedSprite
 	animation = $AnimatedSprite
