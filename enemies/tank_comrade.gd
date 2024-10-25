@@ -14,13 +14,20 @@ func _ready() -> void:
 	ray_cast = $WallDetector
 	can_spawn = true
 	spawn_instance = preload("res://enemies/comrade.tscn")
-	spawn_instance_position = $ComradeSpawner
-	animation.animation_finished.connect(kill_flying)
+	spawn_instance_position = $Spawner
+	animation.animation_finished.connect(kill_walking)
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	move(delta)
 	flip_sprite()
+	
+	#if sprite.flip_h:
+		#missile_spawner.position.x *= -1
+		#bomb_spawner.position.x *= -1
+	#else:
+		#missile_spawner.position.x *= -1
+		#bomb_spawner.position.x *= -1
 
 func throw_bomb() -> void:
 	var bomb = BOMB_SCENE.instantiate()

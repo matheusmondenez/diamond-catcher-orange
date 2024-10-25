@@ -112,8 +112,7 @@ script = ExtResource("1_wdeeo")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -1)
-texture = ExtResource("1_3xj52")
-hframes = 2
+texture = ExtResource("1_frthf")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
