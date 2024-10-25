@@ -1,7 +1,6 @@
 extends Node2D
 
 @onready var player_scene = preload("res://player/player.tscn")
-
 @onready var start_position: Marker2D = $StartPosition
 @onready var player: CharacterBody2D = $Orange
 @onready var coins: Node = $Collectables/Coins
@@ -9,6 +8,11 @@ extends Node2D
 @onready var diamond: Area2D = $Collectables/Diamond
 @onready var camera: Camera2D = $Camera
 @onready var hud: CanvasLayer = $HUD
+@onready var transition = get_node("Transition/Fill")
+@onready var transition_animation = get_node("Transition/Fill/Animation")
+
+@export_enum("Diamond", "Spot Player", "Spot Center", "Vertical Bar", "Horizontal Bar") var transition_type = 0
+@export_range(0.0, 2.0) var duration = 1.0
 
 func _ready() -> void:
 	Globals.player_start_position = start_position
@@ -16,6 +20,8 @@ func _ready() -> void:
 	Globals.player.camera_follow(camera)
 	Globals.player.has_died.connect(reload_level)
 	hud.time_is_up.connect(game_over)
+	transition.material.set_shader_parameter("type", transition_type)
+	transition_animation.speed_scale = duration
 
 func _process(delta: float) -> void:
 	var shards_count = shards.get_child_count()

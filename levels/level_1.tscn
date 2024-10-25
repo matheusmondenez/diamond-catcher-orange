@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=37 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="2_c0vli"]
+[ext_resource type="PackedScene" uid="uid://nvmyv4vh1t83" path="res://ui/transition.tscn" id="2_m8jpi"]
 [ext_resource type="Texture2D" uid="uid://bgmypa53561o4" path="res://assets/tileset/grassland/plants.png" id="3_y5hfx"]
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="4_gkpw3"]
 [ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="6_ve0vj"]
@@ -175,6 +176,10 @@ size = Vector2(100, 33)
 [node name="Level1" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_n8fao")
+duration = 0.5
+
+[node name="Transition" parent="." instance=ExtResource("2_m8jpi")]
+layer = 2
 
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(80, 256)
