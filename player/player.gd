@@ -10,6 +10,8 @@ const JUMP_MAX = 2
 @onready var remote: RemoteTransform2D = $Remote
 @onready var dust_spawner: Marker2D = $DustSpawner
 @onready var kick_area: CollisionShape2D = $KickArea/Collision
+@onready var roll_area: CollisionShape2D = $RollArea/Collision
+
 
 var dust_trail_scene = preload("res://player/dust_trail.tscn")
 var can_spawn_dust: bool = true
@@ -37,6 +39,11 @@ func _physics_process(delta: float) -> void:
 		kick_area.disabled = false
 	else:
 		kick_area.disabled = true
+	
+	if is_rolling:
+		roll_area.disabled = false
+	else:
+		roll_area.disabled = true
 
 	if check_action("jump"):
 		jump()
@@ -164,8 +171,11 @@ func camera_follow(camera) -> void:
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
-		print("Entrou: ", body)
-		is_hurting = true
+		if not is_rolling:
+			is_hurting = true
+		else:
+			body.kill_and_score()
+			return
 		
 		if $Hurtbox/RayCastLeft.is_colliding():
 			print("Colidiu pela esquerda")

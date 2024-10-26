@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://cr44oxaxyl2fh"]
+[gd_scene load_steps=56 format=3 uid="uid://cr44oxaxyl2fh"]
 
 [ext_resource type="Texture2D" uid="uid://uex5pj1a8i0i" path="res://assets/player/blinking.png" id="1_h4p83"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j0cc2"]
@@ -353,6 +353,8 @@ size = Vector2(16, 13)
 radius = 4.24171
 height = 13.4469
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_00y7g"]
+
 [node name="Orange" type="CharacterBody2D"]
 scale = Vector2(2, 2)
 collision_mask = 30
@@ -361,10 +363,8 @@ script = ExtResource("1_j0cc2")
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_kurqy")
-animation = &"kicking"
+animation = &"rolling"
 autoplay = "idle"
-frame = 3
-frame_progress = 1.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 8.5)
@@ -395,6 +395,7 @@ collision_mask = 4
 position = Vector2(0, 16)
 
 [node name="KickArea" type="Area2D" parent="."]
+visible = false
 collision_mask = 16
 
 [node name="Collision" type="CollisionShape2D" parent="KickArea"]
@@ -403,6 +404,16 @@ rotation = 0.806342
 shape = SubResource("CapsuleShape2D_vm3ig")
 disabled = true
 debug_color = Color(0.342268, 0.603749, 0.418948, 0.42)
+
+[node name="RollArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="Collision" type="CollisionShape2D" parent="RollArea"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_00y7g")
+disabled = true
+debug_color = Color(0.301337, 0.610045, 0.431174, 0.42)
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]
