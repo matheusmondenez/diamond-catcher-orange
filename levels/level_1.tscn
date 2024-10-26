@@ -178,9 +178,6 @@ texture_filter = 1
 script = ExtResource("1_n8fao")
 duration = 0.5
 
-[node name="Transition" parent="." instance=ExtResource("2_m8jpi")]
-layer = 2
-
 [node name="StartPosition" type="Marker2D" parent="."]
 position = Vector2(80, 256)
 
@@ -240,7 +237,11 @@ centered = false
 [node name="HUD" parent="." instance=ExtResource("9_i8qek")]
 
 [node name="PauseScreen" parent="." instance=ExtResource("6_ve0vj")]
+layer = 3
 visible = false
+
+[node name="Transition" parent="." instance=ExtResource("2_m8jpi")]
+layer = 2
 
 [node name="TileMap" type="TileMap" parent="."]
 texture_filter = 1
@@ -266,7 +267,7 @@ position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
 [node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
-position = Vector2(2560, 704)
+position = Vector2(200, 320)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -369,6 +370,6 @@ shape = SubResource("RectangleShape2D_ipgum")
 
 [node name="Boss" type="Node" parent="."]
 
-[node name="TankComrade" parent="." instance=ExtResource("28_obeu5")]
+[node name="TankComrade" parent="Boss" instance=ExtResource("28_obeu5")]
 position = Vector2(3256, 736)
 scale = Vector2(2, 2)
