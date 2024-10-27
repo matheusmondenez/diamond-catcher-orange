@@ -144,7 +144,7 @@ func set_state() -> void:
 				animatied_sprite.play("running")
 			else:
 				animatied_sprite.play("walking")
-	elif !is_on_floor() and !is_hurting:
+	elif !is_on_floor() and !is_hurting and !is_rolling:
 		if velocity.y < 0:
 			animatied_sprite.play("jumping")
 		else:
@@ -174,7 +174,14 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 		if not is_rolling:
 			is_hurting = true
 		else:
+			apply_knockback(Vector2(-200, -200), .25, false)
+			body.animation.play("hurting")
+			await body.animation.animation_finished
 			body.kill_and_score()
+			is_rolling = false
+			is_stoping_to_roll = true
+			await get_tree().create_timer(1).timeout
+			is_stoping_to_roll = false
 			return
 		
 		if $Hurtbox/RayCastLeft.is_colliding():
@@ -197,13 +204,7 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25)
 			emit_signal("has_died")
   
 	if knockback_force != Vector2.ZERO:
-		knockback = knockback_force   
-		
-		var tween = create_tween()
-		
-		tween.parallel().tween_property(self, "knockback", Vector2.ZERO, duration)
-		animatied_sprite.modulate = Color(1, 0, 0, 1)
-		tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
+		apply_knockback(knockback_force, duration)
 
 func spawn_dust_trail() -> void:
 	if can_spawn_dust:
@@ -216,3 +217,12 @@ func spawn_dust_trail() -> void:
 		dust_trail.scale = Vector2(2, 2)
 		await dust_trail_sprite.animation_finished
 		dust_trail.queue_free()
+
+func apply_knockback(knockback_force, duration = .25, is_damage: bool = true) -> void:
+	knockback = knockback_force   
+		
+	var tween = create_tween()
+	
+	tween.parallel().tween_property(self, "knockback", Vector2.ZERO, duration)
+	animatied_sprite.modulate = Color(1, 0, 0, 1)
+	tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
