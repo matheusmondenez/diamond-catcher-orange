@@ -113,7 +113,7 @@ func kick() -> void:
 func roll() -> void:
 	if is_on_floor() and not is_rolling:
 		is_preparing_to_roll = true
-		await get_tree().create_timer(.45).timeout
+		await get_tree().create_timer(.6).timeout
 		velocity = Vector2(-1 if animatied_sprite.flip_h else 1, 0).normalized() * 2000
 		spawn_dust_trail()
 
@@ -144,7 +144,11 @@ func set_state() -> void:
 				animatied_sprite.play("running")
 			else:
 				animatied_sprite.play("walking")
-	elif !is_on_floor() and !is_hurting and !is_rolling:
+	elif !is_on_floor() and !is_hurting:
+		if is_rolling:
+			is_preparing_to_roll = false
+			is_rolling = false
+			is_stoping_to_roll = false
 		if velocity.y < 0:
 			animatied_sprite.play("jumping")
 		else:
@@ -224,5 +228,9 @@ func apply_knockback(knockback_force, duration = .25, is_damage: bool = true) ->
 	var tween = create_tween()
 	
 	tween.parallel().tween_property(self, "knockback", Vector2.ZERO, duration)
+	
+	if not is_damage:
+		return
+
 	animatied_sprite.modulate = Color(1, 0, 0, 1)
 	tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
