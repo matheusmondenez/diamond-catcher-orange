@@ -16,3 +16,7 @@ func _physics_process(delta: float) -> void:
 	for links in chain.get_children():
 		links.position = Vector2(sin(angle * speed) * radius / chain.get_child_count(), cos(angle * speed) * radius / chain.get_child_count()) * link_radius
 		link_radius += 1
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.name == "Orange" and body.has_method("take_damage"):
+		body.take_damage(Vector2(200, -200))
