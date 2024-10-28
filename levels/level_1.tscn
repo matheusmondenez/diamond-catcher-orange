@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=38 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="25_thytu"]
 [ext_resource type="PackedScene" uid="uid://cxvy7o38hllrv" path="res://enemies/armored_totem.tscn" id="26_xyn5u"]
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="27_7bcu8"]
+[ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="27_h6r2c"]
 [ext_resource type="PackedScene" uid="uid://drd618dw7ce16" path="res://enemies/tank_comrade.tscn" id="28_obeu5"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
@@ -339,6 +340,15 @@ scale = Vector2(2, 2)
 
 [node name="FallingPlatform2" parent="Platforms" instance=ExtResource("13_rtir7")]
 position = Vector2(2104, 560)
+scale = Vector2(2, 2)
+
+[node name="MovingPlatform1" parent="Platforms" instance=ExtResource("27_h6r2c")]
+position = Vector2(576, 200)
+scale = Vector2(2, 2)
+move_horizontal = false
+
+[node name="MovingPlatform2" parent="Platforms" instance=ExtResource("27_h6r2c")]
+position = Vector2(640, 200)
 scale = Vector2(2, 2)
 
 [node name="Camera" type="Camera2D" parent="."]
