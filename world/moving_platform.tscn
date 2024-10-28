@@ -53,7 +53,7 @@ collision_mask = 5
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_2kcrh")
 autoplay = "default"
-frame_progress = 0.310748
+frame_progress = 0.736365
 
 [node name="Collision" type="CollisionShape2D" parent="AnimatableBody"]
 position = Vector2(0, -2.5)

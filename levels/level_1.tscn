@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://ccmlpxvg2umi3"]
+[gd_scene load_steps=39 format=3 uid="uid://ccmlpxvg2umi3"]
 
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="1_ju36a"]
 [ext_resource type="Script" path="res://levels/level_1.gd" id="1_n8fao"]
@@ -30,6 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="27_7bcu8"]
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="27_h6r2c"]
 [ext_resource type="PackedScene" uid="uid://drd618dw7ce16" path="res://enemies/tank_comrade.tscn" id="28_obeu5"]
+[ext_resource type="PackedScene" uid="uid://bakufxxk20cev" path="res://world/spiked_ball.tscn" id="31_g244i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
 shader = ExtResource("16_w3qam")
@@ -268,7 +269,7 @@ position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
 [node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
-position = Vector2(200, 320)
+position = Vector2(264, 440)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -382,4 +383,8 @@ shape = SubResource("RectangleShape2D_ipgum")
 
 [node name="TankComrade" parent="Boss" instance=ExtResource("28_obeu5")]
 position = Vector2(3256, 736)
+scale = Vector2(2, 2)
+
+[node name="SpikedBall" parent="." instance=ExtResource("31_g244i")]
+position = Vector2(80, 320)
 scale = Vector2(2, 2)
