@@ -11,7 +11,7 @@ const JUMP_MAX = 2
 @onready var dust_spawner: Marker2D = $DustSpawner
 @onready var kick_area: CollisionShape2D = $KickArea/Collision
 @onready var roll_area: CollisionShape2D = $RollArea/Collision
-
+@onready var jump_sfx: AudioStreamPlayer = $JumpSFX
 
 var dust_trail_scene = preload("res://player/dust_trail.tscn")
 var can_spawn_dust: bool = true
@@ -96,10 +96,12 @@ func run() -> void:
 
 func jump() -> void:
 	if is_on_floor():
+		jump_sfx.play()
 		jump_count = 0
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 	elif can_double_jump and jump_count < JUMP_MAX:
+		jump_sfx.play()
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 
