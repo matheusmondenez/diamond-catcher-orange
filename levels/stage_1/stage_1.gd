@@ -14,6 +14,7 @@ const DIAMOND_SCENE = preload("res://collectables/diamond.tscn")
 
 func _ready() -> void:
 	super()
+	diamond.get_node("Collision").disabled = true
 	diamond.connect("stage_cleared", clear)
 
 func _physics_process(delta: float) -> void:
@@ -21,11 +22,5 @@ func _physics_process(delta: float) -> void:
 		spawn_diamond()
 
 func spawn_diamond() -> void:
+	diamond.get_node("Collision").disabled = false
 	diamond.show()
-
-func clear() -> void:
-	var timer = $StageClear
-	get_tree().paused = true
-	timer.start(2.0)
-	await  timer.timeout
-	get_tree().paused = false

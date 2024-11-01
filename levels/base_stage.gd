@@ -28,3 +28,10 @@ func reload_level():
 
 func game_over():
 	get_tree().reload_current_scene()
+
+func clear() -> void:
+	var timer = $StageClear
+	get_tree().paused = true
+	timer.start(2.0)
+	await  timer.timeout
+	get_tree().paused = false
