@@ -197,7 +197,7 @@ scroll_offset = Vector2(0, -276)
 repeat_size = Vector2(1152, 648)
 repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/Sky"]
+[node name="Sprite" type="Sprite2D" parent="Background/Sky"]
 scale = Vector2(4, 4)
 texture = ExtResource("4_i6nwh")
 centered = false
@@ -208,7 +208,7 @@ scroll_offset = Vector2(0, -276)
 repeat_size = Vector2(1152, 0)
 repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/DistantClouds"]
+[node name="Sprite" type="Sprite2D" parent="Background/DistantClouds"]
 scale = Vector2(4, 4)
 texture = ExtResource("5_annw0")
 centered = false
@@ -219,7 +219,7 @@ scroll_offset = Vector2(0, -276)
 repeat_size = Vector2(1152, 0)
 repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/MovingClouds"]
+[node name="Sprite" type="Sprite2D" parent="Background/MovingClouds"]
 texture_repeat = 2
 material = SubResource("ShaderMaterial_62ml8")
 scale = Vector2(4, 4)
@@ -232,7 +232,7 @@ scroll_offset = Vector2(0, -276)
 repeat_size = Vector2(1152, 0)
 repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/DistantTrees"]
+[node name="Sprite" type="Sprite2D" parent="Background/DistantTrees"]
 scale = Vector2(4, 4)
 texture = ExtResource("6_t1174")
 centered = false
@@ -243,7 +243,7 @@ scroll_offset = Vector2(0, -276)
 repeat_size = Vector2(1152, 0)
 repeat_times = 5
 
-[node name="Sprite2D" type="Sprite2D" parent="Background/ForegroundTrees"]
+[node name="Sprite" type="Sprite2D" parent="Background/ForegroundTrees"]
 scale = Vector2(4, 4)
 texture = ExtResource("7_v2d5y")
 centered = false

@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const DUST_TRAIL_SCENE = preload("res://player/dust_trail.tscn")
 const WALK_SPEED = 150.0
 const RUN_SPEED = WALK_SPEED * 2
 const ROLL_SPEED = RUN_SPEED / 2
@@ -13,7 +14,6 @@ const JUMP_MAX = 2
 @onready var roll_area: CollisionShape2D = $RollArea/Collision
 @onready var jump_sfx: AudioStreamPlayer = $JumpSFX
 
-var dust_trail_scene = preload("res://player/dust_trail.tscn")
 var can_spawn_dust: bool = true
 var knockback: Vector2 = Vector2.ZERO
 var direction: int = 0
@@ -215,12 +215,11 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25)
 func spawn_dust_trail() -> void:
 	if can_spawn_dust:
 		can_spawn_dust = false
-		var dust_trail = dust_trail_scene.instantiate()
+		var dust_trail = DUST_TRAIL_SCENE.instantiate()
 		var dust_trail_sprite = dust_trail.get_children()[0]
 		get_tree().root.add_child(dust_trail)
 		dust_trail_sprite.scale.x *= -1 if animatied_sprite.flip_h else 1
-		dust_trail.global_position = Vector2(dust_spawner.global_position.x, dust_spawner.global_position.y - 14)
-		dust_trail.scale = Vector2(2, 2)
+		dust_trail.global_position = Vector2(dust_spawner.global_position.x, dust_spawner.global_position.y - 7)
 		await dust_trail_sprite.animation_finished
 		dust_trail.queue_free()
 

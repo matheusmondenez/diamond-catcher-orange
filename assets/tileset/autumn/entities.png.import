@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bglc3122r1w7j"
-path="res://.godot/imported/Autumn_entities (16 x 16).png-fb8040dfed18cf0c7833e48ee960d771.ctex"
+path="res://.godot/imported/entities.png-8beaa5ebd57a4982d38757d0092976ef.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/autumn/Autumn_entities (16 x 16).png"
-dest_files=["res://.godot/imported/Autumn_entities (16 x 16).png-fb8040dfed18cf0c7833e48ee960d771.ctex"]
+source_file="res://assets/tileset/autumn/entities.png"
+dest_files=["res://.godot/imported/entities.png-8beaa5ebd57a4982d38757d0092976ef.ctex"]
 
 [params]
 
