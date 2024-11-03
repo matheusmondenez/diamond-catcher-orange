@@ -1,0 +1,189 @@
+[gd_scene load_steps=13 format=4 uid="uid://e04xaqe52o2h"]
+
+[ext_resource type="Script" path="res://levels/stage_3/stage_3.gd" id="1_k6hhg"]
+[ext_resource type="Texture2D" uid="uid://dyrom56gsox5a" path="res://assets/tileset/winter/background/3 - Big_mountain_BG.png" id="1_rromc"]
+[ext_resource type="Texture2D" uid="uid://cwtbf5mobgyp4" path="res://assets/tileset/winter/background/2 - Smaller_mountains.png" id="2_eq1ai"]
+[ext_resource type="Texture2D" uid="uid://nwn7vv8lqpd1" path="res://assets/tileset/winter/background/1 - Snowy_foreground_area.png" id="3_wosv2"]
+[ext_resource type="Texture2D" uid="uid://cm3onsxee7esg" path="res://assets/tileset/winter/entities.png" id="4_ldusn"]
+[ext_resource type="Texture2D" uid="uid://cte5eiwlly4j3" path="res://assets/tileset/winter/terrain.png" id="5_14811"]
+[ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="5_hwg3m"]
+[ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="6_4mc3s"]
+[ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="8_pjbw4"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tfl7p"]
+texture = ExtResource("4_ldusn")
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+9:1/0 = 0
+10:1/0 = 0
+11:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+5:2/0 = 0
+6:2/0 = 0
+7:2/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+5:3/0 = 0
+6:3/0 = 0
+7:3/0 = 0
+9:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+1:5/0 = 0
+3:5/0 = 0
+4:5/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rpndm"]
+texture = ExtResource("5_14811")
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:3/0 = 0
+9:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+10:3/0 = 0
+10:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:3/0 = 0
+11:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+12:3/0 = 0
+12:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+13:3/0 = 0
+13:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+15:3/0 = 0
+15:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:4/0 = 0
+1:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:4/0 = 0
+2:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:4/0 = 0
+3:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:4/0 = 0
+4:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:4/0 = 0
+5:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:4/0 = 0
+6:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:4/0 = 0
+7:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:4/0 = 0
+11:4/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:5/0 = 0
+3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:5/0 = 0
+4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:5/0 = 0
+5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:5/0 = 0
+11:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:6/0 = 0
+3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:6/0 = 0
+4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:6/0 = 0
+5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:8/0 = 0
+4:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_o2nlo"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 13
+sources/0 = SubResource("TileSetAtlasSource_tfl7p")
+sources/1 = SubResource("TileSetAtlasSource_rpndm")
+
+[node name="Stage3" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player")]
+script = ExtResource("1_k6hhg")
+hud = NodePath("UI/HUD")
+camera = NodePath("Camera")
+player = NodePath("Orange")
+
+[node name="Background" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(144, 544)
+
+[node name="DistantMountain" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.6, 0.6)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite" type="Sprite2D" parent="Background/DistantMountain"]
+texture = ExtResource("1_rromc")
+
+[node name="SmallerMountains" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.75, 0.75)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite" type="Sprite2D" parent="Background/SmallerMountains"]
+texture = ExtResource("2_eq1ai")
+
+[node name="SnowyForeground" type="Parallax2D" parent="Background"]
+scroll_scale = Vector2(0.9, 0.9)
+repeat_size = Vector2(288, 0)
+repeat_times = 3
+
+[node name="Sprite" type="Sprite2D" parent="Background/SnowyForeground"]
+texture = ExtResource("3_wosv2")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="HUD" parent="UI" instance=ExtResource("5_hwg3m")]
+
+[node name="TileMap" type="Node" parent="."]
+
+[node name="Terrain" type="TileMapLayer" parent="TileMap"]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAACgAAQABAAMAAAABACgAAQACAAMAAAACACgAAQACAAMAAAADACgAAQACAAMAAAAEACgAAQACAAMAAAAFACgAAQACAAMAAAAGACgAAQACAAMAAAAHACgAAQACAAMAAAAIACgAAQACAAMAAAAJACgAAQACAAMAAAAKACgAAQACAAMAAAALACgAAQACAAMAAAAMACgAAQACAAMAAAANACgAAQACAAMAAAAOACgAAQACAAMAAAAPACgAAQACAAMAAAAQACgAAQACAAMAAAARACgAAQACAAMAAAASACgAAQACAAMAAAATACgAAQACAAMAAAAUACgAAQACAAMAAAAVACgAAQACAAMAAAAWACgAAQACAAMAAAAXACgAAQACAAMAAAAYACgAAQACAAMAAAAZACgAAQACAAMAAAAaACgAAQACAAMAAAAbACgAAQACAAMAAAAcACgAAQACAAMAAAAdACgAAQACAAMAAAAeACgAAQACAAMAAAAfACgAAQACAAMAAAAgACgAAQACAAMAAAAhACgAAQACAAMAAAAiACgAAQACAAMAAAAjACgAAQACAAMAAAAkACgAAQACAAMAAAAlACgAAQACAAMAAAAmACgAAQACAAMAAAAnACgAAQACAAMAAAAoACgAAQACAAMAAAApACgAAQACAAMAAAAqACgAAQACAAMAAAArACgAAQACAAMAAAAsACgAAQACAAMAAAAtACgAAQACAAMAAAAuACgAAQACAAMAAAAvACgAAQACAAMAAAAwACgAAQACAAMAAAAxACgAAQACAAMAAAAyACgAAQACAAMAAAAzACgAAQACAAMAAAA0ACgAAQACAAMAAAA1ACgAAQACAAMAAAA2ACgAAQACAAMAAAA3ACgAAQACAAMAAAA4ACgAAQACAAMAAAA5ACgAAQACAAMAAAA6ACgAAQACAAMAAAA7ACgAAQACAAMAAAA8ACgAAQACAAMAAAA9ACgAAQACAAMAAAA+ACgAAQACAAMAAAA/ACgAAQACAAMAAABAACgAAQACAAMAAABBACgAAQACAAMAAABCACgAAQACAAMAAABDACgAAQACAAMAAABEACgAAQACAAMAAABFACgAAQACAAMAAABGACgAAQACAAMAAABHACgAAQAHAAMAAAA=")
+tile_set = SubResource("TileSet_o2nlo")
+
+[node name="Collectables" type="Node" parent="."]
+
+[node name="Diamond" parent="Collectables" instance=ExtResource("8_pjbw4")]
+visible = false
+position = Vector2(800, 528)
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="Traps" type="Node" parent="."]
+
+[node name="Orange" parent="." instance=ExtResource("6_4mc3s")]
+position = Vector2(64, 552)
+scale = Vector2(1, 1)
+
+[node name="Camera" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
