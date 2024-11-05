@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtkng6kq3on8w"
-path="res://.godot/imported/Terrain (16 x 16).png-5978dcb67af49d245a1cc23408cafbff.ctex"
+uid="uid://n0tsyhqfd78f"
+path="res://.godot/imported/entities.png-1212ab9d14a8ee40efb575fee483c88d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/tropics/Terrain (16 x 16).png"
-dest_files=["res://.godot/imported/Terrain (16 x 16).png-5978dcb67af49d245a1cc23408cafbff.ctex"]
+source_file="res://assets/tileset/tropics/entities.png"
+dest_files=["res://.godot/imported/entities.png-1212ab9d14a8ee40efb575fee483c88d.ctex"]
 
 [params]
 

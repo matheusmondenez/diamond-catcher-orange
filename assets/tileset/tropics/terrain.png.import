@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n0tsyhqfd78f"
-path="res://.godot/imported/Tropics_entities (16 x 16).png-3557f7b699989c561d576ba168fad281.ctex"
+uid="uid://dtkng6kq3on8w"
+path="res://.godot/imported/terrain.png-6a6a791e75b031bdfb5d159ce380cb0f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/tileset/tropics/Tropics_entities (16 x 16).png"
-dest_files=["res://.godot/imported/Tropics_entities (16 x 16).png-3557f7b699989c561d576ba168fad281.ctex"]
+source_file="res://assets/tileset/tropics/terrain.png"
+dest_files=["res://.godot/imported/terrain.png-6a6a791e75b031bdfb5d159ce380cb0f.ctex"]
 
 [params]
 

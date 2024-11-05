@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bakufxxk20cev"]
 
-[ext_resource type="Script" path="res://spiked_ball.gd" id="1_41mdl"]
+[ext_resource type="Script" path="res://levels/objects/spiked_ball.gd" id="1_41mdl"]
 [ext_resource type="Texture2D" uid="uid://d23v38ja2ot3r" path="res://assets/world/traps/spiked_ball.png" id="1_mk4sv"]
 [ext_resource type="Texture2D" uid="uid://bsfe6edc2pmse" path="res://assets/world/traps/chain.png" id="3_dyjxa"]
 

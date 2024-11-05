@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=4 uid="uid://crvlj7cw5jwq1"]
+[gd_scene load_steps=24 format=4 uid="uid://crvlj7cw5jwq1"]
 
 [ext_resource type="Texture2D" uid="uid://cwbhaqhjae4w8" path="res://assets/tileset/autumn/background/6 - Distant_trees.png" id="1_as5lw"]
 [ext_resource type="Script" path="res://levels/stage_2/stage_2.gd" id="1_p2geq"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://nnv44ls4puvq" path="res://levels/objects/falling_platform.tscn" id="16_x8f0v"]
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="17_77e36"]
 [ext_resource type="PackedScene" uid="uid://ci3lhtmclatl4" path="res://levels/objects/spikes_area.tscn" id="17_f4iov"]
+[ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="19_qyp6u"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v4prg"]
 texture = ExtResource("7_e8va6")
@@ -341,6 +342,9 @@ position = Vector2(1688, 604)
 
 [node name="SpikesArea3" parent="Traps" instance=ExtResource("17_f4iov")]
 position = Vector2(1800, 604)
+
+[node name="Checkpoint" parent="." instance=ExtResource("19_qyp6u")]
+position = Vector2(1484, 560)
 
 [node name="Orange" parent="." instance=ExtResource("9_ndtew")]
 position = Vector2(64, 512)

@@ -30,7 +30,7 @@
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="27_7bcu8"]
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="27_h6r2c"]
 [ext_resource type="PackedScene" uid="uid://drd618dw7ce16" path="res://enemies/tank_comrade.tscn" id="28_obeu5"]
-[ext_resource type="PackedScene" uid="uid://bakufxxk20cev" path="res://world/spiked_ball.tscn" id="31_g244i"]
+[ext_resource type="PackedScene" uid="uid://bakufxxk20cev" path="res://levels/objects/spiked_ball.tscn" id="31_g244i"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmvx3"]
 shader = ExtResource("16_w3qam")
