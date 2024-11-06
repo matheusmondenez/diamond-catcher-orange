@@ -330,7 +330,7 @@ scale = Vector2(2, 2)
 
 [node name="Diamond" parent="Collectables" instance=ExtResource("8_484ls")]
 visible = false
-position = Vector2(609, 102)
+position = Vector2(1136, 216)
 scale = Vector2(2, 2)
 
 [node name="Platforms" type="Node" parent="."]
