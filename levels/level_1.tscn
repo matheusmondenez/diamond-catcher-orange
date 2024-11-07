@@ -268,8 +268,9 @@ scale = Vector2(1.5, 1.5)
 position = Vector2(1472, 536)
 scale = Vector2(2, 2)
 
-[node name="Orange" parent="." instance=ExtResource("4_gkpw3")]
+[node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_gkpw3")]
 position = Vector2(264, 440)
+camera = NodePath("../Camera")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -328,10 +329,11 @@ scale = Vector2(2, 2)
 position = Vector2(608, 304)
 scale = Vector2(2, 2)
 
-[node name="Diamond" parent="Collectables" instance=ExtResource("8_484ls")]
+[node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("8_484ls")]
 visible = false
-position = Vector2(1136, 216)
+position = Vector2(1520, 280)
 scale = Vector2(2, 2)
+camera = NodePath("../../Camera")
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -388,3 +390,6 @@ scale = Vector2(2, 2)
 [node name="SpikedBall" parent="." instance=ExtResource("31_g244i")]
 position = Vector2(80, 320)
 scale = Vector2(2, 2)
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1520, 280)

@@ -3,6 +3,10 @@ extends Area2D
 const TRANSITION_SCENE = preload("res://ui/transition.tscn")
 
 @onready var animated_sprite: AnimatedSprite2D = $Animation
+@onready var marker: Marker2D = $Marker
+@onready var remote: RemoteTransform2D = $Remote
+
+@export var camera: Camera2D
 
 signal stage_cleared
 
@@ -34,4 +38,24 @@ func _on_animation_animation_finished() -> void:
 		#get_tree().change_scene_to_file("res://ui/start_screen.tscn")
 
 func _on_animation_visibility_changed() -> void:
+	Globals.player.camera_follow("")
+	camera_follow(camera)
+	
+	print("Primeiro timer começou")
+	await get_tree().create_timer(3).timeout
+	print("Primeiro timer acabou")
+	
 	animated_sprite.play("appearing")
+
+	print("Segundo timer começou")
+	await get_tree().create_timer(3).timeout
+	print("Segundo timer acabou")
+	
+	camera_follow("")
+	Globals.player.camera_follow(Globals.player.camera)
+
+func camera_follow(target):
+	if target:
+		remote.remote_path = target.get_path()
+	else:
+		remote.remote_path = ""

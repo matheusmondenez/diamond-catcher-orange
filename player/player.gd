@@ -14,6 +14,8 @@ const JUMP_MAX = 2
 @onready var roll_area: CollisionShape2D = $RollArea/Collision
 @onready var jump_sfx: AudioStreamPlayer = $JumpSFX
 
+@export var camera: Camera2D
+
 var can_spawn_dust: bool = true
 var knockback: Vector2 = Vector2.ZERO
 var direction: int = 0
@@ -170,10 +172,11 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif animatied_sprite.animation == "hurting":
 		is_hurting = false
 
-func camera_follow(camera) -> void:
-	var camera_path = camera.get_path()
-	
-	remote.remote_path = camera_path
+func camera_follow(target) -> void:
+	if target:
+		remote.remote_path = target.get_path()
+	else:
+		remote.remote_path = ""
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
