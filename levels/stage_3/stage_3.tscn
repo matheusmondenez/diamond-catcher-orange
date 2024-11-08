@@ -142,28 +142,38 @@ player = NodePath("Orange")
 
 [node name="Background" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(144, 544)
+position = Vector2(1094, 468)
 
 [node name="DistantMountain" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.6, 0.6)
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.2, 1)
 repeat_size = Vector2(288, 0)
-repeat_times = 3
+repeat_times = 5
 
 [node name="Sprite" type="Sprite2D" parent="Background/DistantMountain"]
 texture = ExtResource("1_rromc")
 
+[node name="SkyColor" type="ColorRect" parent="Background/DistantMountain"]
+offset_left = -144.0
+offset_top = -584.0
+offset_right = 145.0
+offset_bottom = -104.0
+color = Color(0.995197, 0.96633, 0.963659, 1)
+
 [node name="SmallerMountains" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.75, 0.75)
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.4, 1)
 repeat_size = Vector2(288, 0)
-repeat_times = 3
+repeat_times = 5
 
 [node name="Sprite" type="Sprite2D" parent="Background/SmallerMountains"]
 texture = ExtResource("2_eq1ai")
 
 [node name="SnowyForeground" type="Parallax2D" parent="Background"]
-scroll_scale = Vector2(0.9, 0.9)
+scale = Vector2(1.5, 1.5)
+scroll_scale = Vector2(0.6, 1)
 repeat_size = Vector2(288, 0)
-repeat_times = 3
+repeat_times = 5
 
 [node name="Sprite" type="Sprite2D" parent="Background/SnowyForeground"]
 texture = ExtResource("3_wosv2")
@@ -323,9 +333,10 @@ position = Vector2(1472, 256)
 [node name="DiamondShard5" parent="Collectables/Shards" instance=ExtResource("9_jltyw")]
 position = Vector2(1872, 512)
 
-[node name="Diamond" parent="Collectables" instance=ExtResource("8_pjbw4")]
+[node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("8_pjbw4")]
 visible = false
 position = Vector2(2160, 528)
+camera = NodePath("../../Camera")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -397,9 +408,10 @@ position = Vector2(1528, 620)
 [node name="Checkpoint" parent="." instance=ExtResource("18_nisko")]
 position = Vector2(1328, 576)
 
-[node name="Orange" parent="." instance=ExtResource("6_4mc3s")]
+[node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_4mc3s")]
 position = Vector2(64, 512)
 scale = Vector2(1, 1)
+camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

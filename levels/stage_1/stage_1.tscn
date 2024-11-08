@@ -313,9 +313,10 @@ position = Vector2(1688, 320)
 [node name="DiamondShard5" parent="Collectables/Shards" instance=ExtResource("7_wfadx")]
 position = Vector2(2120, 192)
 
-[node name="Diamond" parent="Collectables" instance=ExtResource("8_oi8qu")]
+[node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("8_oi8qu")]
 visible = false
 position = Vector2(2120, 96)
+camera = NodePath("../../Camera")
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -348,9 +349,10 @@ position = Vector2(2120, 428)
 [node name="Checkpoint" parent="." instance=ExtResource("21_7hfiv")]
 position = Vector2(1621, 544)
 
-[node name="Orange" parent="." instance=ExtResource("4_72rfk")]
+[node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_72rfk")]
 position = Vector2(192, 440)
 scale = Vector2(1, 1)
+camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
