@@ -22,7 +22,6 @@ func _on_animation_animation_finished() -> void:
 		animated_sprite.play("default")
 	elif animated_sprite.animation == "collected":
 		queue_free()
-		
 		emit_signal("stage_cleared")
 		
 		#var transition = TRANSITION_SCENE.instantiate()
@@ -38,24 +37,21 @@ func _on_animation_animation_finished() -> void:
 		#get_tree().change_scene_to_file("res://ui/start_screen.tscn")
 
 func _on_animation_visibility_changed() -> void:
-	Globals.player.camera_follow("")
-	camera_follow(camera)
-	
-	print("Primeiro timer começou")
-	await get_tree().create_timer(3).timeout
-	print("Primeiro timer acabou")
-	
 	animated_sprite.play("appearing")
 
-	print("Segundo timer começou")
-	await get_tree().create_timer(3).timeout
-	print("Segundo timer acabou")
-	
-	camera_follow("")
-	Globals.player.camera_follow(Globals.player.camera)
+	await get_tree().create_timer(1.5).timeout
+	print("VOLTA!!!")
+	get_parent().get_parent().camera_on_player()
+	#Globals.player.camera_follow(Globals.player.camera)
 
 func camera_follow(target):
 	if target:
 		remote.remote_path = target.get_path()
 	else:
 		remote.remote_path = ""
+
+func appear():
+	var tween = get_tree().create_tween()
+	tween.tween_property(camera, "position", self.position, 2.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	await tween.finished
+	self.show()

@@ -32,7 +32,7 @@ func _process(delta: float) -> void:
 		#var initial_camera_position = camera.global_position
 		#await tween.tween_property(camera, "position", Vector2(1136, 216), 2.0)
 
-		diamond.show()
+		diamond.appear()
 
 		#tween.tween_property(camera, "position", initial_camera_position, 2.0)
 		#Globals.player.camera_follow(camera)

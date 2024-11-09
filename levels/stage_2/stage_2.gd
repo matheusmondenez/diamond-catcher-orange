@@ -2,8 +2,8 @@ extends BaseStage
 
 const DIAMOND_SCENE = preload("res://collectables/diamond.tscn")
 
-@onready var initial_position: Marker2D = $InitialPosition
-@onready var diamond_position: Marker2D = $DiamondPosition
+#@onready var initial_position: Marker2D = $InitialPosition
+#@onready var diamond_position: Marker2D = $DiamondPosition
 @onready var diamond: Area2D = $Collectables/Diamond
 @onready var transition = get_node("Transition/Fill")
 @onready var transition_animation = get_node("Transition/Fill/Animation")
@@ -23,4 +23,4 @@ func _physics_process(delta: float) -> void:
 
 func spawn_diamond() -> void:
 	diamond.get_node("Collision").disabled = false
-	diamond.show()
+	diamond.appear()

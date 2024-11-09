@@ -11,7 +11,7 @@ const PLAYER_SCENE = preload("res://player/player.tscn")
 
 func _ready() -> void:
 	Globals.player = player
-	Globals.player.camera_follow(camera)
+	camera_on_player()
 	Globals.player.has_died.connect(reload_level)
 	hud.time_is_up.connect(game_over)
 
@@ -20,11 +20,14 @@ func reload_level():
 	var player = PLAYER_SCENE.instantiate()
 	add_child(player)
 	Globals.player = player
-	Globals.player.camera_follow(camera)
+	camera_on_player()
 	Globals.player.has_died.connect(reload_level)
 	Globals.coins = 0
 	#Globals.lives = 3 # Rever regra
 	Globals.respawn_player()
+
+func camera_on_player():
+	Globals.player.camera_follow(camera)
 
 func game_over():
 	get_tree().reload_current_scene()
