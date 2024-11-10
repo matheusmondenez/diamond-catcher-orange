@@ -173,7 +173,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 		is_hurting = false
 
 func camera_follow(target) -> void:
-	print("FOLLOW")
 	if target:
 		remote.remote_path = target.get_path()
 	else:

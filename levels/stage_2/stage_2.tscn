@@ -188,12 +188,13 @@ physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_v4prg")
 sources/1 = SubResource("TileSetAtlasSource_jcmtv")
 
-[node name="Stage2" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player")]
+[node name="Stage2" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position")]
 texture_filter = 1
 script = ExtResource("1_p2geq")
 hud = NodePath("UI/HUD")
 camera = NodePath("Camera")
 player = NodePath("Orange")
+start_position = NodePath("InitialPosition")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -2
@@ -428,8 +429,11 @@ position = Vector2(1800, 604)
 [node name="Checkpoint" parent="." instance=ExtResource("19_qyp6u")]
 position = Vector2(1484, 560)
 
+[node name="InitialPosition" type="Marker2D" parent="."]
+position = Vector2(120, 520)
+
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("9_ndtew")]
-position = Vector2(64, 512)
+position = Vector2(120, 520)
 scale = Vector2(1, 1)
 camera = NodePath("../Camera")
 
