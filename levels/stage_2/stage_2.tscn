@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=4 uid="uid://crvlj7cw5jwq1"]
+[gd_scene load_steps=27 format=4 uid="uid://crvlj7cw5jwq1"]
 
 [ext_resource type="Texture2D" uid="uid://cwbhaqhjae4w8" path="res://assets/tileset/autumn/background/6 - Distant_trees.png" id="1_as5lw"]
 [ext_resource type="Script" path="res://levels/stage_2/stage_2.gd" id="1_p2geq"]
 [ext_resource type="Texture2D" uid="uid://d20pi187i443l" path="res://assets/tileset/autumn/background/5 - Tree_row_BG_2.png" id="2_4oii2"]
+[ext_resource type="PackedScene" uid="uid://e04xaqe52o2h" path="res://levels/stage_3/stage_3.tscn" id="2_78ra7"]
 [ext_resource type="Texture2D" uid="uid://bp6t3lrewbnde" path="res://assets/tileset/autumn/background/4 - Tree_row_BG_1.png" id="3_7g1w3"]
 [ext_resource type="Texture2D" uid="uid://bgw22pr7t0wmx" path="res://assets/tileset/autumn/background/3 - Bottom_leaf_piles.png" id="4_r17ud"]
 [ext_resource type="Texture2D" uid="uid://ci3nb21ey7x86" path="res://assets/tileset/autumn/background/2 - Trees.png" id="5_siaqe"]
@@ -196,6 +197,7 @@ camera = NodePath("Camera")
 player = NodePath("Orange")
 start_position = NodePath("InitialPosition")
 diamond = NodePath("Collectables/Diamond")
+next_stage = ExtResource("2_78ra7")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -2

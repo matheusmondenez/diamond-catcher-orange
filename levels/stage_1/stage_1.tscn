@@ -1,10 +1,11 @@
-[gd_scene load_steps=27 format=4 uid="uid://gqy8ellyerfj"]
+[gd_scene load_steps=28 format=4 uid="uid://gqy8ellyerfj"]
 
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="1_bo413"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="1_rsdvp"]
 [ext_resource type="Script" path="res://levels/stage_1/stage_1.gd" id="1_tma6k"]
 [ext_resource type="Texture2D" uid="uid://bgmypa53561o4" path="res://assets/tileset/grassland/plants.png" id="2_5ggyp"]
 [ext_resource type="PackedScene" uid="uid://nvmyv4vh1t83" path="res://ui/transition.tscn" id="2_homdx"]
+[ext_resource type="PackedScene" uid="uid://crvlj7cw5jwq1" path="res://levels/stage_2/stage_2.tscn" id="2_vje1q"]
 [ext_resource type="Texture2D" uid="uid://bdq8vfe6lkfve" path="res://assets/tileset/grassland/terrain.png" id="3_ssbos"]
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="4_72rfk"]
 [ext_resource type="Texture2D" uid="uid://cseqbhvk6efk6" path="res://assets/tileset/grassland/background/5 - Sky_color.png" id="4_i6nwh"]
@@ -188,6 +189,7 @@ camera = NodePath("Camera")
 player = NodePath("Orange")
 start_position = NodePath("InitialPosition")
 diamond = NodePath("Collectables/Diamond")
+next_stage = ExtResource("2_vje1q")
 
 [node name="Background" type="Node2D" parent="."]
 texture_filter = 1

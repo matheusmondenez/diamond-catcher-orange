@@ -10,6 +10,7 @@ const PLAYER_SCENE = preload("res://player/player.tscn")
 @export var player: CharacterBody2D
 @export var start_position: Marker2D
 @export var diamond: Area2D
+@export var next_stage: PackedScene
 
 func _ready() -> void:
 	Globals.player_start_position = start_position
@@ -41,3 +42,6 @@ func clear() -> void:
 	timer.start(2.0)
 	await  timer.timeout
 	get_tree().paused = false
+	
+	if next_stage:
+		get_tree().change_scene_to_packed(next_stage)
