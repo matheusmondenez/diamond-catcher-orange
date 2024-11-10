@@ -41,7 +41,7 @@ func _on_animation_visibility_changed() -> void:
 
 	await get_tree().create_timer(1.5).timeout
 	print("VOLTA!!!")
-	get_parent().get_parent().camera_on_player()
+	#get_parent().get_parent().camera_on_player()
 	#Globals.player.camera_follow(Globals.player.camera)
 
 func camera_follow(target):

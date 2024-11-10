@@ -180,13 +180,14 @@ sources/0 = SubResource("TileSetAtlasSource_0nmgy")
 sources/1 = SubResource("TileSetAtlasSource_dfij8")
 sources/2 = SubResource("TileSetAtlasSource_t1gw2")
 
-[node name="Stage1" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position")]
+[node name="Stage1" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position", "diamond")]
 texture_filter = 1
 script = ExtResource("1_tma6k")
 hud = NodePath("UI/HUD")
 camera = NodePath("Camera")
 player = NodePath("Orange")
 start_position = NodePath("InitialPosition")
+diamond = NodePath("Collectables/Diamond")
 
 [node name="Background" type="Node2D" parent="."]
 texture_filter = 1
@@ -347,8 +348,8 @@ position = Vector2(1496, 448)
 [node name="SpikesArea" parent="Traps" instance=ExtResource("6_bc7hx")]
 position = Vector2(2120, 428)
 
-[node name="Checkpoint" parent="." instance=ExtResource("21_7hfiv")]
-position = Vector2(1621, 544)
+[node name="InitialPosition" type="Marker2D" parent="."]
+position = Vector2(128, 480)
 
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_72rfk")]
 position = Vector2(128, 480)
@@ -357,12 +358,13 @@ camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+limit_left = -10
+limit_top = -10
+limit_right = 2300
+limit_bottom = 620
 
-[node name="InitialPosition" type="Marker2D" parent="."]
-position = Vector2(128, 480)
-
-[node name="DiamondPosition" type="Marker2D" parent="."]
-position = Vector2(2120, 96)
+[node name="Checkpoint" parent="." instance=ExtResource("21_7hfiv")]
+position = Vector2(1621, 544)
 
 [node name="StageClear" type="Timer" parent="."]
 process_mode = 3

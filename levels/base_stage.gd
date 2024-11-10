@@ -9,6 +9,7 @@ const PLAYER_SCENE = preload("res://player/player.tscn")
 @export var camera: Camera2D
 @export var player: CharacterBody2D
 @export var start_position: Marker2D
+@export var diamond: Area2D
 
 func _ready() -> void:
 	Globals.player_start_position = start_position
@@ -16,6 +17,8 @@ func _ready() -> void:
 	Globals.player.camera_follow(camera)
 	Globals.player.has_died.connect(reload_level)
 	hud.time_is_up.connect(game_over)
+	diamond.get_node("Collision").disabled = true
+	diamond.connect("stage_cleared", clear)
 
 func reload_level():
 	await get_tree().create_timer(1.0).timeout
