@@ -10,10 +10,14 @@ extends Node2D
 @onready var hud: CanvasLayer = $HUD
 @onready var transition = get_node("Transition/Fill")
 @onready var transition_animation = get_node("Transition/Fill/Animation")
+@onready var marker_2d: Marker2D = $Marker2D
 
 @export_category("Transition")
 @export_enum("Diamond", "Spot Player", "Spot Center", "Vertical Bar", "Horizontal Bar") var transition_type = 0
 @export_range(0.0, 2.0) var duration = 1.0
+
+signal voltar_camera
+var emited: bool = false
 
 func _ready() -> void:
 	Globals.player_start_position = start_position
@@ -23,19 +27,25 @@ func _ready() -> void:
 	hud.time_is_up.connect(game_over)
 	transition.material.set_shader_parameter("type", transition_type)
 	transition_animation.speed_scale = duration
+	diamond.connect("stage_cleared", clear)
+	self.connect("voltar_camera", voltar_camera_para_jogador)
 
 func _process(delta: float) -> void:
-	var shards_count = shards.get_child_count()
-	
-	if (shards_count == 0 and is_instance_valid(diamond)):
-		#var tween = create_tween()
-		#var initial_camera_position = camera.global_position
-		#await tween.tween_property(camera, "position", Vector2(1136, 216), 2.0)
+	#var shards_count = shards.get_child_count()
+	if (Globals.shards == 5 and is_instance_valid(diamond)):
+		Globals.player.camera_follow("")
+		var tween = create_tween()
+		tween.tween_property(camera, "position", marker_2d.position, 2.0)
+		await tween.finished
 
 		diamond.appear()
 
-		#tween.tween_property(camera, "position", initial_camera_position, 2.0)
-		#Globals.player.camera_follow(camera)
+		await get_tree().create_timer(2.0).timeout
+		
+		#if not emited:
+			#emited = true
+			#emit_signal("voltar_camera")
+		Globals.player.camera_follow(camera)
 
 func reload_level():
 	await get_tree().create_timer(1.0).timeout
@@ -50,3 +60,15 @@ func reload_level():
 
 func game_over():
 	get_tree().reload_current_scene()
+
+func clear() -> void:
+	#var timer = $StageClear
+	#get_tree().paused = true
+	#timer.start(2.0)
+	#await  timer.timeout
+	#get_tree().paused = false
+	Globals.shards = 0
+
+func voltar_camera_para_jogador():
+	print("voltar_camera_para_jogador")
+	Globals.player.camera_follow(camera)

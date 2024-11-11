@@ -42,6 +42,7 @@ func clear() -> void:
 	timer.start(2.0)
 	await  timer.timeout
 	get_tree().paused = false
-	
+	Globals.shards = 0
+
 	if next_stage:
 		get_tree().change_scene_to_packed(next_stage)

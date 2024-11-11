@@ -305,8 +305,6 @@ scale = Vector2(2, 2)
 [node name="Coin" parent="Collectables/Coins" instance=ExtResource("17_t0w6g")]
 position = Vector2(966, 397)
 
-[node name="Hearts" type="Node" parent="Collectables"]
-
 [node name="Shards" type="Node" parent="Collectables"]
 
 [node name="DiamondShard1" parent="Collectables/Shards" instance=ExtResource("7_fwsen")]

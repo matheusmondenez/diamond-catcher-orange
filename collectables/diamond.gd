@@ -41,8 +41,6 @@ func _on_animation_visibility_changed() -> void:
 
 	await get_tree().create_timer(1.5).timeout
 	print("VOLTA!!!")
-	#get_parent().get_parent().camera_on_player()
-	#Globals.player.camera_follow(Globals.player.camera)
 
 func camera_follow(target):
 	if target:
@@ -51,7 +49,7 @@ func camera_follow(target):
 		remote.remote_path = ""
 
 func appear():
-	var tween = get_tree().create_tween()
-	tween.tween_property(camera, "position", self.position, 2.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	await tween.finished
+	#var tween = get_tree().create_tween()
+	#tween.tween_property(camera, "position", self.position, 2.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
+	#await tween.finished
 	self.show()
