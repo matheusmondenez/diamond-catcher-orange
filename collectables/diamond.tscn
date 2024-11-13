@@ -150,7 +150,7 @@ shape = SubResource("CircleShape2D_ibuj0")
 
 [node name="Marker" type="Marker2D" parent="."]
 
-[node name="Remote" type="RemoteTransform2D" parent="."]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

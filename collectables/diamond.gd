@@ -3,8 +3,7 @@ extends Area2D
 const TRANSITION_SCENE = preload("res://ui/transition.tscn")
 
 @onready var animated_sprite: AnimatedSprite2D = $Animation
-@onready var marker: Marker2D = $Marker
-@onready var remote: RemoteTransform2D = $Remote
+@onready var remote: RemoteTransform2D = $RemoteTransform2D
 
 @export var camera: Camera2D
 
@@ -39,17 +38,5 @@ func _on_animation_animation_finished() -> void:
 func _on_animation_visibility_changed() -> void:
 	animated_sprite.play("appearing")
 
-	await get_tree().create_timer(1.5).timeout
-	print("VOLTA!!!")
-
-func camera_follow(target):
-	if target:
-		remote.remote_path = target.get_path()
-	else:
-		remote.remote_path = ""
-
 func appear():
-	#var tween = get_tree().create_tween()
-	#tween.tween_property(camera, "position", self.position, 2.0).set_trans(Tween.TRANS_LINEAR).set_ease(Tween.EASE_IN_OUT)
-	#await tween.finished
 	self.show()

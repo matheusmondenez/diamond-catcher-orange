@@ -172,12 +172,6 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	elif animatied_sprite.animation == "hurting":
 		is_hurting = false
 
-func camera_follow(target) -> void:
-	if target:
-		remote.remote_path = target.get_path()
-	else:
-		remote.remote_path = ""
-
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemies"):
 		if not is_rolling:

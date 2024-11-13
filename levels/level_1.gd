@@ -28,7 +28,6 @@ func _ready() -> void:
 	transition.material.set_shader_parameter("type", transition_type)
 	transition_animation.speed_scale = duration
 	diamond.connect("stage_cleared", clear)
-	#self.connect("voltar_camera", voltar_camera_para_jogador)
 
 func _process(delta: float) -> void:
 	#var shards_count = shards.get_child_count()
@@ -37,23 +36,12 @@ func _process(delta: float) -> void:
 	elif (Globals.shards == 5 and is_instance_valid(diamond)):
 		Globals.player.remote.remote_path = ""
 		diamond.remote.remote_path = camera.get_path()
-		#Globals.player.camera_follow("")
-		#var tween = create_tween()
-		#tween.tween_property(camera, "position", marker_2d.position, 2.0)
-		#await tween.finished
 #
 		await get_tree().create_timer(1.0).timeout
 		diamond.appear()
 		await get_tree().create_timer(1.0).timeout
 
-		#diamond.remote.remote_path = ""
 		Globals.player.remote.remote_path = camera.get_path()
-		#await get_tree().create_timer(2.0).timeout
-		
-		#if not emited:
-			#emited = true
-			#emit_signal("voltar_camera")
-		#Globals.player.camera_follow(camera)
 
 func reload_level():
 	await get_tree().create_timer(1.0).timeout
