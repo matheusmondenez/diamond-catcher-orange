@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://e04xaqe52o2h"]
+[gd_scene load_steps=29 format=4 uid="uid://e04xaqe52o2h"]
 
 [ext_resource type="Script" path="res://levels/stage_3/stage_3.gd" id="1_k6hhg"]
 [ext_resource type="Texture2D" uid="uid://dyrom56gsox5a" path="res://assets/tileset/winter/background/3 - Big_mountain_BG.png" id="1_rromc"]
@@ -134,6 +134,33 @@ physics_layer_0/collision_layer = 2
 physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_tfl7p")
 sources/1 = SubResource("TileSetAtlasSource_rpndm")
+
+[sub_resource type="Curve" id="Curve_ugsng"]
+_data = [Vector2(0, 0.99307), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.44646, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_oej6c"]
+curve = SubResource("Curve_ugsng")
+
+[sub_resource type="Gradient" id="Gradient_ortfq"]
+offsets = PackedFloat32Array(0.497024, 0.589286)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_eyoas"]
+gradient = SubResource("Gradient_ortfq")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_hnwvx"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1200, 1, 1)
+gravity = Vector3(45, 98, 0)
+scale_max = 4.0
+color_initial_ramp = SubResource("GradientTexture1D_eyoas")
+alpha_curve = SubResource("CurveTexture_oej6c")
+turbulence_enabled = true
+turbulence_noise_speed_random = 0.0
+turbulence_influence_min = 0.02
+turbulence_influence_max = 0.08
 
 [node name="Stage3" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position", "diamond")]
 script = ExtResource("1_k6hhg")
@@ -414,7 +441,6 @@ position = Vector2(104, 528)
 
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_4mc3s")]
 position = Vector2(104, 528)
-scale = Vector2(1, 1)
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
@@ -430,3 +456,12 @@ position = Vector2(1328, 576)
 [node name="StageClear" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
+
+[node name="Snow" type="GPUParticles2D" parent="."]
+visible = false
+z_index = 1
+position = Vector2(1016, -112)
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_hnwvx")
+lifetime = 10.0
+preprocess = 30.0

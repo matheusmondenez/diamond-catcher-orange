@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://gqy8ellyerfj"]
+[gd_scene load_steps=29 format=4 uid="uid://gqy8ellyerfj"]
 
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="1_bo413"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="1_rsdvp"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="8_oi8qu"]
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="9_fsyey"]
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="9_r8kw8"]
+[ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="11_2elm3"]
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="21_7hfiv"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62ml8"]
@@ -182,6 +183,7 @@ sources/1 = SubResource("TileSetAtlasSource_dfij8")
 sources/2 = SubResource("TileSetAtlasSource_t1gw2")
 
 [node name="Stage1" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position", "diamond")]
+process_mode = 1
 texture_filter = 1
 script = ExtResource("1_tma6k")
 hud = NodePath("UI/HUD")
@@ -190,6 +192,9 @@ player = NodePath("Orange")
 start_position = NodePath("InitialPosition")
 diamond = NodePath("Collectables/Diamond")
 next_stage = ExtResource("2_vje1q")
+
+[node name="PauseScreen" parent="." instance=ExtResource("11_2elm3")]
+layer = 3
 
 [node name="Background" type="Node2D" parent="."]
 texture_filter = 1
@@ -355,10 +360,10 @@ position = Vector2(128, 480)
 
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_72rfk")]
 position = Vector2(128, 480)
-scale = Vector2(1, 1)
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(2, 2)
 limit_left = -10
 limit_top = -10

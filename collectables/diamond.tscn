@@ -137,6 +137,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_ibuj0"]
 
 [node name="Diamond" type="Area2D"]
+process_mode = 3
 collision_layer = 8
 script = ExtResource("1_48ddd")
 
@@ -151,6 +152,7 @@ shape = SubResource("CircleShape2D_ibuj0")
 [node name="Marker" type="Marker2D" parent="."]
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+process_mode = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]
