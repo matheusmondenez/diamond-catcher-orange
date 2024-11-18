@@ -195,6 +195,7 @@ next_stage = ExtResource("2_vje1q")
 
 [node name="PauseScreen" parent="." instance=ExtResource("11_2elm3")]
 layer = 3
+visible = false
 
 [node name="Background" type="Node2D" parent="."]
 texture_filter = 1
@@ -320,7 +321,7 @@ position = Vector2(1448, 192)
 position = Vector2(1688, 320)
 
 [node name="DiamondShard5" parent="Collectables/Shards" instance=ExtResource("7_wfadx")]
-position = Vector2(2120, 192)
+position = Vector2(2120, 232)
 
 [node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("8_oi8qu")]
 visible = false

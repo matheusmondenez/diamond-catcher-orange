@@ -172,6 +172,7 @@ diamond = NodePath("Collectables/Diamond")
 next_stage = ExtResource("2_s4jmt")
 
 [node name="Background" type="Node2D" parent="."]
+visible = false
 texture_filter = 1
 position = Vector2(1094, 468)
 
@@ -458,7 +459,6 @@ process_mode = 3
 one_shot = true
 
 [node name="Snow" type="GPUParticles2D" parent="."]
-visible = false
 z_index = 1
 position = Vector2(1016, -112)
 amount = 200
