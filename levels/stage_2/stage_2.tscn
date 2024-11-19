@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://crvlj7cw5jwq1"]
+[gd_scene load_steps=28 format=4 uid="uid://crvlj7cw5jwq1"]
 
 [ext_resource type="Texture2D" uid="uid://cwbhaqhjae4w8" path="res://assets/tileset/autumn/background/6 - Distant_trees.png" id="1_as5lw"]
 [ext_resource type="Script" path="res://levels/stage_2/stage_2.gd" id="1_p2geq"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="8_b7qny"]
 [ext_resource type="Texture2D" uid="uid://nhabeov4b3hu" path="res://assets/tileset/autumn/terrain.png" id="8_xw7wa"]
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="9_ndtew"]
+[ext_resource type="PackedScene" uid="uid://nvmyv4vh1t83" path="res://ui/transition.tscn" id="9_ok4sk"]
 [ext_resource type="PackedScene" uid="uid://dkvaj432xtxvq" path="res://collectables/diamond_shard.tscn" id="11_2oup2"]
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="11_7smgb"]
 [ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="11_rebip"]
@@ -311,6 +312,9 @@ texture = ExtResource("6_o8mgj")
 stretch_mode = 1
 
 [node name="UI" type="Node" parent="."]
+
+[node name="Transition" parent="UI" instance=ExtResource("9_ok4sk")]
+layer = 2
 
 [node name="HUD" parent="UI" instance=ExtResource("8_b7qny")]
 

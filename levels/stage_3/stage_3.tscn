@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://e04xaqe52o2h"]
+[gd_scene load_steps=30 format=4 uid="uid://e04xaqe52o2h"]
 
 [ext_resource type="Script" path="res://levels/stage_3/stage_3.gd" id="1_k6hhg"]
 [ext_resource type="Texture2D" uid="uid://dyrom56gsox5a" path="res://assets/tileset/winter/background/3 - Big_mountain_BG.png" id="1_rromc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://cte5eiwlly4j3" path="res://assets/tileset/winter/terrain.png" id="5_14811"]
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="5_hwg3m"]
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="6_4mc3s"]
+[ext_resource type="PackedScene" uid="uid://nvmyv4vh1t83" path="res://ui/transition.tscn" id="6_svodg"]
 [ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="8_pjbw4"]
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="8_u6ebg"]
 [ext_resource type="PackedScene" uid="uid://cxvy7o38hllrv" path="res://enemies/armored_totem.tscn" id="9_837oh"]
@@ -211,6 +212,9 @@ repeat_times = 5
 texture = ExtResource("3_wosv2")
 
 [node name="UI" type="Node" parent="."]
+
+[node name="Transition" parent="UI" instance=ExtResource("6_svodg")]
+layer = 2
 
 [node name="HUD" parent="UI" instance=ExtResource("5_hwg3m")]
 

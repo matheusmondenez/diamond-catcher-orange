@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cdlq4joojcofq"]
+[gd_scene load_steps=29 format=4 uid="uid://cdlq4joojcofq"]
 
 [ext_resource type="Script" path="res://levels/stage_4/stage_4.gd" id="1_6b6o7"]
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="2_01kmu"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dtkng6kq3on8w" path="res://assets/tileset/tropics/terrain.png" id="4_ust8o"]
 [ext_resource type="PackedScene" uid="uid://hxwr1px1pf31" path="res://collectables/diamond.tscn" id="5_2oe2m"]
 [ext_resource type="Texture2D" uid="uid://vk4j3dk72ybp" path="res://assets/tileset/tropics/background/2 - Waters_version_2.png" id="5_4itux"]
+[ext_resource type="PackedScene" uid="uid://nvmyv4vh1t83" path="res://ui/transition.tscn" id="6_ljhpk"]
 [ext_resource type="PackedScene" uid="uid://xrsna1j1whpk" path="res://collectables/coin.tscn" id="9_hln0t"]
 [ext_resource type="PackedScene" uid="uid://dkvaj432xtxvq" path="res://collectables/diamond_shard.tscn" id="9_po07j"]
 [ext_resource type="PackedScene" uid="uid://br3jr6u32a8xv" path="res://enemies/spike_patrol.tscn" id="10_tna0l"]
@@ -247,6 +248,9 @@ offset_bottom = 83.3333
 texture = ExtResource("4_7dkaw")
 
 [node name="UI" type="Node" parent="."]
+
+[node name="Transition" parent="UI" instance=ExtResource("6_ljhpk")]
+layer = 2
 
 [node name="HUD" parent="UI" instance=ExtResource("2_01kmu")]
 

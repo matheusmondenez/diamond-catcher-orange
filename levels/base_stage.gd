@@ -3,6 +3,7 @@ extends Node
 class_name BaseStage
 
 const PLAYER_SCENE = preload("res://player/player.tscn")
+const TRANSITION_SCENE = preload("res://ui/transition.tscn")
 
 @export_category("Stage Elements")
 @export var hud: CanvasLayer
@@ -53,6 +54,16 @@ func clear() -> void:
 	await  timer.timeout
 	get_tree().paused = false
 	Globals.shards = 0
+
+	var transition = TRANSITION_SCENE.instantiate()
+	get_tree().root.add_child(transition)
+	var transition_fill = transition.get_child(0)
+	var transition_animation = transition_fill.get_child(0)
+	transition_fill.material.set_shader_parameter("type", 0)
+	transition_animation.current_animation = "in"
+	transition_animation.speed_scale = 0.5
+	await transition_animation.animation_finished
+	await get_tree().create_timer(0.5).timeout
 
 	if next_stage:
 		get_tree().change_scene_to_packed(next_stage)
