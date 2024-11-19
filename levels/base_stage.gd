@@ -54,8 +54,8 @@ func clear() -> void:
 	get_tree().paused = false
 	Globals.shards = 0
 
-	#if next_stage:
-		#get_tree().change_scene_to_packed(next_stage)
+	if next_stage:
+		get_tree().change_scene_to_packed(next_stage)
 
 func spawn_diamond() -> void:
 	if is_instance_valid(diamond):
