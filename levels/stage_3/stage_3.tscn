@@ -173,7 +173,6 @@ diamond = NodePath("Collectables/Diamond")
 next_stage = ExtResource("2_s4jmt")
 
 [node name="Background" type="Node2D" parent="."]
-visible = false
 texture_filter = 1
 position = Vector2(1094, 468)
 
