@@ -66,4 +66,3 @@ func spawn_new_enemy():
 	var instance_scene = spawn_instance.instantiate()
 	get_tree().root.add_child(instance_scene)
 	instance_scene.global_position = spawn_instance_position.global_position
-	instance_scene.scale = Vector2(2, 2)
