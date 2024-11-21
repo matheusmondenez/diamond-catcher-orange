@@ -45,7 +45,8 @@ func reload_level():
 	Globals.respawn_player()
 
 func game_over():
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_file("res://ui/game_over.tscn")
+	#get_tree().reload_current_scene()
 
 func clear() -> void:
 	var timer = $StageClear

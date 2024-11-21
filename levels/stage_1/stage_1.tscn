@@ -264,6 +264,7 @@ centered = false
 layer = 2
 
 [node name="HUD" parent="UI" instance=ExtResource("1_bo413")]
+default_minutes = 1
 
 [node name="TileMap" type="Node" parent="."]
 

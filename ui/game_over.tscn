@@ -1,0 +1,158 @@
+[gd_scene load_steps=10 format=3 uid="uid://cghwch6vp6kf"]
+
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="1_3qm06"]
+[ext_resource type="Script" path="res://ui/game_over.gd" id="1_f1ko6"]
+[ext_resource type="Texture2D" uid="uid://s4guhayiqpff" path="res://assets/ui/button_restart_default.png" id="2_g44km"]
+[ext_resource type="Texture2D" uid="uid://2msffi78et3v" path="res://assets/ui/button_restart_hover.png" id="3_jcwml"]
+[ext_resource type="Texture2D" uid="uid://dcc7h52ta88hh" path="res://assets/ui/button_quit_default.png" id="4_krxtn"]
+[ext_resource type="Texture2D" uid="uid://d4echt3as56v1" path="res://assets/ui/button_quit_hover.png" id="5_655dk"]
+
+[sub_resource type="Animation" id="Animation_ggaop"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VerticalContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_60yeh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VerticalContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71bob"]
+_data = {
+"RESET": SubResource("Animation_60yeh"),
+"fade": SubResource("Animation_ggaop")
+}
+
+[node name="GameOver" type="Node"]
+script = ExtResource("1_f1ko6")
+
+[node name="Background" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -172.5
+offset_top = -127.5
+offset_right = 172.5
+offset_bottom = -78.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_3qm06")
+theme_override_font_sizes/normal_font_size = 64
+text = "GAME OVER"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -28.0
+offset_right = 100.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 8
+theme_override_constants/separation = 20
+
+[node name="RestartButton" type="TextureButton" parent="VerticalContainer"]
+layout_mode = 2
+texture_normal = ExtResource("2_g44km")
+texture_pressed = ExtResource("3_jcwml")
+texture_hover = ExtResource("3_jcwml")
+
+[node name="QuitButton" type="TextureButton" parent="VerticalContainer"]
+layout_mode = 2
+texture_normal = ExtResource("4_krxtn")
+texture_pressed = ExtResource("5_655dk")
+texture_hover = ExtResource("5_655dk")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_71bob")
+}
+autoplay = "fade"
+
+[connection signal="pressed" from="VerticalContainer/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="VerticalContainer/QuitButton" to="." method="_on_quit_button_pressed"]
