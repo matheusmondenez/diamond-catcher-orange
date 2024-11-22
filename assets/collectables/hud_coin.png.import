@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gsjj1ughxl0"
-path="res://.godot/imported/shard_3.png-3d1b83446d5a187d644c4dbb91d7fb20.ctex"
+uid="uid://bn5fnoj5kukwm"
+path="res://.godot/imported/hud_coin.png-d1960852f204e154bbeb8c9d160805fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/collectables/shard_3.png"
-dest_files=["res://.godot/imported/shard_3.png-3d1b83446d5a187d644c4dbb91d7fb20.ctex"]
+source_file="res://assets/collectables/hud_coin.png"
+dest_files=["res://.godot/imported/hud_coin.png-d1960852f204e154bbeb8c9d160805fd.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://x3cbtsw2so5x"
-path="res://.godot/imported/lives_13.png-3c30bc7f5be61cab35da7b83b6b25702.ctex"
+uid="uid://buw28km4er68c"
+path="res://.godot/imported/hud_heart.png-170bf378d09d33b4141e8d9bd6fb5b53.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/collectables/lives_13.png"
-dest_files=["res://.godot/imported/lives_13.png-3c30bc7f5be61cab35da7b83b6b25702.ctex"]
+source_file="res://assets/collectables/hud_heart.png"
+dest_files=["res://.godot/imported/hud_heart.png-170bf378d09d33b4141e8d9bd6fb5b53.ctex"]
 
 [params]
 

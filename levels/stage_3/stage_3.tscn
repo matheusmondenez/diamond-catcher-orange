@@ -216,6 +216,8 @@ texture = ExtResource("3_wosv2")
 layer = 2
 
 [node name="HUD" parent="UI" instance=ExtResource("5_hwg3m")]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
 
 [node name="TileMap" type="Node" parent="."]
 

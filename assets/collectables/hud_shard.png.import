@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cghtow1q1sks5"
-path="res://.godot/imported/heart.png-cf047b3c8e4b20d62c5dc30b77df19de.ctex"
+uid="uid://dkirn6u3y0e3j"
+path="res://.godot/imported/hud_shard.png-36982d21a14be40ed7d4bb35cf041604.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/collectables/heart.png"
-dest_files=["res://.godot/imported/heart.png-cf047b3c8e4b20d62c5dc30b77df19de.ctex"]
+source_file="res://assets/collectables/hud_shard.png"
+dest_files=["res://.godot/imported/hud_shard.png-36982d21a14be40ed7d4bb35cf041604.ctex"]
 
 [params]
 

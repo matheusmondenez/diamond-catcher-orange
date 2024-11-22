@@ -1,92 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://bwqba2pf424sj"]
+[gd_scene load_steps=6 format=3 uid="uid://bwqba2pf424sj"]
 
-[ext_resource type="Texture2D" uid="uid://d0mm7qhykdrfh" path="res://assets/ui/coin_sprite_0.png" id="1_kx1hg"]
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_x8gyq"]
-[ext_resource type="Texture2D" uid="uid://b0kq448x5jbfp" path="res://assets/collectables/lives_00.png" id="2_3ge86"]
-[ext_resource type="Texture2D" uid="uid://dchyyr6ct1eq8" path="res://assets/ui/coin_sprite_1.png" id="2_bqgwr"]
-[ext_resource type="Texture2D" uid="uid://cks3dy4ydy6ku" path="res://assets/collectables/life.png" id="2_mfrv2"]
-[ext_resource type="Texture2D" uid="uid://df0vuisy0j2bs" path="res://assets/collectables/lives_01.png" id="3_kx66l"]
-[ext_resource type="Texture2D" uid="uid://dlupxdvdmiims" path="res://assets/ui/coin_sprite_2.png" id="3_tjqp6"]
-[ext_resource type="Texture2D" uid="uid://djbyeunr5cga2" path="res://assets/ui/coin_sprite_3.png" id="4_ie7bk"]
-[ext_resource type="Texture2D" uid="uid://dxvy87ubxcxtn" path="res://assets/collectables/lives_10.png" id="4_odc0j"]
-[ext_resource type="Texture2D" uid="uid://dhmeao7j1i8ts" path="res://assets/collectables/lives_11.png" id="5_g31hv"]
+[ext_resource type="Texture2D" uid="uid://buw28km4er68c" path="res://assets/collectables/hud_heart.png" id="2_7k1mf"]
+[ext_resource type="Texture2D" uid="uid://bn5fnoj5kukwm" path="res://assets/collectables/hud_coin.png" id="3_o6x25"]
+[ext_resource type="Texture2D" uid="uid://dkirn6u3y0e3j" path="res://assets/collectables/hud_shard.png" id="5_0u6n0"]
 [ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="5_km0r1"]
-[ext_resource type="Texture2D" uid="uid://jhwwtnmlq5sa" path="res://assets/collectables/lives_12.png" id="6_sf5fn"]
-[ext_resource type="Texture2D" uid="uid://x3cbtsw2so5x" path="res://assets/collectables/lives_13.png" id="7_kukyr"]
-[ext_resource type="Texture2D" uid="uid://btebni0uxoiae" path="res://assets/collectables/lives_14.png" id="8_ftr7k"]
-[ext_resource type="Texture2D" uid="uid://dh35kq35yes13" path="res://assets/collectables/lives_15.png" id="9_in8oh"]
-[ext_resource type="Texture2D" uid="uid://cbcrat2qqu1t3" path="res://assets/collectables/lives_16.png" id="10_ux18a"]
-[ext_resource type="Texture2D" uid="uid://be0412n4xnxt3" path="res://assets/collectables/lives_02.png" id="11_huh4d"]
-[ext_resource type="Texture2D" uid="uid://70w7eoqe1x0p" path="res://assets/collectables/lives_03.png" id="12_or1t8"]
-[ext_resource type="Texture2D" uid="uid://0t6lw5xl7xn6" path="res://assets/collectables/lives_04.png" id="13_410ot"]
-[ext_resource type="Texture2D" uid="uid://jq7bngxpe8s1" path="res://assets/collectables/lives_05.png" id="14_u7757"]
-[ext_resource type="Texture2D" uid="uid://rpifdkj000mf" path="res://assets/collectables/lives_06.png" id="15_erppm"]
-[ext_resource type="Texture2D" uid="uid://ocgrb34irj8h" path="res://assets/collectables/lives_07.png" id="16_pt0c2"]
-[ext_resource type="Texture2D" uid="uid://bc313p68nxv38" path="res://assets/collectables/lives_08.png" id="17_g41bo"]
-[ext_resource type="Texture2D" uid="uid://b3jdnau6vefxu" path="res://assets/collectables/lives_09.png" id="18_1pat0"]
-[ext_resource type="Texture2D" uid="uid://d3eaq1eqo2rw6" path="res://assets/collectables/shard_0.png" id="24_axrvu"]
-[ext_resource type="Texture2D" uid="uid://cmi0wg63kdp0d" path="res://assets/collectables/shard_1.png" id="25_8xut5"]
-[ext_resource type="Texture2D" uid="uid://dpdxrqfyere0m" path="res://assets/collectables/shard_2.png" id="26_4jgmp"]
-[ext_resource type="Texture2D" uid="uid://gsjj1ughxl0" path="res://assets/collectables/shard_3.png" id="27_3h5or"]
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_fuiid"]
-frames = 17
-speed_scale = 12.0
-frame_0/texture = ExtResource("2_3ge86")
-frame_1/texture = ExtResource("3_kx66l")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("11_huh4d")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("12_or1t8")
-frame_3/duration = 1.0
-frame_4/texture = ExtResource("13_410ot")
-frame_4/duration = 1.0
-frame_5/texture = ExtResource("14_u7757")
-frame_5/duration = 1.0
-frame_6/texture = ExtResource("15_erppm")
-frame_6/duration = 1.0
-frame_7/texture = ExtResource("16_pt0c2")
-frame_7/duration = 1.0
-frame_8/texture = ExtResource("17_g41bo")
-frame_8/duration = 1.0
-frame_9/texture = ExtResource("18_1pat0")
-frame_9/duration = 1.0
-frame_10/texture = ExtResource("4_odc0j")
-frame_10/duration = 1.0
-frame_11/texture = ExtResource("5_g31hv")
-frame_11/duration = 1.0
-frame_12/texture = ExtResource("6_sf5fn")
-frame_12/duration = 1.0
-frame_13/texture = ExtResource("7_kukyr")
-frame_13/duration = 1.0
-frame_14/texture = ExtResource("8_ftr7k")
-frame_14/duration = 1.0
-frame_15/texture = ExtResource("9_in8oh")
-frame_15/duration = 1.0
-frame_16/texture = ExtResource("10_ux18a")
-frame_16/duration = 1.0
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_xwq5t"]
-frames = 4
-speed_scale = 6.0
-frame_0/texture = ExtResource("1_kx1hg")
-frame_1/texture = ExtResource("2_bqgwr")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_tjqp6")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("4_ie7bk")
-frame_3/duration = 1.0
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_145dl"]
-frames = 4
-speed_scale = 12.0
-frame_0/texture = ExtResource("24_axrvu")
-frame_1/texture = ExtResource("25_8xut5")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("26_4jgmp")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("27_3h5or")
-frame_3/duration = 1.0
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_counter")]
 script = ExtResource("1_x8gyq")
@@ -123,49 +41,23 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 
 [node name="HeartsContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-theme_override_constants/separation = -8
+theme_override_constants/separation = 0
 
 [node name="Heart1" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
 layout_mode = 2
-texture = ExtResource("2_mfrv2")
+texture = ExtResource("2_7k1mf")
 
 [node name="Heart2" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
 layout_mode = 2
-texture = ExtResource("2_mfrv2")
+texture = ExtResource("2_7k1mf")
 
 [node name="Heart3" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/HeartsContainer"]
 layout_mode = 2
-texture = ExtResource("2_mfrv2")
-
-[node name="LivesContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 8
-
-[node name="Sprite" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/LivesContainer"]
-texture_filter = 1
-layout_mode = 2
-texture = SubResource("AnimatedTexture_fuiid")
-
-[node name="Separator" type="Label" parent="Control/MarginContainer/VBoxContainer/LivesContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_km0r1")
-theme_override_font_sizes/font_size = 8
-text = "X
-"
-
-[node name="Counter" type="Label" parent="Control/MarginContainer/VBoxContainer/LivesContainer"]
-texture_filter = 1
-layout_mode = 2
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("5_km0r1")
-theme_override_font_sizes/font_size = 8
-text = "03"
+texture = ExtResource("2_7k1mf")
 
 [node name="CoinsContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
 texture_filter = 1
@@ -176,7 +68,7 @@ size_flags_vertical = 0
 [node name="Sprite" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/CoinsContainer"]
 texture_filter = 1
 layout_mode = 2
-texture = SubResource("AnimatedTexture_xwq5t")
+texture = ExtResource("3_o6x25")
 
 [node name="Counter" type="Label" parent="Control/MarginContainer/VBoxContainer/CoinsContainer"]
 texture_filter = 1
@@ -192,7 +84,8 @@ layout_mode = 2
 [node name="Sprite" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/ShardsContainer"]
 texture_filter = 1
 layout_mode = 2
-texture = SubResource("AnimatedTexture_145dl")
+texture = ExtResource("5_0u6n0")
+stretch_mode = 1
 
 [node name="Counter" type="Label" parent="Control/MarginContainer/VBoxContainer/ShardsContainer"]
 texture_filter = 1

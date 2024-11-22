@@ -20,7 +20,6 @@ func _ready() -> void:
 	shards_counter.text = str(Globals.shards)
 	coins_counter.text = str("%02d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
-	lives_counter.text = str("%01d" % Globals.lives)
 	timer_counter.text = str("%02d" % default_minutes) + ":" + str("%02d" % defaul_seconds)
 	
 	reset_clock_timer()
@@ -29,7 +28,6 @@ func _process(delta: float) -> void:
 	shards_counter.text = str(Globals.shards)
 	coins_counter.text = str("%02d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
-	lives_counter.text = str("%01d" % Globals.lives)
 	
 	for h in 3:
 		if (h < Globals.hearts):
