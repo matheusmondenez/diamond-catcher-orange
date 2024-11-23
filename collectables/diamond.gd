@@ -22,18 +22,6 @@ func _on_animation_animation_finished() -> void:
 	elif animated_sprite.animation == "collected":
 		queue_free()
 		emit_signal("stage_cleared")
-		
-		#var transition = TRANSITION_SCENE.instantiate()
-		#get_tree().root.add_child(transition)
-		#var transition_fill = transition.get_child(0)
-		#var transition_animation = transition_fill.get_child(0)
-		#transition_fill.material.set_shader_parameter("type", 0)
-		#transition_animation.current_animation = "in"
-		#transition_animation.speed_scale = 0.5
-		
-		#await transition_animation.animation_finished
-		#await get_tree().create_timer(0.5).timeout
-		#get_tree().change_scene_to_file("res://ui/start_screen.tscn")
 
 func _on_animation_visibility_changed() -> void:
 	animated_sprite.play("appearing")

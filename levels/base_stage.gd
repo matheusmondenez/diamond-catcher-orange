@@ -66,7 +66,10 @@ func clear() -> void:
 	await transition_animation.animation_finished
 	await get_tree().create_timer(0.5).timeout
 
-	if next_stage:
+	if self.name == "Stage4":
+		transition.queue_free()
+		get_tree().change_scene_to_file("res://ui/win_screen.tscn")
+	elif next_stage:
 		get_tree().change_scene_to_packed(next_stage)
 
 func spawn_diamond() -> void:
@@ -75,7 +78,6 @@ func spawn_diamond() -> void:
 		diamond.show()
 
 func test() -> void:
-	print("ALL SHARDS")
 	get_tree().paused = true
 	Globals.player.remote.remote_path = ""
 	diamond.remote.remote_path = camera.get_path()

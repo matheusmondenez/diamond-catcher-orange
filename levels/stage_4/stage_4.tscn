@@ -1,9 +1,10 @@
-[gd_scene load_steps=29 format=4 uid="uid://cdlq4joojcofq"]
+[gd_scene load_steps=30 format=4 uid="uid://cdlq4joojcofq"]
 
 [ext_resource type="Script" path="res://levels/stage_4/stage_4.gd" id="1_6b6o7"]
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="2_01kmu"]
 [ext_resource type="Texture2D" uid="uid://beiwai6v4b0df" path="res://assets/tileset/tropics/background/5 - Sky_color.png" id="2_2mxda"]
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="2_2ssl0"]
+[ext_resource type="PackedScene" uid="uid://i6bitkxpvqjj" path="res://ui/win_screen.tscn" id="2_eibee"]
 [ext_resource type="Texture2D" uid="uid://dq3r3xonpixh3" path="res://assets/tileset/tropics/background/4 - Background_clouds.png" id="3_5iv7b"]
 [ext_resource type="Texture2D" uid="uid://n0tsyhqfd78f" path="res://assets/tileset/tropics/entities.png" id="3_a5kpq"]
 [ext_resource type="PackedScene" uid="uid://cr44oxaxyl2fh" path="res://player/player.tscn" id="3_i5cjh"]
@@ -189,6 +190,7 @@ camera = NodePath("Camera")
 player = NodePath("Orange")
 start_position = NodePath("InitialPosition")
 diamond = NodePath("Collectables/Diamond")
+next_stage = ExtResource("2_eibee")
 
 [node name="Background" type="Node2D" parent="."]
 z_index = -2
@@ -410,7 +412,7 @@ position = Vector2(1800, 248)
 
 [node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("5_2oe2m")]
 visible = false
-position = Vector2(2264, 256)
+position = Vector2(1856, 248)
 camera = NodePath("../../Camera")
 
 [node name="Enemies" type="Node" parent="."]

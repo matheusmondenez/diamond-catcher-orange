@@ -177,6 +177,7 @@ hue_variation_max = 1.0
 script = ExtResource("1_5tsmv")
 
 [node name="Background" type="TextureRect" parent="."]
+z_index = 999
 material = SubResource("ShaderMaterial_2he4d")
 anchors_preset = 15
 anchor_right = 1.0
@@ -190,6 +191,7 @@ texture = ExtResource("1_7gfnt")
 stretch_mode = 1
 
 [node name="Trophy" type="AnimatedSprite2D" parent="."]
+z_index = 999
 texture_filter = 1
 position = Vector2(883, 411)
 scale = Vector2(5.21875, 5.21875)
@@ -198,6 +200,7 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Text" type="RichTextLabel" parent="."]
+z_index = 999
 texture_filter = 1
 offset_left = 47.0
 offset_top = -27.0
@@ -217,6 +220,7 @@ libraries = {
 autoplay = "fade"
 
 [node name="GPUParticles" type="GPUParticles2D" parent="."]
+z_index = 999
 position = Vector2(883, 350)
 emitting = false
 amount = 32
@@ -226,6 +230,7 @@ explosiveness = 0.6
 randomness = 0.2
 
 [node name="VerticalContainer" type="VBoxContainer" parent="."]
+z_index = 999
 texture_filter = 1
 offset_left = 72.0
 offset_top = 408.0

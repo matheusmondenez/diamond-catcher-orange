@@ -98,12 +98,12 @@ func run() -> void:
 
 func jump() -> void:
 	if is_on_floor():
-		#jump_sfx.play()
+		jump_sfx.play()
 		jump_count = 0
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 	elif can_double_jump and jump_count < JUMP_MAX:
-		#jump_sfx.play()
+		jump_sfx.play()
 		velocity.y = JUMP_VELOCITY
 		jump_count += 1
 
