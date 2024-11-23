@@ -1,0 +1,247 @@
+[gd_scene load_steps=25 format=3 uid="uid://i6bitkxpvqjj"]
+
+[ext_resource type="Script" path="res://ui/win_screen.gd" id="1_5tsmv"]
+[ext_resource type="Texture2D" uid="uid://ccplw0kgkhtvl" path="res://assets/ui/background_win.png" id="1_7gfnt"]
+[ext_resource type="Shader" path="res://ui/background_scroll.gdshader" id="2_l3xnu"]
+[ext_resource type="Texture2D" uid="uid://cb6838ai7cjd6" path="res://assets/world/trophy.png" id="2_r2qkd"]
+[ext_resource type="Texture2D" uid="uid://cfe7ux540taku" path="res://assets/world/trophy_idle.png" id="3_xs1m6"]
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="3_y53w1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2he4d"]
+shader = ExtResource("2_l3xnu")
+shader_parameter/speed = 0.1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrs2i"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doup4"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_012dc"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcw07"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofeen"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhnig"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2m1ky"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s4um"]
+atlas = ExtResource("2_r2qkd")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_00b63"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrs2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doup4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_012dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcw07")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofeen")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhnig")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2m1ky")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s4um")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xs1m6")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 0.0
+}]
+
+[sub_resource type="Animation" id="Animation_7utlo"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trophy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trophy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1083, 411), Vector2(883, 411)]
+}
+
+[sub_resource type="Animation" id="Animation_c1woa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Trophy:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Trophy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(883, 411)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bb7f3"]
+_data = {
+"RESET": SubResource("Animation_c1woa"),
+"fade": SubResource("Animation_7utlo")
+}
+
+[sub_resource type="Gradient" id="Gradient_k7h04"]
+offsets = PackedFloat32Array(0, 0.333333, 0.822222)
+colors = PackedColorArray(1, 0, 0, 1, 0.466667, 0.466667, 0.466667, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_e1pcy"]
+gradient = SubResource("Gradient_k7h04")
+
+[sub_resource type="Curve" id="Curve_dnqaj"]
+_data = [Vector2(0.00204918, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.30566), -1.66536, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4cf4h"]
+curve = SubResource("Curve_dnqaj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kmb5m"]
+particle_flag_disable_z = true
+angle_min = -100.0
+angle_max = 100.0
+direction = Vector3(0, -1, 0)
+initial_velocity_min = 628.46
+initial_velocity_max = 629.05
+gravity = Vector3(0, 500, 0)
+scale_min = 10.0
+scale_max = 10.0
+scale_curve = SubResource("CurveTexture_4cf4h")
+color = Color(0.798875, 0.226918, 0.290618, 1)
+color_ramp = SubResource("GradientTexture1D_e1pcy")
+hue_variation_min = -0.2
+hue_variation_max = 1.0
+
+[node name="WinScreen" type="Node"]
+script = ExtResource("1_5tsmv")
+
+[node name="Background" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2he4d")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+texture = ExtResource("1_7gfnt")
+stretch_mode = 1
+
+[node name="Trophy" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(883, 411)
+scale = Vector2(5.21875, 5.21875)
+sprite_frames = SubResource("SpriteFrames_00b63")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Text" type="RichTextLabel" parent="."]
+texture_filter = 1
+offset_left = 47.0
+offset_top = -27.0
+offset_right = 651.0
+offset_bottom = 280.0
+theme_override_constants/outline_size = 24
+theme_override_fonts/normal_font = ExtResource("3_y53w1")
+theme_override_font_sizes/normal_font_size = 128
+text = "
+ YOU WIN!"
+autowrap_mode = 0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bb7f3")
+}
+autoplay = "fade"
+
+[node name="GPUParticles" type="GPUParticles2D" parent="."]
+position = Vector2(883, 350)
+emitting = false
+amount = 32
+process_material = SubResource("ParticleProcessMaterial_kmb5m")
+lifetime = 5.0
+explosiveness = 0.6
+randomness = 0.2
+
+[node name="VerticalContainer" type="VBoxContainer" parent="."]
+texture_filter = 1
+offset_left = 72.0
+offset_top = 408.0
+offset_right = 272.0
+offset_bottom = 540.0
+
+[node name="ScoreLabel" type="Label" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_y53w1")
+theme_override_font_sizes/font_size = 64
+text = "SCORE"
+
+[node name="ScorePoints" type="Label" parent="VerticalContainer"]
+layout_mode = 2
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("3_y53w1")
+theme_override_font_sizes/font_size = 64
+text = "?"
