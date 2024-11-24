@@ -23,7 +23,7 @@ func _ready() -> void:
 	hud.time_is_up.connect(game_over)
 	diamond.get_node("Collision").disabled = true
 	diamond.connect("stage_cleared", clear)
-	self.connect("all_shards_collected", test)
+	self.connect("all_shards_collected", transit_camera)
 
 func _physics_process(delta: float) -> void:
 	if Globals.shards < 5 and is_instance_valid(Globals.player):
@@ -66,8 +66,9 @@ func clear() -> void:
 	await transition_animation.animation_finished
 	await get_tree().create_timer(0.5).timeout
 
+	transition.queue_free()
+
 	if self.name == "Stage4":
-		transition.queue_free()
 		get_tree().change_scene_to_file("res://ui/win_screen.tscn")
 	elif next_stage:
 		get_tree().change_scene_to_packed(next_stage)
@@ -77,7 +78,7 @@ func spawn_diamond() -> void:
 		diamond.get_node("Collision").disabled = false
 		diamond.show()
 
-func test() -> void:
+func transit_camera() -> void:
 	get_tree().paused = true
 	Globals.player.remote.remote_path = ""
 	diamond.remote.remote_path = camera.get_path()
