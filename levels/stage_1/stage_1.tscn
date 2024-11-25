@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://gqy8ellyerfj"]
+[gd_scene load_steps=30 format=4 uid="uid://gqy8ellyerfj"]
 
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="1_bo413"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="1_rsdvp"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="9_r8kw8"]
 [ext_resource type="PackedScene" uid="uid://dyuxg6tjmohm6" path="res://ui/pause_screen.tscn" id="11_2elm3"]
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="21_7hfiv"]
+[ext_resource type="AudioStream" uid="uid://yg2ratxfbaxm" path="res://assets/sounds/stage_1_music.mp3" id="24_lhy3x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62ml8"]
 shader = ExtResource("4_qo228")
@@ -380,3 +381,8 @@ position = Vector2(1621, 544)
 [node name="StageClear" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_lhy3x")
+autoplay = true
+parameters/looping = true

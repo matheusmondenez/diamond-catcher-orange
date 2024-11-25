@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://crvlj7cw5jwq1"]
+[gd_scene load_steps=29 format=4 uid="uid://crvlj7cw5jwq1"]
 
 [ext_resource type="Texture2D" uid="uid://cwbhaqhjae4w8" path="res://assets/tileset/autumn/background/6 - Distant_trees.png" id="1_as5lw"]
 [ext_resource type="Script" path="res://levels/stage_2/stage_2.gd" id="1_p2geq"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d4a1v22ig6m7y" path="res://world/moving_platform.tscn" id="17_77e36"]
 [ext_resource type="PackedScene" uid="uid://ci3lhtmclatl4" path="res://levels/objects/spikes_area.tscn" id="17_f4iov"]
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="19_qyp6u"]
+[ext_resource type="AudioStream" uid="uid://d2vhtvmqg466e" path="res://assets/sounds/stage_2_music.mp3" id="23_ooile"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hdv62"]
 texture = ExtResource("8_xw7wa")
@@ -455,3 +456,8 @@ position = Vector2(1484, 560)
 [node name="StageClear" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("23_ooile")
+autoplay = true
+parameters/looping = true

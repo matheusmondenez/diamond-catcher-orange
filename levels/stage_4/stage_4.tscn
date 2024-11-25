@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cdlq4joojcofq"]
+[gd_scene load_steps=30 format=4 uid="uid://cdlq4joojcofq"]
 
 [ext_resource type="Script" path="res://levels/stage_4/stage_4.gd" id="1_6b6o7"]
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="2_01kmu"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://nnv44ls4puvq" path="res://levels/objects/falling_platform.tscn" id="14_unh88"]
 [ext_resource type="PackedScene" uid="uid://c8ojr8k12quyb" path="res://enemies/slime.tscn" id="15_nji1j"]
 [ext_resource type="PackedScene" uid="uid://drd618dw7ce16" path="res://enemies/tank_comrade.tscn" id="16_li4ku"]
+[ext_resource type="AudioStream" uid="uid://bfev8nje4ch7v" path="res://assets/sounds/stage_4_music.mp3" id="24_ladc4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7s56l"]
 texture = ExtResource("4_ust8o")
@@ -529,3 +530,9 @@ position = Vector2(1256, 784)
 [node name="StageClear" type="Timer" parent="."]
 process_mode = 3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("24_ladc4")
+volume_db = 10.0
+autoplay = true
+parameters/looping = true
