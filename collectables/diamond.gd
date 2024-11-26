@@ -4,6 +4,7 @@ const TRANSITION_SCENE = preload("res://ui/transition.tscn")
 
 @onready var animated_sprite: AnimatedSprite2D = $Animation
 @onready var remote: RemoteTransform2D = $RemoteTransform2D
+@onready var collect_sfx: AudioStreamPlayer = $CollectSFX
 
 @export var camera: Camera2D
 
@@ -25,6 +26,7 @@ func _on_animation_animation_finished() -> void:
 
 func _on_animation_visibility_changed() -> void:
 	animated_sprite.play("appearing")
+	collect_sfx.play()
 
 func appear():
 	self.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cghwch6vp6kf"]
+[gd_scene load_steps=11 format=3 uid="uid://cghwch6vp6kf"]
 
 [ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="1_3qm06"]
 [ext_resource type="Script" path="res://ui/game_over.gd" id="1_f1ko6"]
@@ -6,45 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://2msffi78et3v" path="res://assets/ui/button_restart_hover.png" id="3_jcwml"]
 [ext_resource type="Texture2D" uid="uid://dcc7h52ta88hh" path="res://assets/ui/button_quit_default.png" id="4_krxtn"]
 [ext_resource type="Texture2D" uid="uid://d4echt3as56v1" path="res://assets/ui/button_quit_hover.png" id="5_655dk"]
-
-[sub_resource type="Animation" id="Animation_ggaop"]
-resource_name = "fade"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Background:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("VerticalContainer:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("RichTextLabel:modulate")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.5, 0.9),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
+[ext_resource type="AudioStream" uid="uid://b3xxrc42p5gas" path="res://assets/sounds/game_over.wav" id="7_1eh8u"]
 
 [sub_resource type="Animation" id="Animation_60yeh"]
 length = 0.001
@@ -83,6 +45,45 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ggaop"]
+resource_name = "fade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VerticalContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("RichTextLabel:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.5, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_71bob"]
@@ -153,6 +154,10 @@ libraries = {
 "": SubResource("AnimationLibrary_71bob")
 }
 autoplay = "fade"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_1eh8u")
+autoplay = true
 
 [connection signal="pressed" from="VerticalContainer/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="VerticalContainer/QuitButton" to="." method="_on_quit_button_pressed"]

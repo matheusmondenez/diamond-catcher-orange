@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://xrsna1j1whpk"]
+[gd_scene load_steps=16 format=3 uid="uid://xrsna1j1whpk"]
 
 [ext_resource type="Texture2D" uid="uid://d0rf4y880pgoj" path="res://assets/collectables/coin.png" id="1_8ub7x"]
 [ext_resource type="Script" path="res://collectables/coin.gd" id="1_e20u8"]
 [ext_resource type="Texture2D" uid="uid://vcwa7y6g5l72" path="res://assets/collectables/sparkle_yellow.png" id="2_6p3mc"]
+[ext_resource type="AudioStream" uid="uid://crxoae0sf6k10" path="res://assets/sounds/collect_coin.wav" id="4_s2m6e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x35v4"]
 atlas = ExtResource("2_6p3mc")
@@ -94,6 +95,9 @@ autoplay = "default"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_alw5y")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_s2m6e")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

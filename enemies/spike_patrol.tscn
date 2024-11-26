@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://br3jr6u32a8xv"]
+[gd_scene load_steps=14 format=3 uid="uid://br3jr6u32a8xv"]
 
 [ext_resource type="Texture2D" uid="uid://bvj0rykouuovs" path="res://assets/enemies/spike_patrol_walking.png" id="1_3xj52"]
 [ext_resource type="Texture2D" uid="uid://dbh8ky8ovi3dp" path="res://assets/enemies/spike_patrol_hurting.png" id="1_frthf"]
 [ext_resource type="Script" path="res://enemies/spike_patrol.gd" id="1_wdeeo"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="4_rabi5"]
 [ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_dckej"]
+[ext_resource type="AudioStream" uid="uid://dblopmthycsd5" path="res://assets/sounds/enemy_damage.mp3" id="6_g88ow"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7v4qh"]
 radius = 5.0
@@ -91,8 +92,12 @@ tracks/2/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_38gpw"]
+length = 0.001
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyxmy"]
 _data = {
+"RESET": SubResource("Animation_38gpw"),
 "hurting": SubResource("Animation_f1a25"),
 "walking": SubResource("Animation_jrmbe")
 }
@@ -112,8 +117,7 @@ script = ExtResource("1_wdeeo")
 [node name="Sprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -1)
-texture = ExtResource("1_3xj52")
-hframes = 2
+texture = ExtResource("1_frthf")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
@@ -145,3 +149,7 @@ position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_03b7e")
 debug_color = Color(0.798197, 0.410754, 0.271105, 0.42)
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_g88ow")
+volume_db = -15.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cr44oxaxyl2fh"]
+[gd_scene load_steps=59 format=3 uid="uid://cr44oxaxyl2fh"]
 
 [ext_resource type="Texture2D" uid="uid://uex5pj1a8i0i" path="res://assets/player/blinking.png" id="1_h4p83"]
 [ext_resource type="Script" path="res://player/player.gd" id="1_j0cc2"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://cqcpnxhdj1swr" path="res://assets/player/rolling_stop.png" id="9_d7cly"]
 [ext_resource type="Texture2D" uid="uid://b84tpr4witpts" path="res://assets/player/walking.png" id="10_4ears"]
 [ext_resource type="AudioStream" uid="uid://0du80tmw01ae" path="res://assets/sounds/jump.wav" id="12_nnl66"]
+[ext_resource type="AudioStream" uid="uid://2k2qu5qmpq0p" path="res://assets/sounds/damage.mp3" id="13_jrv4o"]
+[ext_resource type="AudioStream" uid="uid://c05frmd5i4p57" path="res://assets/sounds/rolling.mp3" id="14_sunrf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_11yyq"]
 atlas = ExtResource("1_h4p83")
@@ -419,6 +421,14 @@ debug_color = Color(0.301337, 0.610045, 0.431174, 0.42)
 [node name="JumpSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_nnl66")
 volume_db = -15.0
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_jrv4o")
+volume_db = 10.0
+
+[node name="RollSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_sunrf")
+volume_db = -5.0
 
 [connection signal="animation_finished" from="Animation" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="body_entered" from="Hurtbox" to="." method="_on_hurtbox_body_entered"]

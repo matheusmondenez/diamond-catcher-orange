@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxvy7o38hllrv"]
+[gd_scene load_steps=14 format=3 uid="uid://cxvy7o38hllrv"]
 
 [ext_resource type="Texture2D" uid="uid://bwfcn5fd8ury8" path="res://assets/enemies/totem/hurt.png" id="1_bn4gu"]
 [ext_resource type="Script" path="res://enemies/armored_totem.gd" id="1_youf5"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cerjkmiyq7xbf" path="res://assets/enemies/totem/armored_walking.png" id="3_baiq5"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="5_csuom"]
 [ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="6_u0llf"]
+[ext_resource type="AudioStream" uid="uid://dblopmthycsd5" path="res://assets/sounds/enemy_damage.mp3" id="7_h1x8u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_41mxp"]
 atlas = ExtResource("3_baiq5")
@@ -105,3 +106,7 @@ one_shot = true
 position = Vector2(0, -11)
 shape = SubResource("RectangleShape2D_tax08")
 debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_h1x8u")
+volume_db = -5.0

@@ -13,6 +13,7 @@ var direction: int = -1
 var can_spawn = false
 var spawn_instance: PackedScene = null
 var spawn_instance_position
+var damage_sfx
 
 func apply_gravity(delta) -> void:
 	if not is_on_floor():

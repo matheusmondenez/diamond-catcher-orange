@@ -50,8 +50,9 @@ func game_over():
 
 func clear() -> void:
 	var timer = $StageClear
+	$StageClearMusic.play()
 	get_tree().paused = true
-	timer.start(2.0)
+	timer.start(7.15)
 	await  timer.timeout
 	get_tree().paused = false
 	Globals.shards = 0

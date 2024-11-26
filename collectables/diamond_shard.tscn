@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://dkvaj432xtxvq"]
+[gd_scene load_steps=16 format=3 uid="uid://dkvaj432xtxvq"]
 
 [ext_resource type="Script" path="res://collectables/diamond_shard.gd" id="1_eftuc"]
 [ext_resource type="Texture2D" uid="uid://cwg0pv71gh2ft" path="res://assets/collectables/blue_shard.png" id="1_flh38"]
 [ext_resource type="Texture2D" uid="uid://pbbwo1dfrn2l" path="res://assets/collectables/sparkle_bright.png" id="1_m0jg7"]
+[ext_resource type="AudioStream" uid="uid://c5tdsbkxp5iny" path="res://assets/sounds/collect_shard.wav" id="4_efvme"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lxcrn"]
 atlas = ExtResource("1_m0jg7")
@@ -95,6 +96,9 @@ autoplay = "default"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_hoyeg")
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_efvme")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

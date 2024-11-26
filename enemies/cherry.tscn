@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg2jx3eerv6qy"]
+[gd_scene load_steps=13 format=3 uid="uid://dg2jx3eerv6qy"]
 
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="1_4s8ex"]
 [ext_resource type="Texture2D" uid="uid://bmbntfv4oby2d" path="res://assets/enemies/cherry_walking.png" id="1_60y3k"]
 [ext_resource type="Script" path="res://enemies/cherry.gd" id="1_lwd0l"]
 [ext_resource type="Texture2D" uid="uid://bog8qg5s0g5pi" path="res://assets/enemies/cherry_hurting.png" id="2_137b8"]
 [ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_ip0w3"]
+[ext_resource type="AudioStream" uid="uid://dblopmthycsd5" path="res://assets/sounds/enemy_damage.mp3" id="6_3igot"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qqufr"]
 atlas = ExtResource("1_60y3k")
@@ -75,3 +76,7 @@ debug_color = Color(0.86864, 0.312366, 0.430795, 0.42)
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_3dqx7")
 debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_3igot")
+volume_db = -10.0

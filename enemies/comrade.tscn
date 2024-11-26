@@ -1,9 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c05fhtnaaafoy"]
+[gd_scene load_steps=11 format=3 uid="uid://c05fhtnaaafoy"]
 
 [ext_resource type="Script" path="res://enemies/comrade.gd" id="1_31spu"]
 [ext_resource type="Texture2D" uid="uid://ye7pwdg03snt" path="res://assets/enemies/comrade/running.png" id="1_hqqsm"]
 [ext_resource type="Texture2D" uid="uid://ba82ypmbqdnap" path="res://assets/enemies/comrade/hurting.png" id="1_nj4sc"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="2_lb5o3"]
+[ext_resource type="AudioStream" uid="uid://dblopmthycsd5" path="res://assets/sounds/enemy_damage.mp3" id="5_m1od4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6x6iq"]
 atlas = ExtResource("1_hqqsm")
@@ -70,3 +71,7 @@ target_position = Vector2(8, 0)
 collision_mask = 2
 
 [node name="BombSpawner" type="Marker2D" parent="."]
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_m1od4")
+volume_db = -5.0

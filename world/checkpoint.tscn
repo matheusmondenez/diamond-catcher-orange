@@ -1,9 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://j3qjtkb3wm5p"]
+[gd_scene load_steps=44 format=3 uid="uid://j3qjtkb3wm5p"]
 
 [ext_resource type="Texture2D" uid="uid://ckq3s51rj3bc1" path="res://assets/world/checkpoint_empty.png" id="1_n7uqj"]
 [ext_resource type="Script" path="res://world/checkpoint.gd" id="1_rcgm3"]
 [ext_resource type="Texture2D" uid="uid://c2ym086haf827" path="res://assets/world/checkpoint_out.png" id="2_acvjf"]
 [ext_resource type="Texture2D" uid="uid://bedyxqp1onesu" path="res://assets/world/checkpoint_idle.png" id="2_jh4yu"]
+[ext_resource type="AudioStream" uid="uid://c3l2qsq8nc0ho" path="res://assets/sounds/checkpoint.wav" id="5_dp6rf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_juhcq"]
 atlas = ExtResource("2_jh4yu")
@@ -299,5 +300,8 @@ shape = SubResource("RectangleShape2D_d5htb")
 
 [node name="RespawnMarker" type="Marker2D" parent="."]
 position = Vector2(-8, -40)
+
+[node name="PassingSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dp6rf")
 
 [connection signal="body_entered" from="Area" to="." method="_on_area_body_entered"]

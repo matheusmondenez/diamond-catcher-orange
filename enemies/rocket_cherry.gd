@@ -6,4 +6,5 @@ func _ready() -> void:
 	spawn_instance = preload("res://enemies/cherry.tscn")
 	spawn_instance_position = spawn_marker
 	can_spawn = true
+	damage_sfx = $DamageSFX
 	animation.animation_finished.connect(kill_flying)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyuxg6tjmohm6"]
+[gd_scene load_steps=12 format=3 uid="uid://dyuxg6tjmohm6"]
 
 [ext_resource type="Texture2D" uid="uid://0dwd82wibkfr" path="res://assets/ui/button_resume_default.png" id="1_ph73c"]
 [ext_resource type="Script" path="res://ui/pause_screen.gd" id="1_yxxof"]
@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://c1nvyogvvxr5i" path="res://assets/ui/button_credits_hover.png" id="6_u8637"]
 [ext_resource type="Texture2D" uid="uid://dcc7h52ta88hh" path="res://assets/ui/button_quit_default.png" id="7_k8c6q"]
 [ext_resource type="Texture2D" uid="uid://d4echt3as56v1" path="res://assets/ui/button_quit_hover.png" id="8_nnijv"]
+[ext_resource type="AudioStream" uid="uid://b7ec2a24mtcs8" path="res://assets/sounds/pause.mp3" id="10_ksy46"]
+[ext_resource type="AudioStream" uid="uid://dc8w07i6bnrja" path="res://assets/sounds/unpause.mp3" id="11_vluuf"]
 
 [node name="PauseScreen" type="CanvasLayer"]
 process_mode = 3
@@ -72,6 +74,12 @@ mouse_default_cursor_shape = 2
 texture_normal = ExtResource("7_k8c6q")
 texture_pressed = ExtResource("8_nnijv")
 texture_hover = ExtResource("8_nnijv")
+
+[node name="PauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ksy46")
+
+[node name="UnpauseSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_vluuf")
 
 [connection signal="pressed" from="ButtonsContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="ButtonsContainer/MenuButton" to="." method="_on_menu_button_pressed"]

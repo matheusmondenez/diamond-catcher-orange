@@ -1,10 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://b6ja0ebk4bun2"]
+[gd_scene load_steps=17 format=3 uid="uid://b6ja0ebk4bun2"]
 
 [ext_resource type="Texture2D" uid="uid://excsq80aynhk" path="res://assets/enemies/rocket_cherry_flying.png" id="1_imvs1"]
 [ext_resource type="Script" path="res://enemies/rocket_cherry.gd" id="1_q0mjn"]
 [ext_resource type="Texture2D" uid="uid://w73juk4hyn7s" path="res://assets/enemies/rocket_cherry_hurting.png" id="2_5yur3"]
 [ext_resource type="PackedScene" uid="uid://chaejjqibnuan" path="res://enemies/hitbox.tscn" id="3_21yo4"]
 [ext_resource type="PackedScene" uid="uid://cbtvkbcmjok1x" path="res://enemies/kick_hitbox.tscn" id="5_3e183"]
+[ext_resource type="AudioStream" uid="uid://dblopmthycsd5" path="res://assets/sounds/enemy_damage.mp3" id="6_m5n4e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5yejg"]
 atlas = ExtResource("1_imvs1")
@@ -122,6 +123,10 @@ debug_color = Color(0.870317, 0.312748, 0.418169, 0.42)
 position = Vector2(-2.5, -9.38575e-06)
 shape = SubResource("RectangleShape2D_p1a5g")
 debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="RocketCherry"]
+stream = ExtResource("6_m5n4e")
+volume_db = -5.0
 
 [node name="Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xr7fg")

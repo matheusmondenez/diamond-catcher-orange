@@ -13,6 +13,8 @@ const JUMP_MAX = 2
 @onready var kick_area: CollisionShape2D = $KickArea/Collision
 @onready var roll_area: CollisionShape2D = $RollArea/Collision
 @onready var jump_sfx: AudioStreamPlayer = $JumpSFX
+@onready var damage_sfx: AudioStreamPlayer = $DamageSFX
+@onready var roll_sfx: AudioStreamPlayer = $RollSFX
 
 @export var camera: Camera2D
 
@@ -118,6 +120,7 @@ func roll() -> void:
 	if is_on_floor() and not is_rolling:
 		is_preparing_to_roll = true
 		await get_tree().create_timer(.6).timeout
+		roll_sfx.play()
 		velocity = Vector2(-1 if animatied_sprite.flip_h else 1, 0).normalized() * 2000
 		spawn_dust_trail()
 
@@ -193,6 +196,7 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 			take_damage(Vector2(-200, -200))
 
 func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25):
+	damage_sfx.play()
 	Globals.hearts -= 1
 	
 	if Globals.hearts == 0:

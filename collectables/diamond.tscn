@@ -1,8 +1,9 @@
-[gd_scene load_steps=22 format=3 uid="uid://hxwr1px1pf31"]
+[gd_scene load_steps=23 format=3 uid="uid://hxwr1px1pf31"]
 
 [ext_resource type="Script" path="res://collectables/diamond.gd" id="1_48ddd"]
 [ext_resource type="Texture2D" uid="uid://rmh6q4apjria" path="res://assets/collectables/diamond.png" id="1_fcj5v"]
 [ext_resource type="Texture2D" uid="uid://ugk4n1igff5a" path="res://assets/collectables/blue_effects.png" id="2_au0pt"]
+[ext_resource type="AudioStream" uid="uid://cukf1g8m3w8im" path="res://assets/sounds/collect_diamond.wav" id="4_og02w"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n4jj6"]
 atlas = ExtResource("2_au0pt")
@@ -153,6 +154,9 @@ shape = SubResource("CircleShape2D_ibuj0")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
 process_mode = 3
+
+[node name="CollectSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_og02w")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="animation_finished" from="Animation" to="." method="_on_animation_animation_finished"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://i6bitkxpvqjj"]
+[gd_scene load_steps=26 format=3 uid="uid://i6bitkxpvqjj"]
 
 [ext_resource type="Script" path="res://ui/win_screen.gd" id="1_5tsmv"]
 [ext_resource type="Texture2D" uid="uid://ccplw0kgkhtvl" path="res://assets/ui/background_win.png" id="1_7gfnt"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cb6838ai7cjd6" path="res://assets/world/trophy.png" id="2_r2qkd"]
 [ext_resource type="Texture2D" uid="uid://cfe7ux540taku" path="res://assets/world/trophy_idle.png" id="3_xs1m6"]
 [ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="3_y53w1"]
+[ext_resource type="AudioStream" uid="uid://jdbsrvmg64yd" path="res://assets/sounds/win.wav" id="7_cmfax"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2he4d"]
 shader = ExtResource("2_l3xnu")
@@ -250,3 +251,7 @@ theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("3_y53w1")
 theme_override_font_sizes/font_size = 64
 text = "?"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_cmfax")
+autoplay = true
