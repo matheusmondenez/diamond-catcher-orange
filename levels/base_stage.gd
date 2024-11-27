@@ -41,7 +41,7 @@ func reload_level():
 	Globals.player = player
 	Globals.player.has_died.connect(reload_level)
 	Globals.coins = 0
-	#Globals.lives = 3 # Rever regra
+	#Globals.lives -= 1 # Rever regra
 	Globals.respawn_player()
 
 func game_over():

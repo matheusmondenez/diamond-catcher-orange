@@ -201,7 +201,7 @@ func take_damage(knockback_force: Vector2 = Vector2.ZERO, duration: float = .25)
 	
 	if Globals.hearts == 0:
 		if Globals.lives == 0:
-			print("Game Over!")
+			game_over()
 		else:
 			Globals.lives -= 1
 			Globals.hearts = 3
@@ -234,3 +234,6 @@ func apply_knockback(knockback_force, duration = .25, is_damage: bool = true) ->
 
 	animatied_sprite.modulate = Color(1, 0, 0, 1)
 	tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
+
+func game_over():
+	get_tree().change_scene_to_file("res://ui/game_over.tscn")

@@ -27,6 +27,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	shards_counter.text = str(Globals.shards)
+	lives_counter.text = "X" + str("%01d" % Globals.lives)
 	coins_counter.text = str("%02d" % Globals.coins)
 	score_counter.text = str("%06d" % Globals.score)
 	
