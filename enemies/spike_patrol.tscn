@@ -11,6 +11,9 @@
 radius = 5.0
 height = 14.0
 
+[sub_resource type="Animation" id="Animation_38gpw"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_f1a25"]
 resource_name = "hurting"
 length = 0.1
@@ -91,9 +94,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1]
 }
-
-[sub_resource type="Animation" id="Animation_38gpw"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wyxmy"]
 _data = {

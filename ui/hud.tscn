@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bwqba2pf424sj"]
+[gd_scene load_steps=7 format=3 uid="uid://bwqba2pf424sj"]
 
 [ext_resource type="Script" path="res://ui/hud.gd" id="1_x8gyq"]
 [ext_resource type="Texture2D" uid="uid://buw28km4er68c" path="res://assets/collectables/hud_heart.png" id="2_7k1mf"]
 [ext_resource type="Texture2D" uid="uid://bn5fnoj5kukwm" path="res://assets/collectables/hud_coin.png" id="3_o6x25"]
 [ext_resource type="Texture2D" uid="uid://dkirn6u3y0e3j" path="res://assets/collectables/hud_shard.png" id="5_0u6n0"]
+[ext_resource type="Texture2D" uid="uid://chjx8bkt5bfis" path="res://assets/ui/orange.png" id="5_4y4uv"]
 [ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="5_km0r1"]
 
 [node name="HUD" type="CanvasLayer" node_paths=PackedStringArray("hearts_counter")]
@@ -71,6 +72,25 @@ layout_mode = 2
 texture = ExtResource("3_o6x25")
 
 [node name="Counter" type="Label" parent="Control/MarginContainer/VBoxContainer/CoinsContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("5_km0r1")
+theme_override_font_sizes/font_size = 8
+text = "00"
+
+[node name="LivesContainer" type="HBoxContainer" parent="Control/MarginContainer/VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Sprite" type="TextureRect" parent="Control/MarginContainer/VBoxContainer/LivesContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("5_4y4uv")
+
+[node name="Counter" type="Label" parent="Control/MarginContainer/VBoxContainer/LivesContainer"]
 texture_filter = 1
 layout_mode = 2
 theme_override_constants/outline_size = 4
