@@ -157,6 +157,7 @@ autoplay = "fade"
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_1eh8u")
+volume_db = -5.0
 autoplay = true
 
 [connection signal="pressed" from="VerticalContainer/RestartButton" to="." method="_on_restart_button_pressed"]

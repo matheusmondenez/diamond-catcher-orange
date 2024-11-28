@@ -12,6 +12,7 @@ func _ready() -> void:
 	ray_cast = $WallDetector
 	floor_detector = $FloorDetector
 	player_detector = $PlayerDetector
+	damage_sfx = $DamageSFX
 	can_spawn = true
 	spawn_instance = preload("res://enemies/totem.tscn")
 	spawn_instance_position = $SpawnerMarker

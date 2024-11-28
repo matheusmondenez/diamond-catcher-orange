@@ -88,4 +88,3 @@ debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
 
 [node name="DamageSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jo2po")
-volume_db = -5.0

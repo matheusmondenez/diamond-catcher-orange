@@ -43,8 +43,13 @@ func reload_level():
 	Globals.coins = 0
 	#Globals.lives -= 1 # Rever regra
 	Globals.respawn_player()
+	Globals.player.remote.remote_path = camera.get_path()
 
 func game_over():
+	Globals.score = 0
+	Globals.lives = 3
+	Globals.hearts = 3
+	Globals.shards = 0
 	get_tree().change_scene_to_file("res://ui/game_over.tscn")
 	#get_tree().reload_current_scene()
 

@@ -236,4 +236,8 @@ func apply_knockback(knockback_force, duration = .25, is_damage: bool = true) ->
 	tween.parallel().tween_property(animatied_sprite, "modulate", Color(1, 1, 1, 1), duration)
 
 func game_over():
+	Globals.score = 0
+	Globals.lives = 3
+	Globals.hearts = 3
+	Globals.shards = 0
 	get_tree().change_scene_to_file("res://ui/game_over.tscn")

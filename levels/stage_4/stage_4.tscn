@@ -534,9 +534,11 @@ one_shot = true
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("24_ladc4")
+volume_db = 10.0
 autoplay = true
 parameters/looping = true
 
 [node name="StageClearMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("25_no4eg")
+volume_db = -10.0

@@ -15,6 +15,7 @@ func _ready() -> void:
 	can_spawn = true
 	spawn_instance = preload("res://enemies/comrade.tscn")
 	spawn_instance_position = $Spawner
+	damage_sfx = $DamageSFX
 	animation.animation_finished.connect(kill_walking)
 
 func _physics_process(delta: float) -> void:

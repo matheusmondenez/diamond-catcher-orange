@@ -74,4 +74,3 @@ collision_mask = 2
 
 [node name="DamageSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_m1od4")
-volume_db = -5.0

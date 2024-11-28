@@ -123,7 +123,6 @@ debug_color = Color(0.811008, 0.377562, 0.438105, 0.42)
 
 [node name="DamageSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pdq3n")
-volume_db = -5.0
 
 [connection signal="timeout" from="TimerMissile" to="." method="_on_timer_missile_timeout"]
 [connection signal="timeout" from="TimerBomb" to="." method="_on_timer_bomb_timeout"]

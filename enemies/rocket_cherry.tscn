@@ -126,7 +126,6 @@ debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
 
 [node name="DamageSFX" type="AudioStreamPlayer" parent="RocketCherry"]
 stream = ExtResource("6_m5n4e")
-volume_db = -5.0
 
 [node name="Path" type="Path2D" parent="."]
 curve = SubResource("Curve2D_xr7fg")
