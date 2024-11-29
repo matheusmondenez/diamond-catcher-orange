@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://gqy8ellyerfj"]
+[gd_scene load_steps=35 format=4 uid="uid://gqy8ellyerfj"]
 
 [ext_resource type="PackedScene" uid="uid://bwqba2pf424sj" path="res://ui/hud.tscn" id="1_bo413"]
 [ext_resource type="Texture2D" uid="uid://cyb7byuuadc0n" path="res://assets/tileset/grassland/entities.png" id="1_rsdvp"]
@@ -25,6 +25,9 @@
 [ext_resource type="PackedScene" uid="uid://j3qjtkb3wm5p" path="res://world/checkpoint.tscn" id="21_7hfiv"]
 [ext_resource type="AudioStream" uid="uid://yg2ratxfbaxm" path="res://assets/sounds/stage_1_music.mp3" id="24_lhy3x"]
 [ext_resource type="AudioStream" uid="uid://cshe7ewrqil1e" path="res://assets/sounds/stage_clear.wav" id="25_f3l0y"]
+[ext_resource type="Script" path="res://levels/stage_1/instructions.gd" id="26_4u6su"]
+[ext_resource type="Texture2D" uid="uid://bhpla65e1qfvr" path="res://assets/ui/speech_emotes.png" id="26_gdrb7"]
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="27_7muu8"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_62ml8"]
 shader = ExtResource("4_qo228")
@@ -183,6 +186,9 @@ physics_layer_0/collision_mask = 13
 sources/0 = SubResource("TileSetAtlasSource_0nmgy")
 sources/1 = SubResource("TileSetAtlasSource_dfij8")
 sources/2 = SubResource("TileSetAtlasSource_t1gw2")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ka6c2"]
+size = Vector2(100, 33)
 
 [node name="Stage1" type="Node2D" node_paths=PackedStringArray("hud", "camera", "player", "start_position", "diamond")]
 process_mode = 1
@@ -364,6 +370,7 @@ position = Vector2(2120, 428)
 position = Vector2(128, 480)
 
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("4_72rfk")]
+z_index = 2
 position = Vector2(128, 480)
 camera = NodePath("../Camera")
 
@@ -391,3 +398,37 @@ parameters/looping = true
 process_mode = 3
 stream = ExtResource("25_f3l0y")
 volume_db = -10.0
+
+[node name="Instructions" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(408, 576)
+script = ExtResource("26_4u6su")
+
+[node name="Label" type="Label" parent="Instructions"]
+visible = false
+offset_left = -18.0
+offset_top = -48.0
+offset_right = 55.0
+offset_bottom = -25.0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("27_7muu8")
+theme_override_font_sizes/font_size = 8
+text = "PRESS UP"
+
+[node name="Sprite2D" type="Sprite2D" parent="Instructions"]
+visible = false
+z_index = 999
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("26_gdrb7")
+region_enabled = true
+region_rect = Rect2(0, 0, 16, 16)
+
+[node name="Area2D" type="Area2D" parent="Instructions"]
+position = Vector2(0, -16)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Instructions/Area2D"]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_ka6c2")
