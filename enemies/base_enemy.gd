@@ -14,6 +14,7 @@ var can_spawn = false
 var spawn_instance: PackedScene = null
 var spawn_instance_position
 var damage_sfx
+var boss_lives: int
 
 func apply_gravity(delta) -> void:
 	if not is_on_floor():
@@ -49,7 +50,12 @@ func kill_flying():
 	kill_and_score()
 
 func kill_walking(anim_name: StringName):
-	kill_and_score()
+	if self.name == "TankComrade":
+		boss_lives -= 1
+		if boss_lives == 0:
+			kill_and_score()
+	else:
+		kill_and_score()
 
 func kill_and_score():
 	Globals.score += 100
