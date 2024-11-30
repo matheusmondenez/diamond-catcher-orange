@@ -514,7 +514,7 @@ position = Vector2(1120, 800)
 position = Vector2(64, 488)
 
 [node name="Orange" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_i5cjh")]
-position = Vector2(64, 488)
+position = Vector2(1856, 248)
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera2D" parent="."]

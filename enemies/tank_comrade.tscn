@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://drd618dw7ce16"]
+[gd_scene load_steps=12 format=3 uid="uid://drd618dw7ce16"]
 
 [ext_resource type="Script" path="res://enemies/tank_comrade.gd" id="1_uiv18"]
 [ext_resource type="Texture2D" uid="uid://bjyu50m0o3cif" path="res://assets/enemies/comrade/moving.png" id="2_ibewt"]
@@ -22,10 +22,22 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_bp1ew"]
 resource_name = "hurting"
-length = 0.2
+length = 0.3
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -34,10 +46,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [9, 10]
+"values": [9, 10, 9]
 }
 
 [sub_resource type="Animation" id="Animation_8iq8k"]
@@ -57,11 +69,54 @@ tracks/0/keys = {
 "update": 1,
 "values": [0, 1]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_diqh7"]
+resource_name = "invunerable"
+length = 0.2
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [9, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hitbox/Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_efgtm"]
 _data = {
 "RESET": SubResource("Animation_6puir"),
 "hurting": SubResource("Animation_bp1ew"),
+"invunerable": SubResource("Animation_diqh7"),
 "moving": SubResource("Animation_8iq8k")
 }
 
@@ -107,6 +162,10 @@ autostart = true
 wait_time = 3.0
 autostart = true
 
+[node name="TimerInvunerability" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
 [node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -8)
 target_position = Vector2(-16, 0)
@@ -124,5 +183,7 @@ debug_color = Color(0.811008, 0.377562, 0.438105, 0.42)
 [node name="DamageSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_pdq3n")
 
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="TimerMissile" to="." method="_on_timer_missile_timeout"]
 [connection signal="timeout" from="TimerBomb" to="." method="_on_timer_bomb_timeout"]
+[connection signal="timeout" from="TimerInvunerability" to="." method="_on_timer_invunerability_timeout"]

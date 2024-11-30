@@ -7,6 +7,7 @@ const MISSILE_SCENE := preload("res://enemies/missile.tscn")
 @onready var bomb_spawner: Marker2D = %BombSpawner
 @onready var timer_missile: Timer = $TimerMissile
 @onready var timer_bomb: Timer = $TimerBomb
+@onready var timer_invunerability: Timer = $TimerInvunerability
 
 func _ready() -> void:
 	sprite = $Sprite
@@ -41,3 +42,11 @@ func _on_timer_bomb_timeout() -> void:
 
 func _on_timer_missile_timeout() -> void:
 	launch_missile()
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hurting" and boss_lives > 0:
+		animation.play("invunerable")
+		timer_invunerability.start()
+
+func _on_timer_invunerability_timeout() -> void:
+	animation.play("moving")
