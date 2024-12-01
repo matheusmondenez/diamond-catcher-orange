@@ -6,6 +6,7 @@ const EXPLOSION_SCENE = preload("res://enemies/explosion.tscn")
 @onready var sprite: Sprite2D = $Sprite
 @onready var collision_sprite: CollisionShape2D = $Collision
 @onready var collision_area: CollisionShape2D = $Area/Collision
+@onready var damage_sfx: AudioStreamPlayer = $DamageSFX
 
 var velocity := Vector2.ZERO
 var direction
@@ -23,6 +24,10 @@ func set_direction(dir) -> void:
 		sprite.flip_h = false
 
 func _on_area_body_entered(body: Node2D) -> void:
+	if body.name == "Orange":
+		body._on_hurtbox_body_entered(self)
+	else:
+		damage_sfx.play()
 	visible = false
 	var explosion = EXPLOSION_SCENE.instantiate()
 	get_parent().add_child(explosion) #add_sibling

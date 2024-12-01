@@ -190,6 +190,9 @@ func _on_hurtbox_body_entered(body: Node2D) -> void:
 			is_stoping_to_roll = false
 			return
 		
+		if body is AnimatableBody2D or body is RigidBody2D:
+			take_damage(Vector2(0, -200))
+
 		if $Hurtbox/RayCastLeft.is_colliding():
 			take_damage(Vector2(200, -200))
 		elif $Hurtbox/RayCastRight.is_colliding():

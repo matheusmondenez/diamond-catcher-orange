@@ -1,12 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyv4vo6v1sch2"]
+[gd_scene load_steps=5 format=3 uid="uid://dyv4vo6v1sch2"]
 
 [ext_resource type="Script" path="res://enemies/bomb.gd" id="1_kdpvc"]
 [ext_resource type="Texture2D" uid="uid://bpr5di7p87qi6" path="res://assets/enemies/comrade/bomb.png" id="1_sxm83"]
+[ext_resource type="AudioStream" uid="uid://2k2qu5qmpq0p" path="res://assets/sounds/damage.mp3" id="3_7sh1a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hn2ti"]
 radius = 3.16228
 
-[node name="Bomb" type="RigidBody2D"]
+[node name="Bomb" type="RigidBody2D" groups=["enemies"]]
 collision_layer = 8
 collision_mask = 3
 contact_monitor = true
@@ -20,5 +21,9 @@ texture = ExtResource("1_sxm83")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_hn2ti")
+
+[node name="DamageSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_7sh1a")
+volume_db = 10.0
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
