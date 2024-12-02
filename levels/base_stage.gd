@@ -24,6 +24,8 @@ func _ready() -> void:
 	diamond.get_node("Collision").disabled = true
 	diamond.connect("stage_cleared", clear)
 	self.connect("all_shards_collected", transit_camera)
+	if self.name == "Stage4":
+		$Enemies/TankComrade.set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
 	if Globals.shards < 5 and is_instance_valid(Globals.player):

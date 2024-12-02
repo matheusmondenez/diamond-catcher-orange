@@ -156,11 +156,9 @@ autoplay = "moving"
 
 [node name="TimerMissile" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [node name="TimerBomb" type="Timer" parent="."]
 wait_time = 3.0
-autostart = true
 
 [node name="TimerInvunerability" type="Timer" parent="."]
 wait_time = 10.0
