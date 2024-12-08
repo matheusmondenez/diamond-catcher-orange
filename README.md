@@ -16,3 +16,14 @@ Be careful not to turn into juice 🧃!
 
 **Play here:**
 https://lazull.itch.io/diamond-catcher-orange
+
+## Credits
+
+### Development
+Matheus Mondenez
+
+### Sprites
+Graphxkid
+
+### Músicas and SFX
+---
