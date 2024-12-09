@@ -23,7 +23,20 @@ https://lazull.itch.io/diamond-catcher-orange
 Matheus Mondenez
 
 ### Sprites
-Graphxkid
+GrafxKid
+Pixel Frog
 
 ### Musics and SFX
-- - -
+Arcana23
+axilirate
+Bertsz
+bradwesson
+crisstanza
+discountrainbows
+igroglaz
+Leszek_Szary
+mikewhite12
+Mrthenoronha
+Raclure
+renatoperes
+Serkor09
