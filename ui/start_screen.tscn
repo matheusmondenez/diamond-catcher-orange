@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://3x8j7dg3cg5b"]
+[gd_scene load_steps=11 format=3 uid="uid://3x8j7dg3cg5b"]
 
 [ext_resource type="Script" path="res://ui/start_screen.gd" id="1_j7wxc"]
 [ext_resource type="Texture2D" uid="uid://1tnq5tnn7emj" path="res://assets/ui/background_menu.png" id="1_kcwyt"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://dnb46ebgkk0dg" path="res://assets/ui/button_start_default.png" id="3_ujbfx"]
 [ext_resource type="Texture2D" uid="uid://b1gcyo4o4ynci" path="res://assets/ui/button_start_hover.png" id="4_xank5"]
 [ext_resource type="AudioStream" uid="uid://d1y146r4d1bpq" path="res://assets/sounds/fruitloop.mp3" id="7_2vroq"]
+[ext_resource type="Texture2D" uid="uid://cxw0uctvwr6xu" path="res://assets/ui/button_credits_default.png" id="7_ni0e1"]
+[ext_resource type="Texture2D" uid="uid://c1nvyogvvxr5i" path="res://assets/ui/button_credits_hover.png" id="8_j3n87"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_a8fw0"]
 shader = ExtResource("2_hgv58")
@@ -59,8 +61,19 @@ texture_normal = ExtResource("3_ujbfx")
 texture_pressed = ExtResource("4_xank5")
 texture_hover = ExtResource("4_xank5")
 
+[node name="CreditsButton" type="TextureButton" parent="."]
+offset_left = 476.0
+offset_top = 448.0
+offset_right = 676.0
+offset_bottom = 518.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("7_ni0e1")
+texture_pressed = ExtResource("8_j3n87")
+texture_hover = ExtResource("8_j3n87")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_2vroq")
 autoplay = true
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="CreditsButton" to="." method="_on_credits_button_pressed"]

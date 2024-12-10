@@ -2,7 +2,6 @@ extends CanvasLayer
 
 @onready var resume_button: TextureButton = $ButtonsContainer/ResumeButton
 @onready var menu_button: TextureButton = $ButtonsContainer/MenuButton
-@onready var credits_button: TextureButton = $ButtonsContainer/CreditsButton
 @onready var quit_button: TextureButton = $ButtonsContainer/QuitButton
 @onready var pause_sfx: AudioStreamPlayer = $PauseSFX
 @onready var unpause_sfx: AudioStreamPlayer = $UnpauseSFX

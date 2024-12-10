@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://o6rhpoxfltud"]
+
+[ext_resource type="Shader" path="res://ui/background_scroll.gdshader" id="1_3ntj2"]
+[ext_resource type="Script" path="res://ui/credits_screen.gd" id="1_20hyb"]
+[ext_resource type="Texture2D" uid="uid://1tnq5tnn7emj" path="res://assets/ui/background_menu.png" id="2_n0dw2"]
+[ext_resource type="FontFile" uid="uid://cbgk7pxtbuiqx" path="res://assets/ui/rev_mini_pixel.ttf" id="3_b8q5y"]
+[ext_resource type="Texture2D" uid="uid://1s8dtbwsd5pv" path="res://assets/ui/button_back_default.png" id="4_mxmbc"]
+[ext_resource type="Texture2D" uid="uid://dx1qh7udmg7re" path="res://assets/ui/button_back_hover.png" id="5_ebakt"]
+[ext_resource type="AudioStream" uid="uid://d1y146r4d1bpq" path="res://assets/sounds/fruitloop.mp3" id="7_rst4s"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b7tuh"]
+shader = ExtResource("1_3ntj2")
+shader_parameter/speed = 0.5
+
+[node name="CreditsScreen" type="Node"]
+script = ExtResource("1_20hyb")
+
+[node name="Background" type="TextureRect" parent="."]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_b7tuh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n0dw2")
+stretch_mode = 1
+
+[node name="Container" type="HBoxContainer" parent="."]
+offset_left = 67.0
+offset_top = 39.0
+offset_right = 943.0
+offset_bottom = 79.0
+theme_override_constants/separation = 200
+
+[node name="DevLabel" type="Label" parent="Container"]
+texture_filter = 2
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 32
+text = "DEVELOPMENT"
+
+[node name="Names" type="Label" parent="Container/DevLabel"]
+texture_filter = 2
+offset_top = 47.0
+offset_right = 232.0
+offset_bottom = 79.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 24
+text = "Matheus Mondenez"
+
+[node name="SpritesLabel" type="Label" parent="Container"]
+texture_filter = 2
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 32
+text = "SPRITES"
+
+[node name="Names" type="Label" parent="Container/SpritesLabel"]
+texture_filter = 2
+offset_top = 47.0
+offset_right = 232.0
+offset_bottom = 98.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 24
+text = "GrafxKid
+Pixel Frog"
+
+[node name="MusicsLabel" type="Label" parent="Container"]
+texture_filter = 2
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 32
+text = "MUSICS"
+
+[node name="Names" type="Label" parent="Container/MusicsLabel"]
+texture_filter = 2
+offset_top = 47.0
+offset_right = 232.0
+offset_bottom = 395.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("3_b8q5y")
+theme_override_font_sizes/font_size = 24
+text = "Arcana23
+axilirate
+Bertsz
+bradwesson
+crisstanza
+discountrainbows
+igroglaz
+Leszek_Szary
+mikewhite12
+Mrthenoronha
+Raclure
+renatoperes
+Serkor09"
+
+[node name="BackButton" type="TextureButton" parent="."]
+texture_filter = 1
+offset_left = 477.0
+offset_top = 513.0
+offset_right = 677.0
+offset_bottom = 583.0
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_mxmbc")
+texture_pressed = ExtResource("5_ebakt")
+texture_hover = ExtResource("5_ebakt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_rst4s")
+autoplay = true
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
