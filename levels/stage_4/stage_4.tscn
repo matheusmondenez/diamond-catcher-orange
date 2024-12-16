@@ -416,7 +416,7 @@ position = Vector2(1800, 248)
 
 [node name="Diamond" parent="Collectables" node_paths=PackedStringArray("camera") instance=ExtResource("5_2oe2m")]
 visible = false
-position = Vector2(1856, 248)
+position = Vector2(2240, 216)
 camera = NodePath("../../Camera")
 
 [node name="Enemies" type="Node" parent="."]
@@ -489,6 +489,11 @@ move_horizontal = false
 
 [node name="MovingPlatform2" parent="Platforms" instance=ExtResource("13_cfxr0")]
 position = Vector2(936, 192)
+move_horizontal = false
+
+[node name="MovingPlatformFinal" parent="Platforms" instance=ExtResource("13_cfxr0")]
+visible = false
+position = Vector2(2240, 480)
 move_horizontal = false
 
 [node name="FallingPlatform" parent="Platforms" instance=ExtResource("14_unh88")]

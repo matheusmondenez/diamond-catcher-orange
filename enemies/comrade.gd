@@ -11,3 +11,7 @@ func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
 	move(delta)
 	flip_sprite()
+
+func _on_tree_exited() -> void:
+	# TODO: Implements platform showing after kill boss
+	pass # Replace with function body.
