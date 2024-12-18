@@ -22,6 +22,7 @@ const DIAMOND_SCENE = preload("res://collectables/diamond.tscn")
 @export_range(0.0, 2.0) var duration = 1.0
 
 var emitted: bool = false
+var final_platform
 signal all_shards_collected
 
 func _ready() -> void:
@@ -36,6 +37,10 @@ func _ready() -> void:
 		$Enemies/TankComrade.set_physics_process(false)
 
 func _physics_process(delta: float) -> void:
+	var root_children = get_tree().root.get_children()
+	for child in root_children:
+		if child.name == "Comrade" and child.has_signal("final_boss_defeated"):
+			child.final_boss_defeated.connect(show_final_platform)
 	if Globals.shards < 5 and is_instance_valid(Globals.player):
 		Globals.player.remote.remote_path = camera.get_path()
 	elif Globals.shards == 5 and is_instance_valid(diamond):
@@ -103,3 +108,7 @@ func transit_camera() -> void:
 	await get_tree().create_timer(1.0).timeout
 	Globals.player.remote.remote_path = camera.get_path()
 	get_tree().paused = false
+	
+func show_final_platform():
+	final_platform.visible = true
+	final_platform.collision.disabled = false

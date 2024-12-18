@@ -3,6 +3,7 @@ extends Node2D
 const WAIT_DURATION := 1.0
 
 @onready var platform: AnimatableBody2D = $AnimatableBody
+@onready var collision: CollisionShape2D = $AnimatableBody/Collision
 
 @export_category("Platform")
 @export var speed := 3.0

@@ -5,6 +5,10 @@ extends BaseStage
 @onready var boss_music: AudioStreamPlayer = $BossMusic
 @onready var tank_comrade: CharacterBody2D = $Enemies/TankComrade
 
+func _ready() -> void:
+	super()
+	final_platform = $Platforms/MovingPlatformFinal
+
 func _on_boss_area_body_entered(body: Node2D) -> void:
 	if body.name == "Orange":
 		# TODO: Verify AudioStreamPlayerInterative usage possibility
@@ -13,5 +17,3 @@ func _on_boss_area_body_entered(body: Node2D) -> void:
 		tank_comrade.set_physics_process(true)
 		tank_comrade.timer_bomb.start()
 		tank_comrade.timer_missile.start()
-
-# TODO: Implements platform appearance after defeat boss

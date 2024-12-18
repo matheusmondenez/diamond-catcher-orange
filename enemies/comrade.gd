@@ -1,5 +1,7 @@
 extends BaseEnemy
 
+signal final_boss_defeated
+
 func _ready() -> void:
 	sprite = $AnimatedSprite
 	animation = $AnimatedSprite
@@ -14,4 +16,4 @@ func _physics_process(delta: float) -> void:
 
 func _on_tree_exited() -> void:
 	# TODO: Implements platform showing after kill boss
-	pass # Replace with function body.
+	emit_signal("final_boss_defeated")

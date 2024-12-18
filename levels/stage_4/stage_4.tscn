@@ -568,3 +568,5 @@ position = Vector2(-79, -87)
 shape = SubResource("RectangleShape2D_tgcjx")
 
 [connection signal="body_entered" from="BossArea" to="." method="_on_boss_area_body_entered"]
+
+[editable path="Platforms/MovingPlatformFinal"]
