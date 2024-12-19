@@ -21,8 +21,11 @@ const DIAMOND_SCENE = preload("res://collectables/diamond.tscn")
 @export_enum("Diamond", "Spot Player", "Spot Center", "Vertical Bar", "Horizontal Bar") var transition_type = 0
 @export_range(0.0, 2.0) var duration = 1.0
 
-var emitted: bool = false
+var background_music: AudioStreamPlayer
+var boss_music: AudioStreamPlayer
+var emitted_all_shards_signal: bool = false
 var final_platform
+
 signal all_shards_collected
 
 func _ready() -> void:
@@ -44,9 +47,9 @@ func _physics_process(delta: float) -> void:
 	if Globals.shards < 5 and is_instance_valid(Globals.player):
 		Globals.player.remote.remote_path = camera.get_path()
 	elif Globals.shards == 5 and is_instance_valid(diamond):
-		if not emitted:
+		if not emitted_all_shards_signal:
 			emit_signal("all_shards_collected")
-			emitted = true
+			emitted_all_shards_signal = true
 
 func reload_level():
 	await get_tree().create_timer(1.0).timeout
@@ -112,3 +115,5 @@ func transit_camera() -> void:
 func show_final_platform():
 	final_platform.visible = true
 	final_platform.collision.disabled = false
+	boss_music.stop()
+	background_music.play()

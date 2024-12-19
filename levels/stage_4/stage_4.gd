@@ -1,12 +1,12 @@
 extends BaseStage
 
 @onready var boss_area: Area2D = $BossArea
-@onready var background_music: AudioStreamPlayer = $BackgroundMusic
-@onready var boss_music: AudioStreamPlayer = $BossMusic
 @onready var tank_comrade: CharacterBody2D = $Enemies/TankComrade
 
 func _ready() -> void:
 	super()
+	background_music = $BackgroundMusic
+	boss_music = $BossMusic
 	final_platform = $Platforms/MovingPlatformFinal
 
 func _on_boss_area_body_entered(body: Node2D) -> void:
