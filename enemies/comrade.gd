@@ -8,6 +8,7 @@ func _ready() -> void:
 	ray_cast = $WallDetector
 	damage_sfx = $DamageSFX
 	animation.animation_finished.connect(kill_flying)
+	SPEED = 5600.0
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
@@ -15,5 +16,4 @@ func _physics_process(delta: float) -> void:
 	flip_sprite()
 
 func _on_tree_exited() -> void:
-	# TODO: Implements platform showing after kill boss
 	emit_signal("final_boss_defeated")

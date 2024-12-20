@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name BaseEnemy
 
-const SPEED = 2800.0
+@export var SPEED = 2800.0
 
 @onready var animation = $SpriteAnimation
 
