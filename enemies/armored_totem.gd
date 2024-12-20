@@ -17,7 +17,6 @@ func _ready() -> void:
 	spawn_instance = preload("res://enemies/totem.tscn")
 	spawn_instance_position = $SpawnerMarker
 	animation.animation_finished.connect(kill_flying)
-	# TODO: Verify initial direction
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)

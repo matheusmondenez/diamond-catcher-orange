@@ -9,19 +9,11 @@ const LINES: Array[String] = [
 	"...START!!!"
 ]
 
-# TO-DO: Rever comportamento de show/hide do emote
 func _unhandled_input(event: InputEvent) -> void:
 	if area.get_overlapping_bodies().size() > 0:
 		sprite.show()
 		
 		if event.is_action_pressed("interact") && !Dialog.is_active_message:
-			#sprite.hide()
 			Dialog.start_message(global_position, LINES)
 		elif Dialog.is_active_message:
 			sprite.hide()
-		#else:
-			#sprite.hide()
-			
-			#if Dialog.dialog_box != null:
-				#Dialog.dialog_box.queue_free()
-				#Dialog.is_active_message = false

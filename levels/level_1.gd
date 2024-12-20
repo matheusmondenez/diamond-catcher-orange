@@ -22,7 +22,6 @@ var emited: bool = false
 func _ready() -> void:
 	Globals.player_start_position = start_position
 	Globals.player = player
-	#Globals.player.camera_follow(camera)
 	Globals.player.has_died.connect(reload_level)
 	hud.time_is_up.connect(game_over)
 	transition.material.set_shader_parameter("type", transition_type)
@@ -36,7 +35,6 @@ func _process(delta: float) -> void:
 	elif (Globals.shards == 5 and is_instance_valid(diamond)):
 		Globals.player.remote.remote_path = ""
 		diamond.remote.remote_path = camera.get_path()
-#
 		await get_tree().create_timer(1.0).timeout
 		diamond.appear()
 		await get_tree().create_timer(1.0).timeout
@@ -48,21 +46,14 @@ func reload_level():
 	var player = player_scene.instantiate()
 	add_child(player)
 	Globals.player = player
-	#Globals.player.camera_follow(camera)
 	Globals.player.has_died.connect(reload_level)
 	Globals.coins = 0
-	#Globals.lives = 3 # Rever regra
 	Globals.respawn_player()
 
 func game_over():
 	get_tree().reload_current_scene()
 
 func clear() -> void:
-	#var timer = $StageClear
-	#get_tree().paused = true
-	#timer.start(2.0)
-	#await  timer.timeout
-	#get_tree().paused = false
 	Globals.shards = 0
 
 func voltar_camera_para_jogador():
