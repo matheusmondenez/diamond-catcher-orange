@@ -1,6 +1,5 @@
 extends AnimatableBody2D
 
-const SPEED := 100.0
 const EXPLOSION_SCENE = preload("res://enemies/explosion.tscn")
 
 @onready var sprite: Sprite2D = $Sprite
@@ -8,6 +7,7 @@ const EXPLOSION_SCENE = preload("res://enemies/explosion.tscn")
 @onready var collision_area: CollisionShape2D = $Area/Collision
 @onready var damage_sfx: AudioStreamPlayer = $DamageSFX
 
+var SPEED := 100.0
 var velocity := Vector2.ZERO
 var direction
 

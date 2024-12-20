@@ -79,3 +79,9 @@ debug_color = Color(0.784315, 0.420648, 0.293275, 0.42)
 
 [node name="DamageSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_3igot")
+
+[node name="WallDetector" type="RayCast2D" parent="."]
+position = Vector2(-1, 0)
+scale = Vector2(-1, 1)
+target_position = Vector2(8, 0)
+collision_mask = 2

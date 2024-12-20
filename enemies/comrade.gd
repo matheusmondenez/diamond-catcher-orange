@@ -8,7 +8,7 @@ func _ready() -> void:
 	ray_cast = $WallDetector
 	damage_sfx = $DamageSFX
 	animation.animation_finished.connect(kill_flying)
-	SPEED = 5600.0
+	SPEED = 6000.0
 
 func _physics_process(delta: float) -> void:
 	apply_gravity(delta)
