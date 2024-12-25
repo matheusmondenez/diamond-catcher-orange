@@ -27,3 +27,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	else:
 		sprite.hide()
 		label.hide()
+
+func _on_area_2d_body_exited(body: Node2D) -> void:
+	if Dialog.dialog_box is MarginContainer:
+		Dialog.dialog_box.visible = false
