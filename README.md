@@ -4,15 +4,6 @@
 
 In this beautiful platform game, control a friendly little orange 🍊 in search of diamonds 💎.
 
-<p float="left">
-	<img src="/assets/ui/level_1.png" width="384px" />
-	<img src="/assets/ui/level_2.png" width="384px" />
-</p>
-<p float="left">
-	<img src="/assets/ui/level_3.png" width="384px" />
-	<img src="/assets/ui/level_4.png" width="384px" />
-</p>
-
 ![Diamond Catcher Orange - Level 1](/assets/ui/level_1.png "Diamond Catcher Orange - Level 1")
 ![Diamond Catcher Orange - Level 2](/assets/ui/level_2.png "Diamond Catcher Orange - Level 2")
 ![Diamond Catcher Orange - Level 3](/assets/ui/level_3.png "Diamond Catcher Orange - Level 3")
